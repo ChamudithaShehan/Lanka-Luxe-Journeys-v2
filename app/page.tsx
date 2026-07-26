@@ -113,6 +113,7 @@ export default function HomePage() {
               alt="Sri Lanka Luxury Destination"
               fill
               priority
+              sizes="100vw"
               className="object-cover object-center filter brightness-110 contrast-105"
             />
             {/* Minimal ultra-sheer dark gradient to let sunny photos shine */}
@@ -323,6 +324,7 @@ export default function HomePage() {
                     src={pkg.image}
                     alt={pkg.titleEn}
                     fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#081B33] via-transparent to-transparent opacity-90" />
@@ -525,7 +527,7 @@ export default function HomePage() {
                 key={idx}
                 className="relative h-44 rounded-xl overflow-hidden group border border-white/10 hover:border-[#C9A227] transition-all"
               >
-                <Image src={img} alt="Instagram Moment" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                <Image src={img} alt="Instagram Moment" fill sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-[#081B33]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <Camera className="w-6 h-6 text-[#C9A227]" />
                 </div>
@@ -542,6 +544,7 @@ export default function HomePage() {
             src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1920&q=80"
             alt="CTA Banner"
             fill
+            sizes="100vw"
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#040E1B] via-[#081B33]/90 to-[#040E1B]/80" />

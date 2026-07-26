@@ -79,6 +79,7 @@ export const LuxuryPhotoGallery: React.FC = () => {
                   src={item.src}
                   alt={item.titleEn}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-[#081B33]/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-6">
@@ -127,6 +128,7 @@ export const LuxuryPhotoGallery: React.FC = () => {
                 src={filteredItems[activeImageIndex].src}
                 alt="Lightbox Fullscreen"
                 fill
+                sizes="(max-width: 1024px) 100vw, 80vw"
                 className="object-contain"
               />
             </div>

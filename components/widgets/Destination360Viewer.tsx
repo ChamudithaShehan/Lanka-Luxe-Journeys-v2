@@ -36,6 +36,7 @@ export const Destination360Viewer: React.FC = () => {
           src={tourData[activeTour].image}
           alt="360 Panorama"
           fill
+          sizes="100vw"
           className="object-cover object-center scale-105 filter brightness-75 transition-all duration-1000"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#040E1B] via-[#081B33]/80 to-[#040E1B]" />
@@ -108,6 +109,7 @@ export const Destination360Viewer: React.FC = () => {
                 src={tourData[activeTour].image}
                 alt="360 View"
                 fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
                 className="object-cover object-center scale-125 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">

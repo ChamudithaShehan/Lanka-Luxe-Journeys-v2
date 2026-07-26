@@ -44,6 +44,7 @@ export const PremiumServicesGrid: React.FC = () => {
                     src={srv.image}
                     alt={srv.titleEn}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0D2647] via-transparent to-transparent" />

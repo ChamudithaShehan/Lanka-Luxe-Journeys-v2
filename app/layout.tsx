@@ -65,7 +65,7 @@ export default function RootLayout({
           <ScrollProgress />
           <CustomCursor />
           <Navbar />
-          <main className="flex-grow pt-16 sm:pt-20">{children}</main>
+          <main className="flex-grow">{children}</main>
           <FloatingWhatsApp />
           <MobileBottomBar />
           <Footer />

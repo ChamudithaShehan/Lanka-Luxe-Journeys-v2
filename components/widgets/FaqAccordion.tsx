@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, Sparkles } from 'lucide-react';
@@ -59,10 +59,10 @@ export const FaqAccordion: React.FC = () => {
   const currentFaqs = faqData[activeCategory] || faqData['Golf & Booking'];
 
   return (
-    <section className="py-24 bg-[#081B33] text-white border-t border-[#C9A227]/20">
+    <section className="py-24 bg-[#0B1F3A] text-white border-t border-[#C8A45D]/20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center max-w-xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold">
             <HelpCircle className="w-3.5 h-3.5" />
             FREQUENTLY ASKED QUESTIONS
           </div>
@@ -82,8 +82,8 @@ export const FaqAccordion: React.FC = () => {
               }}
               className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                 activeCategory === cat
-                  ? 'bg-[#C9A227] text-[#081B33] font-bold shadow-md'
-                  : 'bg-[#0D2647] text-gray-300 border border-white/10 hover:border-[#C9A227]/50'
+                  ? 'bg-[#C8A45D] text-[#0B1F3A] font-bold shadow-md'
+                  : 'bg-[#122848] text-gray-300 border border-white/10 hover:border-[#C8A45D]/50'
               }`}
             >
               {cat}
@@ -98,14 +98,14 @@ export const FaqAccordion: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="bg-[#0D2647] border border-[#C9A227]/30 rounded-xl overflow-hidden shadow-lg transition-all"
+                className="bg-[#122848] border border-[#C8A45D]/30 rounded-xl overflow-hidden shadow-lg transition-all"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between font-serif font-bold text-sm sm:text-base text-white hover:text-[#C9A227]"
+                  className="w-full p-5 text-left flex items-center justify-between font-serif font-bold text-sm sm:text-base text-white hover:text-[#C8A45D]"
                 >
                   <span>{language === 'kr' ? faq.qKr : faq.qEn}</span>
-                  <ChevronDown className={`w-4 h-4 text-[#C9A227] shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 text-[#C8A45D] shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {isOpen && (
                   <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-gray-300 leading-relaxed border-t border-white/5">

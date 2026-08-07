@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -22,10 +22,10 @@ export const LuxuryHotelShowcase: React.FC = () => {
   });
 
   return (
-    <section className="py-24 bg-[#081B33] text-white border-t border-[#C9A227]/20 relative">
+    <section className="py-24 bg-[#0B1F3A] text-white border-t border-[#C8A45D]/20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold mb-3">
             <Hotel className="w-3.5 h-3.5" />
             {t.hotelsShowcase.tag}
           </div>
@@ -48,8 +48,8 @@ export const LuxuryHotelShowcase: React.FC = () => {
               }}
               className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                 activeCategory === cat
-                  ? 'bg-[#C9A227] text-[#081B33] shadow-md'
-                  : 'bg-[#0D2647] text-gray-300 border border-white/10 hover:border-[#C9A227]/50'
+                  ? 'bg-[#C8A45D] text-[#0B1F3A] shadow-md'
+                  : 'bg-[#122848] text-gray-300 border border-white/10 hover:border-[#C8A45D]/50'
               }`}
             >
               {cat}
@@ -64,7 +64,7 @@ export const LuxuryHotelShowcase: React.FC = () => {
             return (
               <div
                 key={hotel.id}
-                className={`bg-[#0D2647] border border-[#C9A227]/30 hover:border-[#C9A227] rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 group flex flex-col ${
+                className={`bg-[#122848] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 group flex flex-col ${
                   isHiddenMobile ? 'hidden md:flex' : 'flex'
                 }`}
               >
@@ -76,11 +76,11 @@ export const LuxuryHotelShowcase: React.FC = () => {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D2647] via-transparent to-transparent" />
-                  <div className="absolute top-4 left-4 bg-[#C9A227] text-[#081B33] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4 bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                     {hotel.category}
                   </div>
-                  <div className="absolute top-4 right-4 bg-[#081B33]/90 border border-[#C9A227]/40 px-2.5 py-1 rounded-full flex items-center gap-1 text-xs text-[#C9A227] font-bold">
+                  <div className="absolute top-4 right-4 bg-[#0B1F3A]/90 border border-[#C8A45D]/40 px-2.5 py-1 rounded-full flex items-center gap-1 text-xs text-[#C8A45D] font-bold">
                     <Star className="w-3.5 h-3.5 fill-current" />
                     {hotel.rating}
                   </div>
@@ -88,11 +88,11 @@ export const LuxuryHotelShowcase: React.FC = () => {
 
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <span className="text-[11px] text-[#C9A227] font-semibold uppercase tracking-wider block">
+                    <span className="text-[11px] text-[#C8A45D] font-semibold uppercase tracking-wider block">
                       <MapPin className="w-3 h-3 inline mr-1" />
                       {language === 'kr' ? hotel.locationKr : hotel.locationEn}
                     </span>
-                    <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C9A227] transition-colors mt-0.5">
+                    <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors mt-0.5">
                       {language === 'kr' ? hotel.nameKr : hotel.nameEn}
                     </h3>
                     <p className="text-xs text-gray-300 mt-2 line-clamp-2 leading-relaxed">
@@ -103,7 +103,7 @@ export const LuxuryHotelShowcase: React.FC = () => {
                   <div className="space-y-1 text-xs text-gray-300 border-t border-white/10 pt-3">
                     {(language === 'kr' ? hotel.facilitiesKr : hotel.facilitiesEn).slice(0, 3).map((f, i) => (
                       <div key={i} className="flex items-center gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A227]" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C8A45D]" />
                         <span>{f}</span>
                       </div>
                     ))}
@@ -112,7 +112,7 @@ export const LuxuryHotelShowcase: React.FC = () => {
                   <div className="pt-2 flex gap-3">
                     <button
                       onClick={() => setSelectedHotel(hotel)}
-                      className="flex-1 bg-[#081B33] hover:bg-white/10 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider border border-white/20 transition-colors"
+                      className="flex-1 bg-[#0B1F3A] hover:bg-white/10 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider border border-white/20 transition-colors"
                     >
                       View Details
                     </button>
@@ -121,7 +121,7 @@ export const LuxuryHotelShowcase: React.FC = () => {
                         setSelectedHotel(hotel);
                         setIsBookingOpen(true);
                       }}
-                      className="flex-1 bg-[#C9A227] hover:bg-[#E5C358] text-[#081B33] font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1"
+                      className="flex-1 bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1"
                     >
                       <span>Reserve</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -138,7 +138,7 @@ export const LuxuryHotelShowcase: React.FC = () => {
           <div className="mt-8 text-center md:hidden">
             <button
               onClick={() => setShowAllMobile(!showAllMobile)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0D2647] border border-[#C9A227] text-[#C9A227] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C9A227] hover:text-[#081B33] transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
             >
               <span>{showAllMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (View More)' : 'View More')}</span>
               <ChevronDown className={`w-4 h-4 transition-transform ${showAllMobile ? 'rotate-180' : ''}`} />
@@ -150,17 +150,17 @@ export const LuxuryHotelShowcase: React.FC = () => {
       {/* Hotel Detail Modal */}
       {selectedHotel && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
-          <div onClick={() => setSelectedHotel(null)} className="fixed inset-0 bg-[#040E1B]/80 backdrop-blur-md" />
-          <div className="relative w-full max-w-3xl bg-[#081B33] border border-[#C9A227]/50 rounded-2xl p-6 sm:p-8 shadow-2xl text-white z-10 my-8 space-y-6">
+          <div onClick={() => setSelectedHotel(null)} className="fixed inset-0 bg-[#060F1D]/80 backdrop-blur-md" />
+          <div className="relative w-full max-w-3xl bg-[#0B1F3A] border border-[#C8A45D]/50 rounded-2xl p-6 sm:p-8 shadow-2xl text-white z-10 my-8 space-y-6">
             <button onClick={() => setSelectedHotel(null)} className="absolute top-4 right-4 text-gray-400 hover:text-white bg-white/5 p-2 rounded-full">
               <X className="w-5 h-5" />
             </button>
 
-            <div className="relative h-64 rounded-xl overflow-hidden border border-[#C9A227]/30">
+            <div className="relative h-64 rounded-xl overflow-hidden border border-[#C8A45D]/30">
               <Image src={selectedHotel.image} alt={selectedHotel.nameEn} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#081B33] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4">
-                <span className="text-xs text-[#C9A227] font-bold uppercase">{selectedHotel.category}</span>
+                <span className="text-xs text-[#C8A45D] font-bold uppercase">{selectedHotel.category}</span>
                 <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">{language === 'kr' ? selectedHotel.nameKr : selectedHotel.nameEn}</h3>
               </div>
             </div>
@@ -169,15 +169,15 @@ export const LuxuryHotelShowcase: React.FC = () => {
               {language === 'kr' ? selectedHotel.descKr : selectedHotel.descEn}
             </p>
 
-            <div className="bg-[#0D2647] p-4 rounded-xl border border-[#C9A227]/20 text-xs space-y-2">
-              <div className="text-[#C9A227] font-bold uppercase tracking-wider flex items-center gap-1">
+            <div className="bg-[#122848] p-4 rounded-xl border border-[#C8A45D]/20 text-xs space-y-2">
+              <div className="text-[#C8A45D] font-bold uppercase tracking-wider flex items-center gap-1">
                 <Sparkles className="w-4 h-4" />
                 Hotel Amenities & VIP Privileges
               </div>
               <div className="grid grid-cols-2 gap-2 text-gray-200">
                 {(language === 'kr' ? selectedHotel.facilitiesKr : selectedHotel.facilitiesEn).map((f, i) => (
                   <div key={i} className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A227]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C8A45D]" />
                     <span>{f}</span>
                   </div>
                 ))}
@@ -189,7 +189,7 @@ export const LuxuryHotelShowcase: React.FC = () => {
                 setSelectedHotel(null);
                 setIsBookingOpen(true);
               }}
-              className="w-full bg-[#C9A227] hover:bg-[#E5C358] text-[#081B33] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg transition-colors"
+              className="w-full bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg transition-colors"
             >
               Reserve Villa & Suites
             </button>

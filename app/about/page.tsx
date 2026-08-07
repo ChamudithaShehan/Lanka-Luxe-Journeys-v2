@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Award, Compass, ShieldCheck, Star, Users, CheckCircle2, Trophy, Clock, Globe } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { TEAM_MEMBERS } from '@/data/travelData';
+import { WhyChooseUs } from '@/components/widgets/WhyChooseUs';
 
 export default function AboutPage() {
   const { language } = useLanguage();
@@ -17,9 +18,9 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="bg-[#081B33] text-white">
+    <div className="bg-[#0B1F3A] text-white">
       {/* Hero Banner */}
-      <section className="relative py-28 bg-[#040E1B] overflow-hidden border-b border-[#C9A227]/30">
+      <section className="relative py-28 bg-[#060F1D] overflow-hidden border-b border-[#C8A45D]/30">
         <div className="absolute inset-0 z-0 opacity-40">
           <Image
             src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1920&q=80"
@@ -28,15 +29,15 @@ export default function AboutPage() {
             sizes="100vw"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#081B33] via-[#081B33]/80 to-[#081B33]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3A] via-[#0B1F3A]/80 to-[#0B1F3A]" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold">
             <Compass className="w-3.5 h-3.5" />
             {language === 'kr' ? "스리랑카 1등 VIP 전담 여행사" : "About Lanka Luxe Journeys"}
           </div>
-          <h1 className="text-4xl sm:text-6xl font-serif font-bold tracking-tight text-white">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-white">
             {language === 'kr' ? "스리랑카 럭셔리 여행의 새로운 기준" : "Redefining Luxury Travel in Sri Lanka"}
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
@@ -51,7 +52,7 @@ export default function AboutPage() {
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 text-[#C9A227] text-xs font-semibold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider">
               <Award className="w-4 h-4" />
               OUR HERITAGE
             </div>
@@ -66,17 +67,17 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
               <div className="space-y-1">
-                <div className="text-[#C9A227] font-bold font-serif text-xl">Mission</div>
+                <div className="text-[#C8A45D] font-bold font-serif text-xl">Mission</div>
                 <p className="text-xs text-gray-400">Deliver flawless private travel experiences with 100% security & discretion.</p>
               </div>
               <div className="space-y-1">
-                <div className="text-[#C9A227] font-bold font-serif text-xl">Vision</div>
+                <div className="text-[#C8A45D] font-bold font-serif text-xl">Vision</div>
                 <p className="text-xs text-gray-400">To be South Asia's undisputed benchmark for luxury tourism & golf hospitality.</p>
               </div>
             </div>
           </div>
 
-          <div className="relative h-[450px] rounded-2xl overflow-hidden border border-[#C9A227]/30 shadow-2xl">
+          <div className="relative h-[450px] rounded-2xl overflow-hidden border border-[#C8A45D]/30 shadow-2xl">
             <Image
               src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80"
               alt="Golf & Luxury Estate"
@@ -84,9 +85,9 @@ export default function AboutPage() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#081B33] via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#0D2647]/90 border border-[#C9A227]/40 backdrop-blur-md">
-              <div className="flex items-center gap-2 text-[#C9A227] text-xs font-bold uppercase">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#122848]/90 border border-[#C8A45D]/40 backdrop-blur-md">
+              <div className="flex items-center gap-2 text-[#C8A45D] text-xs font-bold uppercase">
                 <ShieldCheck className="w-4 h-4" />
                 White-Glove VIP Accreditation
               </div>
@@ -96,8 +97,11 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* WHY CHOOSE US DETAILED PILLARS */}
+      <WhyChooseUs />
+
       {/* Luxury Timeline */}
-      <section className="py-20 bg-[#040E1B] border-t border-[#C9A227]/20">
+      <section className="py-20 bg-[#060F1D] border-t border-[#C8A45D]/20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-16">
             <h2 className="text-3xl font-serif font-bold text-white">
@@ -107,8 +111,8 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {timeline.map((item, idx) => (
-              <div key={idx} className="bg-[#081B33] border border-[#C9A227]/30 rounded-2xl p-6 relative space-y-3">
-                <span className="text-3xl font-serif font-bold text-[#C9A227] block">{item.year}</span>
+              <div key={idx} className="bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-2xl p-6 relative space-y-3">
+                <span className="text-3xl font-serif font-bold text-[#C8A45D] block">{item.year}</span>
                 <h4 className="text-base font-bold font-serif text-white">
                   {language === 'kr' ? item.titleKr : item.titleEn}
                 </h4>
@@ -124,7 +128,7 @@ export default function AboutPage() {
       {/* Meet Our Team */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold mb-3">
             <Users className="w-3.5 h-3.5" />
             VIP CONCIERGE TEAM
           </div>
@@ -135,14 +139,14 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {TEAM_MEMBERS.map((member, idx) => (
-            <div key={idx} className="bg-[#0D2647] border border-[#C9A227]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C9A227] transition-all group">
+            <div key={idx} className="bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group">
               <div className="relative h-72">
                 <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D2647] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
               </div>
               <div className="p-6 space-y-2">
                 <h3 className="text-xl font-serif font-bold text-white">{member.name}</h3>
-                <span className="text-xs text-[#C9A227] font-semibold uppercase tracking-wider block">
+                <span className="text-xs text-[#C8A45D] font-semibold uppercase tracking-wider block">
                   {language === 'kr' ? member.roleKr : member.roleEn}
                 </span>
                 <p className="text-xs text-gray-300 leading-relaxed pt-2">

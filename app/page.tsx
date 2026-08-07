@@ -21,13 +21,13 @@ import {
   MapPin,
   Flame,
   Award,
-  ChevronDown
+  ChevronDown,
+  CheckCircle2
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import { GOLF_COURSES, TOUR_PACKAGES, EXPERIENCES, TESTIMONIALS } from '@/data/travelData';
+import { GOLF_COURSES, TOUR_PACKAGES, EXPERIENCES, TESTIMONIALS, BLOG_ARTICLES } from '@/data/travelData';
 import { AiTripPlanner } from '@/components/widgets/AiTripPlanner';
 import { LuxuryHotelShowcase } from '@/components/widgets/LuxuryHotelShowcase';
-import { Destination360Viewer } from '@/components/widgets/Destination360Viewer';
 import { LuxuryPhotoGallery } from '@/components/widgets/LuxuryPhotoGallery';
 import { LuxuryVideoStories } from '@/components/widgets/LuxuryVideoStories';
 import { KoreanTravellerSection } from '@/components/widgets/KoreanTravellerSection';
@@ -36,6 +36,9 @@ import { AwardsShowcase } from '@/components/widgets/AwardsShowcase';
 import { FaqAccordion } from '@/components/widgets/FaqAccordion';
 import { CurrencyWeatherWidget } from '@/components/widgets/CurrencyWeatherWidget';
 import { TravelCostEstimator } from '@/components/widgets/TravelCostEstimator';
+import { WhyChooseUs } from '@/components/widgets/WhyChooseUs';
+import { TrustDisplay } from '@/components/widgets/TrustDisplay';
+import { SectionCtaButtons } from '@/components/ui/SectionCtaButtons';
 import { BookingModal } from '@/components/ui/BookingModal';
 import Testimonials from '@/components/ui/testimonials-demo';
 
@@ -95,7 +98,7 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="relative overflow-hidden bg-[#081B33]">
+    <div className="relative overflow-hidden bg-[#0B1F3A]">
       {/* SUN-DROPPED VIBRANT HERO SECTION */}
       <section className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-28 pb-12">
         {/* Background Image Carousel - Sunlit & Crystal Clear */}
@@ -127,9 +130,9 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#081B33]/85 border border-[#C9A227]/70 text-[#FFE79A] text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] mb-8 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#0B1F3A]/85 border border-[#C8A45D]/70 text-[#F0D898] text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] mb-8 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
           >
-            <Sparkles className="w-4 h-4 text-[#C9A227]" />
+            <Sparkles className="w-4 h-4 text-[#C8A45D]" />
             <span>{heroSlides[currentHeroIndex].tag}</span>
           </motion.div>
 
@@ -137,7 +140,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-white tracking-tight leading-[1.1] mb-6 drop-shadow-[0_8px_25px_rgba(0,0,0,0.9)]"
+            className="text-3xl sm:text-5xl lg:text-7xl xl:text-8xl font-serif font-bold text-white tracking-tight leading-[1.1] mb-6 drop-shadow-[0_8px_25px_rgba(0,0,0,0.9)]"
           >
             {heroSlides[currentHeroIndex].title}
           </motion.h1>
@@ -160,7 +163,7 @@ export default function HomePage() {
           >
             <Link
               href="/tours"
-              className="w-full sm:w-auto bg-gradient-to-r from-[#C9A227] via-[#FFE79A] to-[#C9A227] text-[#081B33] font-bold py-4 px-9 rounded-full shadow-[0_0_35px_rgba(201,162,39,0.6)] transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 uppercase tracking-wider text-xs sm:text-sm"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#C8A45D] via-[#F0D898] to-[#C8A45D] text-[#0B1F3A] font-bold py-4 px-9 rounded-full shadow-[0_0_35px_rgba(200, 164, 93,0.6)] transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 uppercase tracking-wider text-xs sm:text-sm"
             >
               <Compass className="w-4.5 h-4.5" />
               <span>{t.hero.exploreTours}</span>
@@ -168,9 +171,9 @@ export default function HomePage() {
 
             <Link
               href="/golf"
-              className="w-full sm:w-auto bg-[#081B33]/90 hover:bg-[#081B33] border border-[#C9A227]/80 text-white font-bold py-4 px-9 rounded-full shadow-2xl backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:border-[#C9A227] flex items-center justify-center gap-2 uppercase tracking-wider text-xs sm:text-sm"
+              className="w-full sm:w-auto bg-[#0B1F3A]/90 hover:bg-[#0B1F3A] border border-[#C8A45D]/80 text-white font-bold py-4 px-9 rounded-full shadow-2xl backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:border-[#C8A45D] flex items-center justify-center gap-2 uppercase tracking-wider text-xs sm:text-sm"
             >
-              <Trophy className="w-4.5 h-4.5 text-[#C9A227]" />
+              <Trophy className="w-4.5 h-4.5 text-[#C8A45D]" />
               <span>{t.hero.golfHolidays}</span>
             </Link>
 
@@ -178,23 +181,23 @@ export default function HomePage() {
               onClick={() => handleOpenBooking()}
               className="w-full sm:w-auto bg-black/40 hover:bg-black/60 border border-white/50 text-white font-bold py-4 px-7 rounded-full backdrop-blur-md transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg"
             >
-              <Sparkles className="w-4 h-4 text-[#C9A227]" />
+              <Sparkles className="w-4 h-4 text-[#C8A45D]" />
               <span>{language === 'kr' ? "맞춤 여행 상담" : "Bespoke Concierge"}</span>
             </button>
           </motion.div>
 
-          {/* Luxury Feature Pillars Bar */}
-          <div className="flex flex-wrap items-center justify-center gap-3 text-[11px] uppercase tracking-wider text-white font-semibold">
-            <span className="bg-[#081B33]/85 border border-[#C9A227]/50 px-4 py-1.5 rounded-full backdrop-blur-md shadow-lg">
+          {/* Luxury Feature Pillars Bar (Hidden on Mobile) */}
+          <div className="hidden sm:flex flex-wrap items-center justify-center gap-3 text-[11px] uppercase tracking-wider text-white font-semibold">
+            <span className="bg-[#0B1F3A]/85 border border-[#C8A45D]/50 px-4 py-1.5 rounded-full backdrop-blur-md shadow-lg">
               🚁 Airbus Helicopter Charters
             </span>
-            <span className="bg-[#081B33]/85 border border-[#C9A227]/50 px-4 py-1.5 rounded-full backdrop-blur-md shadow-lg">
+            <span className="bg-[#0B1F3A]/85 border border-[#C8A45D]/50 px-4 py-1.5 rounded-full backdrop-blur-md shadow-lg">
               ⛳ 4 PGA Championship Courses
             </span>
-            <span className="bg-[#081B33]/85 border border-[#C9A227]/50 px-4 py-1.5 rounded-full backdrop-blur-md shadow-lg">
+            <span className="bg-[#0B1F3A]/85 border border-[#C8A45D]/50 px-4 py-1.5 rounded-full backdrop-blur-md shadow-lg">
               🏰 Relais & Châteaux Lodgings
             </span>
-            <span className="bg-[#081B33]/85 border border-[#C9A227]/50 px-4 py-1.5 rounded-full backdrop-blur-md shadow-lg">
+            <span className="bg-[#0B1F3A]/85 border border-[#C8A45D]/50 px-4 py-1.5 rounded-full backdrop-blur-md shadow-lg">
               🇰🇷 1:1 VIP Korean Desk
             </span>
           </div>
@@ -207,7 +210,7 @@ export default function HomePage() {
               key={idx}
               onClick={() => setCurrentHeroIndex(idx)}
               className={`h-1.5 rounded-full transition-all duration-500 ${
-                idx === currentHeroIndex ? 'w-12 bg-[#C9A227]' : 'w-3 bg-white/60 hover:bg-white/90'
+                idx === currentHeroIndex ? 'w-12 bg-[#C8A45D]' : 'w-3 bg-white/60 hover:bg-white/90'
               }`}
               aria-label={`Slide ${idx + 1}`}
             />
@@ -217,27 +220,27 @@ export default function HomePage() {
 
       {/* LUXURY STATS */}
       <section className="relative z-20 -mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#0D2647]/95 border border-[#C9A227]/30 rounded-2xl p-6 sm:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        <div className="bg-[#122848]/95 border border-[#C8A45D]/30 rounded-2xl p-6 sm:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
           <div className="border-r border-white/10 last:border-r-0 pr-4">
-            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C9A227]">5,000+</div>
+            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C8A45D]">5,000+</div>
             <div className="text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
               {t.stats.guests}
             </div>
           </div>
           <div className="border-r border-white/10 last:border-r-0 pr-4">
-            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C9A227]">1,200+</div>
+            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C8A45D]">1,200+</div>
             <div className="text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
               {t.stats.golfGuests}
             </div>
           </div>
           <div className="border-r border-white/10 last:border-r-0 pr-4">
-            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C9A227]">25+</div>
+            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C8A45D]">25+</div>
             <div className="text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
               {t.stats.experiences}
             </div>
           </div>
           <div>
-            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C9A227]">98%</div>
+            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C8A45D]">98%</div>
             <div className="text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
               {t.stats.satisfaction}
             </div>
@@ -245,10 +248,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* TRUST & CREDIBILITY DISPLAY */}
+      <TrustDisplay onOpenBooking={handleOpenBooking} />
+
       {/* WHY CHOOSE US */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold mb-3">
             <Award className="w-3.5 h-3.5" />
             {t.whyUs.tag}
           </div>
@@ -274,12 +280,12 @@ export default function HomePage() {
               <motion.div
                 key={idx}
                 whileHover={{ y: -8 }}
-                className="bg-[#0D2647] border border-[#C9A227]/25 hover:border-[#C9A227] rounded-2xl p-8 transition-all duration-300 shadow-xl group"
+                className="bg-[#122848] border border-[#C8A45D]/25 hover:border-[#C8A45D] rounded-2xl p-8 transition-all duration-300 shadow-xl group"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#081B33] border border-[#C9A227]/40 flex items-center justify-center text-[#C9A227] mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-[#0B1F3A] border border-[#C8A45D]/40 flex items-center justify-center text-[#C8A45D] mb-6 group-hover:scale-110 transition-transform">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-serif font-bold text-white mb-2 group-hover:text-[#C9A227] transition-colors">
+                <h3 className="text-xl font-serif font-bold text-white mb-2 group-hover:text-[#C8A45D] transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-sm text-gray-300 leading-relaxed">
@@ -292,11 +298,11 @@ export default function HomePage() {
       </section>
 
       {/* FEATURED EXPERIENCES */}
-      <section className="py-20 bg-[#040E1B] border-t border-[#C9A227]/20">
+      <section className="py-20 bg-[#060F1D] border-t border-[#C8A45D]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold mb-3">
                 <Compass className="w-3.5 h-3.5" />
                 {t.experiences.tag}
               </div>
@@ -306,7 +312,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/tours"
-              className="mt-4 md:mt-0 text-xs uppercase tracking-wider font-bold text-[#C9A227] hover:text-[#E5C358] flex items-center gap-2 group"
+              className="mt-4 md:mt-0 text-xs uppercase tracking-wider font-bold text-[#C8A45D] hover:text-[#D4B87A] flex items-center gap-2 group"
             >
               <span>{t.experiences.viewAll}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -317,7 +323,7 @@ export default function HomePage() {
             {TOUR_PACKAGES.map((pkg) => (
               <div
                 key={pkg.id}
-                className="bg-[#081B33] border border-[#C9A227]/30 rounded-2xl overflow-hidden shadow-2xl group flex flex-col"
+                className="bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-2xl group flex flex-col"
               >
                 <div className="relative h-64 overflow-hidden">
                   <Image
@@ -327,18 +333,18 @@ export default function HomePage() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#081B33] via-transparent to-transparent opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-transparent to-transparent opacity-90" />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-[#C9A227] text-[#081B33] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                    <span className="bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
                       {pkg.category}
                     </span>
                   </div>
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-gray-200">
-                    <span className="flex items-center gap-1 font-medium bg-[#081B33]/80 px-2.5 py-1 rounded-full border border-white/10">
-                      <Clock className="w-3.5 h-3.5 text-[#C9A227]" />
+                    <span className="flex items-center gap-1 font-medium bg-[#0B1F3A]/80 px-2.5 py-1 rounded-full border border-white/10">
+                      <Clock className="w-3.5 h-3.5 text-[#C8A45D]" />
                       {pkg.duration}
                     </span>
-                    <span className="text-[#C9A227] font-bold text-base">
+                    <span className="text-[#C8A45D] font-bold text-base">
                       ${pkg.priceUSD.toLocaleString()} USD
                     </span>
                   </div>
@@ -346,7 +352,7 @@ export default function HomePage() {
 
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C9A227] transition-colors line-clamp-1">
+                    <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors line-clamp-1">
                       {language === 'kr' ? pkg.titleKr : pkg.titleEn}
                     </h3>
                     <p className="text-xs text-gray-300 mt-2 line-clamp-2 leading-relaxed">
@@ -357,7 +363,7 @@ export default function HomePage() {
                   <div className="pt-2 border-t border-white/10 flex items-center justify-between">
                     <button
                       onClick={() => handleOpenBooking(pkg.titleEn)}
-                      className="w-full bg-[#0D2647] hover:bg-[#C9A227] hover:text-[#081B33] text-[#C9A227] border border-[#C9A227]/40 font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5"
+                      className="w-full bg-[#122848] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-[#C8A45D] border border-[#C8A45D]/40 font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5"
                     >
                       <span>Read More & Reserve</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -367,14 +373,17 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          {/* Section CTAs */}
+          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Luxury Experiences" />
         </div>
       </section>
 
       {/* GOLF HOLIDAYS SECTION */}
-      <section className="py-24 bg-[#081B33] relative border-t border-[#C9A227]/20">
+      <section className="py-24 bg-[#0B1F3A] relative border-t border-[#C8A45D]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold mb-3">
               <Trophy className="w-3.5 h-3.5" />
               {t.golfSection.tag}
             </div>
@@ -392,7 +401,7 @@ export default function HomePage() {
               return (
                 <div
                   key={course.id}
-                  className={`bg-[#0D2647] border border-[#C9A227]/30 hover:border-[#C9A227] rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 group ${
+                  className={`bg-[#122848] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 group ${
                     isHiddenMobile ? 'hidden md:block' : 'block'
                   }`}
                 >
@@ -404,18 +413,18 @@ export default function HomePage() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D2647] via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4 bg-[#081B33]/90 border border-[#C9A227]/40 text-[#C9A227] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4 bg-[#0B1F3A]/90 border border-[#C8A45D]/40 text-[#C8A45D] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                       {course.holes} Holes • Par {course.par}
                     </div>
                   </div>
 
                   <div className="p-6 space-y-4">
                     <div>
-                      <span className="text-[11px] text-[#C9A227] font-semibold uppercase tracking-wider">
+                      <span className="text-[11px] text-[#C8A45D] font-semibold uppercase tracking-wider">
                         {course.location}
                       </span>
-                      <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C9A227] transition-colors">
+                      <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors">
                         {language === 'kr' ? course.nameKr : course.nameEn}
                       </h3>
                     </div>
@@ -426,18 +435,18 @@ export default function HomePage() {
 
                     <div className="space-y-1.5 text-xs text-gray-300 border-t border-white/10 pt-3">
                       <div className="flex items-center gap-2">
-                        <Hotel className="w-3.5 h-3.5 text-[#C9A227]" />
+                        <Hotel className="w-3.5 h-3.5 text-[#C8A45D]" />
                         <span><strong>Hotel:</strong> {course.hotel}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Car className="w-3.5 h-3.5 text-[#C9A227]" />
+                        <Car className="w-3.5 h-3.5 text-[#C8A45D]" />
                         <span><strong>Transfer:</strong> Mercedes V-Class / Helicopter</span>
                       </div>
                     </div>
 
                     <button
                       onClick={() => handleOpenBooking(course.nameEn)}
-                      className="w-full bg-[#C9A227] hover:bg-[#E5C358] text-[#081B33] font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
+                      className="w-full bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
                     >
                       <span>{t.golfSection.viewPackage}</span>
                       <ArrowRight className="w-4 h-4" />
@@ -453,7 +462,7 @@ export default function HomePage() {
             <div className="mt-6 text-center md:hidden">
               <button
                 onClick={() => setShowAllGolfMobile(!showAllGolfMobile)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0D2647] border border-[#C9A227] text-[#C9A227] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C9A227] hover:text-[#081B33] transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
               >
                 <span>{showAllGolfMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (View More)' : 'View More Golf Courses')}</span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${showAllGolfMobile ? 'rotate-180' : ''}`} />
@@ -461,23 +470,22 @@ export default function HomePage() {
             </div>
           )}
 
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center flex flex-col items-center gap-6">
             <Link
               href="/golf"
-              className="inline-flex items-center gap-2 bg-[#0D2647] border border-[#C9A227] text-[#C9A227] hover:bg-[#C9A227] hover:text-[#081B33] font-bold py-3.5 px-8 rounded-full text-xs uppercase tracking-wider transition-all shadow-lg"
+              className="inline-flex items-center gap-2 bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] font-bold py-3.5 px-8 rounded-full text-xs uppercase tracking-wider transition-all shadow-lg"
             >
               <Trophy className="w-4 h-4" />
               <span>Explore All Golf Courses</span>
             </Link>
+
+            <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Golf Holidays" />
           </div>
         </div>
       </section>
 
       {/* LUXURY HOTEL SHOWCASE */}
       <LuxuryHotelShowcase />
-
-      {/* 360 DESTINATION PREVIEW */}
-      <Destination360Viewer />
 
       {/* KOREAN VIP TRAVELLER SECTION */}
       <KoreanTravellerSection />
@@ -503,21 +511,271 @@ export default function HomePage() {
       {/* AWARDS SHOWCASE */}
       <AwardsShowcase />
 
+      {/* WHY CHOOSE LANKA LUXE JOURNEYS */}
+      <WhyChooseUs />
+      <div className="max-w-7xl mx-auto px-4 pb-16">
+        <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Why Choose Lanka Luxe" />
+      </div>
+
+      {/* WILDLIFE SAFARIS SECTION */}
+      <section className="py-24 bg-[#060F1D] border-t border-[#C8A45D]/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider">
+              <Compass className="w-3.5 h-3.5" />
+              {language === 'kr' ? "스리랑카 야생 사파리" : "Wildlife & Safari Adventures"}
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white">
+              {language === 'kr' ? "세계 최고의 야생 표범 & 코끼리 사파리" : "Untamed Wildlife & Leopard Safaris"}
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-300">
+              {language === 'kr'
+                ? "야라 국립공원의 표범, 미네리야 아시아 코끼리 군집, 윌파투 정글 및 대왕고래 탐사를 수석 자연학자와 함께 경험하세요."
+                : "Track elusive leopards in Yala, witness hundreds of wild Asian elephants in Minneriya, and explore Wilpattu with chief naturalists."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="relative h-[380px] rounded-2xl overflow-hidden border border-[#C8A45D]/30 shadow-2xl group">
+              <Image
+                src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=80"
+                alt="Yala Wildlife Safari"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060F1D] via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#122848]/90 border border-[#C8A45D]/40 backdrop-blur-md">
+                <span className="text-[#C8A45D] font-bold text-xs uppercase tracking-wider block">Private 4x4 Land Cruisers</span>
+                <h3 className="text-lg font-serif font-bold text-white mt-1">Yala & Wilpattu Expedition</h3>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                { titleEn: "Yala Leopard Safaris", titleKr: "야라 표범 사파리", descEn: "World's highest density of Sri Lankan leopards with private Land Cruisers.", descKr: "세계 최대 밀도의 표범을 1:1 수석 자연학자와 함께 전용 지프로 탐험." },
+                { titleEn: "Minneriya Elephant Gathering", titleKr: "미네리야 코끼리 대군집", descEn: "Witness hundreds of Asian elephants gathering around ancient reservoirs.", descKr: "수백 마리의 야생 코끼리가 고대 호숫가에 집결하는 계절별 장관 관람." },
+                { titleEn: "Private Catamaran Whale Cruises", titleKr: "대왕고래 카타마란 요트", descEn: "Ocean charters with marine biologists to spot blue whales and dolphins.", descKr: "해양 생물학자 동행 인도양 대왕고래 프라이빗 요트 세일링." },
+              ].map((item, idx) => (
+                <div key={idx} className="bg-[#122848] border border-[#C8A45D]/20 rounded-xl p-4 flex gap-4 items-start hover:border-[#C8A45D] transition-all">
+                  <div className="w-8 h-8 rounded-lg bg-[#C8A45D]/10 border border-[#C8A45D]/40 flex items-center justify-center text-[#C8A45D] font-bold shrink-0 text-xs">
+                    0{idx + 1}
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-serif font-bold text-white">{language === 'kr' ? item.titleKr : item.titleEn}</h4>
+                    <p className="text-xs text-gray-300 mt-1">{language === 'kr' ? item.descKr : item.descEn}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Wildlife Safaris" />
+        </div>
+      </section>
+
+      {/* WELLNESS & AYURVEDA RETREATS SECTION */}
+      <section className="py-24 bg-[#0B1F3A] border-t border-[#C8A45D]/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              {language === 'kr' ? "아유르베다 & 웰니스 리트릿" : "Holistic Wellness & Ayurveda"}
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white">
+              {language === 'kr' ? "전통 아유르베다 전문의 힐링 사원" : "Rejuvenate at Mountain & Beach Sanctuaries"}
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-300">
+              {language === 'kr'
+                ? "전담 의사의 도샤 체질 진단을 바탕으로 일일 오일 테라피, 일출 운무 요가 및 유기농 웰니스 다이닝을 만끽하세요."
+                : "Personalized dosha diagnosis, daily herbal oil baths, sunrise mountain yoga, and organic farm-to-table dining."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                titleEn: "1:1 Ayurvedic Doctor Care",
+                titleKr: "1:1 정통 아유르베다 전문의 케어",
+                descEn: "Customized wellness prescription, dosha balancing & daily Shirodhara oil therapies.",
+                descKr: "개인별 도샤 체질 진단 및 천연 온열 오일 수치료 시스템.",
+                image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                titleEn: "Misty Mountain Sunrise Yoga",
+                titleKr: "너클스 산맥 일출 명상 요가",
+                descEn: "Guided meditation & yoga overlooking misty tea country valleys and mountain peaks.",
+                descKr: "운무 가득한 고원 산맥 전경을 보며 즐기는 정통 요가 세션.",
+                image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80"
+              },
+              {
+                titleEn: "Oceanfront Thermal Hydrotherapy",
+                titleKr: "인도양 해수 온열 수치료 & 스파",
+                descEn: "Beachside sanctuary relaxation, warm seawater hydrotherapy, and sound bowl healing.",
+                descKr: "해안가 럭셔리 빌라에서 펼쳐지는 온열 치료 및 싱잉볼 사운드 힐링.",
+                image: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=600&q=80"
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group">
+                <div className="relative h-48">
+                  <Image src={item.image} alt={item.titleEn} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
+                </div>
+                <div className="p-6 space-y-2">
+                  <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors">{language === 'kr' ? item.titleKr : item.titleEn}</h3>
+                  <p className="text-xs text-gray-300 leading-relaxed">{language === 'kr' ? item.descKr : item.descEn}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Wellness Retreats" />
+        </div>
+      </section>
+
+      {/* HONEYMOON PACKAGES SECTION */}
+      <section className="py-24 bg-[#060F1D] border-t border-[#C8A45D]/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider">
+              <Star className="w-3.5 h-3.5" />
+              {language === 'kr' ? "로맨틱 허니문 & 커플 투어" : "Romantic Honeymoon & Anniversary"}
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white">
+              {language === 'kr' ? "인도양 파라다이스 속 둘만의 로맨스" : "Paradise Crafted for Two"}
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-300">
+              {language === 'kr'
+                ? "해변 프라이빗 촛불 디너, 오션뷰 개인 풀빌라, 산악 낭만 열차 스냅 촬영 및 석양 요트 크루즈."
+                : "Private beachfront candlelight dinners, oceanfront plunge pool villas, and mountain train photography sessions."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6">
+              <div className="bg-[#122848] border border-[#C8A45D]/30 rounded-2xl p-6 space-y-4">
+                <h3 className="text-xl font-serif font-bold text-white border-b border-white/10 pb-3">
+                  {language === 'kr' ? "허니문 시그니처 베네핏" : "Signature Honeymoon Inclusions"}
+                </h3>
+                <div className="space-y-3 text-xs text-gray-300">
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#C8A45D] shrink-0" />
+                    <span>{language === 'kr' ? "프라이빗 해변 촛불 멀티 코스 시푸드 디너" : "Private beachfront candlelight multi-course seafood dinner"}</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#C8A45D] shrink-0" />
+                    <span>{language === 'kr' ? "5성급 오션뷰 개인 풀빌라 / 허니문 스위트룸 투숙" : "5-Star oceanfront plunge pool villa / honeymoon suite stay"}</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#C8A45D] shrink-0" />
+                    <span>{language === 'kr' ? "전문 스냅 사진작가 허니문 포토 세션" : "Professional honeymoon photography session in Ella"}</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#C8A45D] shrink-0" />
+                    <span>{language === 'kr' ? "인도양 석양 카타마란 프라이빗 요트 크루즈" : "Private Indian Ocean sunset catamaran yacht cruise"}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative h-[360px] rounded-2xl overflow-hidden border border-[#C8A45D]/30 shadow-2xl group">
+              <Image
+                src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=1200&q=80"
+                alt="Honeymoon Paradise"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060F1D] via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#122848]/90 border border-[#C8A45D]/40 backdrop-blur-md">
+                <span className="text-[#C8A45D] font-bold text-xs uppercase tracking-wider block">Exclusive Couple's Escape</span>
+                <h3 className="text-lg font-serif font-bold text-white mt-1">Romantic Honeymoon in Paradise</h3>
+              </div>
+            </div>
+          </div>
+
+          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Honeymoon Packages" />
+        </div>
+      </section>
+
       {/* TESTIMONIALS SCROLLING COLUMNS */}
       <Testimonials />
+      <div className="max-w-7xl mx-auto px-4 pb-16">
+        <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Customer Reviews" />
+      </div>
+
+      {/* TRAVEL BLOG SECTION */}
+      <section className="py-24 bg-[#0B1F3A] border-t border-[#C8A45D]/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider mb-3">
+                <Compass className="w-3.5 h-3.5" />
+                {language === 'kr' ? "스리랑카 트래블 매거진" : "Luxury Travel Journal"}
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white">
+                {language === 'kr' ? "스리랑카 럭셔리 여행 인사이트" : "Travel Insights & Insider Guides"}
+              </h2>
+            </div>
+            <Link
+              href="/blog"
+              className="text-xs uppercase tracking-wider font-bold text-[#C8A45D] hover:text-[#D4B87A] flex items-center gap-2 group shrink-0"
+            >
+              <span>View All Articles</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {BLOG_ARTICLES.slice(0, 3).map((art) => (
+              <div key={art.id} className="bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group flex flex-col justify-between">
+                <div>
+                  <div className="relative h-48 overflow-hidden">
+                    <Image src={art.image} alt={art.titleEn} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4 bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                      {art.category}
+                    </div>
+                  </div>
+                  <div className="p-6 space-y-3">
+                    <span className="text-[11px] text-gray-400 block">{art.date} • {art.readTime} read</span>
+                    <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors line-clamp-2">
+                      {language === 'kr' ? art.titleKr : art.titleEn}
+                    </h3>
+                    <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">
+                      {language === 'kr' ? art.excerptKr : art.excerptEn}
+                    </p>
+                  </div>
+                </div>
+                <div className="px-6 pb-6 pt-2">
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center gap-1.5 text-xs text-[#C8A45D] font-bold uppercase tracking-wider hover:underline"
+                  >
+                    <span>Read Guide</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Travel Blog" />
+        </div>
+      </section>
 
       {/* FAQ ACCORDION */}
       <FaqAccordion />
 
       {/* INSTAGRAM MASONRY */}
-      <section className="py-20 bg-[#081B33] border-t border-[#C9A227]/20">
+      <section className="py-20 bg-[#0B1F3A] border-t border-[#C8A45D]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-2 text-white">
-              <Camera className="w-5 h-5 text-[#C9A227]" />
+              <Camera className="w-5 h-5 text-[#C8A45D]" />
               <span className="font-serif font-bold text-lg">@lankaluxejourneys</span>
             </div>
-            <span className="text-xs text-[#C9A227] uppercase tracking-wider font-semibold">
+            <span className="text-xs text-[#C8A45D] uppercase tracking-wider font-semibold">
               #LankaLuxeJourneys
             </span>
           </div>
@@ -526,11 +784,11 @@ export default function HomePage() {
             {instagramImages.map((img, idx) => (
               <div
                 key={idx}
-                className="relative h-44 rounded-xl overflow-hidden group border border-white/10 hover:border-[#C9A227] transition-all"
+                className="relative h-44 rounded-xl overflow-hidden group border border-white/10 hover:border-[#C8A45D] transition-all"
               >
                 <Image src={img} alt="Instagram Moment" fill sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-[#081B33]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <Camera className="w-6 h-6 text-[#C9A227]" />
+                <div className="absolute inset-0 bg-[#0B1F3A]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <Camera className="w-6 h-6 text-[#C8A45D]" />
                 </div>
               </div>
             ))}
@@ -539,7 +797,7 @@ export default function HomePage() {
       </section>
 
       {/* CONTACT CTA BANNER */}
-      <section id="contact" className="relative py-24 overflow-hidden border-t border-[#C9A227]/30">
+      <section id="contact" className="relative py-24 overflow-hidden border-t border-[#C8A45D]/30">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1920&q=80"
@@ -548,7 +806,7 @@ export default function HomePage() {
             sizes="100vw"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#040E1B] via-[#081B33]/90 to-[#040E1B]/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#060F1D] via-[#0B1F3A]/90 to-[#060F1D]/80" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white space-y-6">
@@ -562,7 +820,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <button
               onClick={() => handleOpenBooking()}
-              className="w-full sm:w-auto bg-[#C9A227] hover:bg-[#E5C358] text-[#081B33] font-bold py-4 px-8 rounded-full shadow-[0_0_25px_rgba(201,162,39,0.4)] transition-all uppercase tracking-wider text-xs sm:text-sm"
+              className="w-full sm:w-auto bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-4 px-8 rounded-full shadow-[0_0_25px_rgba(200, 164, 93,0.4)] transition-all uppercase tracking-wider text-xs sm:text-sm"
             >
               {t.contactCta.bookBtn}
             </button>
@@ -570,7 +828,7 @@ export default function HomePage() {
               href="https://wa.me/94770008899"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-transparent border border-white hover:border-[#C9A227] text-white hover:text-[#C9A227] font-bold py-4 px-8 rounded-full transition-all uppercase tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-transparent border border-white hover:border-[#C8A45D] text-white hover:text-[#C8A45D] font-bold py-4 px-8 rounded-full transition-all uppercase tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2"
             >
               <PhoneCall className="w-4 h-4 text-[#25D366]" />
               {t.contactCta.whatsappBtn}

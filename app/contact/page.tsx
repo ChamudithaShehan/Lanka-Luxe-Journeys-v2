@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, MessageCircle, Clock, ShieldCheck, Sparkles, Send, CheckCircle2 } from 'lucide-react';
@@ -20,20 +20,20 @@ export default function ContactPage() {
     e.preventDefault();
     setFormSubmitted(true);
     try {
-      confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 }, colors: ['#C9A227', '#E5C358'] });
+      confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 }, colors: ['#C8A45D', '#D4B87A'] });
     } catch {}
   };
 
   return (
-    <div className="bg-[#081B33] text-white min-h-screen pb-24">
+    <div className="bg-[#0B1F3A] text-white min-h-screen pb-24">
       {/* Hero Banner */}
-      <section className="relative py-28 bg-[#040E1B] overflow-hidden border-b border-[#C9A227]/30">
+      <section className="relative py-28 bg-[#060F1D] overflow-hidden border-b border-[#C8A45D]/30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold">
             <Mail className="w-3.5 h-3.5" />
             VIP TRAVEL CONCIERGE
           </div>
-          <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight">
             {language === 'kr' ? "스리랑카 럭셔리 1:1 견적 문의" : "Contact Our Luxury Travel Concierge"}
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
@@ -49,8 +49,8 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Info Side (LG: 5 Cols) */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-[#0D2647] border border-[#C9A227]/30 rounded-2xl p-8 space-y-6">
-              <h3 className="text-2xl font-serif font-bold text-[#C9A227]">
+            <div className="bg-[#122848] border border-[#C8A45D]/30 rounded-2xl p-8 space-y-6">
+              <h3 className="text-2xl font-serif font-bold text-[#C8A45D]">
                 Executive Headquarters
               </h3>
               <p className="text-xs text-gray-300 leading-relaxed">
@@ -59,7 +59,7 @@ export default function ContactPage() {
 
               <div className="space-y-4 text-xs text-gray-200 pt-2">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#C9A227] shrink-0 mt-0.5" />
+                  <MapPin className="w-5 h-5 text-[#C8A45D] shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-white block">Colombo VIP Office:</strong>
                     Level 34, World Trade Center, Echelon Square, Colombo 01, Sri Lanka
@@ -67,7 +67,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-[#C9A227] shrink-0" />
+                  <Phone className="w-5 h-5 text-[#C8A45D] shrink-0" />
                   <div>
                     <strong className="text-white block">Direct VIP Hotlines:</strong>
                     +94 77 000 8899 (Global) / +82 10 9988 7766 (Korean)
@@ -75,7 +75,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-[#C9A227] shrink-0" />
+                  <Mail className="w-5 h-5 text-[#C8A45D] shrink-0" />
                   <div>
                     <strong className="text-white block">Official Email:</strong>
                     concierge@lankaluxejourneys.com
@@ -103,58 +103,58 @@ export default function ContactPage() {
           </div>
 
           {/* Form Side (LG: 7 Cols) */}
-          <div className="lg:col-span-7 bg-[#0D2647] border border-[#C9A227]/40 rounded-2xl p-8 shadow-2xl space-y-6">
+          <div className="lg:col-span-7 bg-[#122848] border border-[#C8A45D]/40 rounded-2xl p-8 shadow-2xl space-y-6">
             {!formSubmitted ? (
               <>
                 <div className="space-y-1">
-                  <span className="text-xs text-[#C9A227] font-semibold uppercase tracking-wider">Custom Proposal Request</span>
+                  <span className="text-xs text-[#C8A45D] font-semibold uppercase tracking-wider">Custom Proposal Request</span>
                   <h3 className="text-2xl font-serif font-bold text-white">Send a Direct Inquiry</h3>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-xs text-[#C9A227] uppercase tracking-wider mb-1 font-semibold">Full Name *</label>
+                    <label className="block text-xs text-[#C8A45D] uppercase tracking-wider mb-1 font-semibold">Full Name *</label>
                     <input
                       type="text"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Lord / Lady / Mr. John Smith"
-                      className="w-full bg-[#081B33] border border-[#C9A227]/30 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227]"
+                      className="w-full bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C8A45D]"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs text-[#C9A227] uppercase tracking-wider mb-1 font-semibold">Email Address *</label>
+                      <label className="block text-xs text-[#C8A45D] uppercase tracking-wider mb-1 font-semibold">Email Address *</label>
                       <input
                         type="email"
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="vip@domain.com"
-                        className="w-full bg-[#081B33] border border-[#C9A227]/30 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227]"
+                        className="w-full bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C8A45D]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-[#C9A227] uppercase tracking-wider mb-1 font-semibold">Phone / WhatsApp *</label>
+                      <label className="block text-xs text-[#C8A45D] uppercase tracking-wider mb-1 font-semibold">Phone / WhatsApp *</label>
                       <input
                         type="text"
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+82 10 1234 5678"
-                        className="w-full bg-[#081B33] border border-[#C9A227]/30 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227]"
+                        className="w-full bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C8A45D]"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs text-[#C9A227] uppercase tracking-wider mb-1 font-semibold">Primary Travel Interest</label>
+                    <label className="block text-xs text-[#C8A45D] uppercase tracking-wider mb-1 font-semibold">Primary Travel Interest</label>
                     <select
                       value={formData.travelType}
                       onChange={(e) => setFormData({ ...formData, travelType: e.target.value })}
-                      className="w-full bg-[#081B33] border border-[#C9A227]/30 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#C9A227]"
+                      className="w-full bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#C8A45D]"
                     >
                       <option value="Golf & Luxury Tour">PGA Golf & Luxury Tour Package</option>
                       <option value="Private Jet & Helicopter">Private Jet & Helicopter Charter</option>
@@ -164,19 +164,19 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs text-[#C9A227] uppercase tracking-wider mb-1 font-semibold">Message & Special Requests</label>
+                    <label className="block text-xs text-[#C8A45D] uppercase tracking-wider mb-1 font-semibold">Message & Special Requests</label>
                     <textarea
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Please specify golf handicaps, preferred travel dates, guest count..."
-                      className="w-full bg-[#081B33] border border-[#C9A227]/30 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227]"
+                      className="w-full bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#C8A45D]"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-[#C9A227] hover:bg-[#E5C358] text-[#081B33] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg"
+                    className="w-full bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg"
                   >
                     <Send className="w-4 h-4" />
                     <span>Submit Inquiry</span>
@@ -185,7 +185,7 @@ export default function ContactPage() {
               </>
             ) : (
               <div className="text-center py-12 space-y-4">
-                <CheckCircle2 className="w-16 h-16 text-[#C9A227] mx-auto" />
+                <CheckCircle2 className="w-16 h-16 text-[#C8A45D] mx-auto" />
                 <h3 className="text-2xl font-serif font-bold text-white">Inquiry Received</h3>
                 <p className="text-xs text-gray-300 max-w-sm mx-auto">
                   Thank you. Your request has been assigned to our Executive Travel Concierge. We will reach out via WhatsApp & Email shortly.

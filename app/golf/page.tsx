@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -42,9 +42,9 @@ export default function GolfPage() {
   };
 
   return (
-    <div className="bg-[#081B33] text-white min-h-screen pb-24">
+    <div className="bg-[#0B1F3A] text-white min-h-screen pb-24">
       {/* Hero Banner */}
-      <section className="relative py-28 bg-[#040E1B] overflow-hidden border-b border-[#C9A227]/30">
+      <section className="relative py-28 bg-[#060F1D] overflow-hidden border-b border-[#C8A45D]/30">
         <div className="absolute inset-0 z-0 opacity-40">
           <Image
             src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1920&q=80"
@@ -53,15 +53,15 @@ export default function GolfPage() {
             sizes="100vw"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#081B33] via-[#081B33]/80 to-[#081B33]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B1F3A] via-[#0B1F3A]/80 to-[#0B1F3A]" />
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C9A227]/20 border border-[#C9A227]/50 text-[#FFE79A] text-xs uppercase tracking-widest font-semibold">
-            <Trophy className="w-4 h-4 text-[#C9A227]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C8A45D]/20 border border-[#C8A45D]/50 text-[#F0D898] text-xs uppercase tracking-widest font-semibold">
+            <Trophy className="w-4 h-4 text-[#C8A45D]" />
             PGA CHAMPIONSHIP PORTAL
           </div>
-          <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight">
             {language === 'kr' ? "스리랑카 명문 럭셔리 골프 투어" : "Sri Lanka PGA Golf Holidays"}
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
@@ -80,7 +80,7 @@ export default function GolfPage() {
             <div
               key={course.id}
               id={course.id}
-              className={`bg-[#0D2647] border border-[#C9A227]/30 rounded-2xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
+              className={`bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
                 !isEven ? 'lg:flex-row-reverse' : ''
               }`}
             >
@@ -93,7 +93,7 @@ export default function GolfPage() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                 />
-                <div className="absolute top-4 left-4 bg-[#081B33]/90 border border-[#C9A227] text-[#C9A227] text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full">
+                <div className="absolute top-4 left-4 bg-[#0B1F3A]/90 border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full">
                   Established {course.established} AD
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function GolfPage() {
               {/* Info Side (LG: 6 Cols) */}
               <div className="lg:col-span-6 p-6 sm:p-10 space-y-5">
                 <div>
-                  <span className="text-xs text-[#C9A227] font-semibold uppercase tracking-wider block">
+                  <span className="text-xs text-[#C8A45D] font-semibold uppercase tracking-wider block">
                     <MapPin className="w-3.5 h-3.5 inline mr-1" />
                     {course.location}
                   </span>
@@ -114,25 +114,25 @@ export default function GolfPage() {
                   {language === 'kr' ? course.overviewKr : course.overviewEn}
                 </p>
 
-                <div className="grid grid-cols-2 gap-3 p-4 bg-[#081B33] rounded-xl border border-[#C9A227]/20 text-xs text-gray-200">
+                <div className="grid grid-cols-2 gap-3 p-4 bg-[#0B1F3A] rounded-xl border border-[#C8A45D]/20 text-xs text-gray-200">
                   <div>
-                    <strong className="text-[#C9A227]">Specs:</strong> {course.holes} Holes (Par {course.par})
+                    <strong className="text-[#C8A45D]">Specs:</strong> {course.holes} Holes (Par {course.par})
                   </div>
                   <div>
-                    <strong className="text-[#C9A227]">Designer:</strong> {course.designer}
+                    <strong className="text-[#C8A45D]">Designer:</strong> {course.designer}
                   </div>
                   <div>
-                    <strong className="text-[#C9A227]">Hotel:</strong> {course.hotel}
+                    <strong className="text-[#C8A45D]">Hotel:</strong> {course.hotel}
                   </div>
                   <div>
-                    <strong className="text-[#C9A227]">Transfer:</strong> Mercedes V-Class / Helicopter
+                    <strong className="text-[#C8A45D]">Transfer:</strong> Mercedes V-Class / Helicopter
                   </div>
                 </div>
 
                 <div className="space-y-1.5 text-xs text-gray-300">
                   {(language === 'kr' ? course.featuresKr : course.featuresEn).map((ft, i) => (
                     <div key={i} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A227]" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C8A45D]" />
                       <span>{ft}</span>
                     </div>
                   ))}
@@ -140,7 +140,7 @@ export default function GolfPage() {
 
                 <button
                   onClick={() => handleBookGolf(course.nameEn)}
-                  className="w-full sm:w-auto bg-[#C9A227] hover:bg-[#E5C358] text-[#081B33] font-bold py-3 px-8 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg"
+                  className="w-full sm:w-auto bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-3 px-8 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-lg"
                 >
                   <span>Book {language === 'kr' ? course.nameKr : course.nameEn}</span>
                   <ArrowRight className="w-4 h-4" />
@@ -155,7 +155,7 @@ export default function GolfPage() {
       <GolfComparison />
 
       {/* Golf FAQ Section */}
-      <section className="py-20 bg-[#040E1B] border-t border-[#C9A227]/20">
+      <section className="py-20 bg-[#060F1D] border-t border-[#C8A45D]/20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="text-center">
             <h2 className="text-3xl font-serif font-bold text-white">
@@ -169,14 +169,14 @@ export default function GolfPage() {
               return (
                 <div
                   key={idx}
-                  className="bg-[#081B33] border border-[#C9A227]/30 rounded-xl overflow-hidden"
+                  className="bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-xl overflow-hidden"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-5 text-left flex items-center justify-between font-serif font-bold text-sm text-white hover:text-[#C9A227]"
+                    className="w-full p-5 text-left flex items-center justify-between font-serif font-bold text-sm text-white hover:text-[#C8A45D]"
                   >
                     <span>{language === 'kr' ? faq.qKr : faq.qEn}</span>
-                    <ChevronDown className={`w-4 h-4 text-[#C9A227] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 text-[#C8A45D] transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isOpen && (
                     <div className="px-5 pb-5 pt-1 text-xs text-gray-300 leading-relaxed border-t border-white/5">

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -18,14 +18,14 @@ export const KoreanTravellerSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#040E1B] text-white border-t border-[#C9A227]/30 relative overflow-hidden">
+    <section className="py-24 bg-[#060F1D] text-white border-t border-[#C8A45D]/30 relative overflow-hidden">
       {/* Background South Asia Pattern Glow */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#C9A227]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#C8A45D]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C9A227]/20 border border-[#C9A227]/50 text-[#FFE79A] text-xs uppercase tracking-widest font-semibold">
-            <Globe className="w-3.5 h-3.5 text-[#C9A227]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C8A45D]/20 border border-[#C8A45D]/50 text-[#F0D898] text-xs uppercase tracking-widest font-semibold">
+            <Globe className="w-3.5 h-3.5 text-[#C8A45D]" />
             {t.koreanSection.tag}
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
@@ -43,12 +43,12 @@ export const KoreanTravellerSection: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="bg-[#081B33] border border-[#C9A227]/30 hover:border-[#C9A227] rounded-2xl p-6 shadow-xl space-y-4 transition-all duration-300 hover:-translate-y-2 group"
+                className="bg-[#0B1F3A] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl p-6 shadow-xl space-y-4 transition-all duration-300 hover:-translate-y-2 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#0D2647] border border-[#C9A227]/40 flex items-center justify-center text-[#C9A227] group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-[#122848] border border-[#C8A45D]/40 flex items-center justify-center text-[#C8A45D] group-hover:scale-110 transition-transform">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C9A227] transition-colors">
+                <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors">
                   {language === 'kr' ? perk.titleKr : perk.titleEn}
                 </h3>
                 <p className="text-xs text-gray-300 leading-relaxed">
@@ -60,9 +60,9 @@ export const KoreanTravellerSection: React.FC = () => {
         </div>
 
         {/* Korean VIP Concierge Banner */}
-        <div className="bg-[#0D2647] border border-[#C9A227]/40 rounded-2xl p-8 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="bg-[#122848] border border-[#C8A45D]/40 rounded-2xl p-8 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 space-y-3">
-            <div className="flex items-center gap-2 text-[#C9A227] text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-[#C8A45D] text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4" />
               DIRECT KOREAN VIP CONCIERGE DESK
             </div>
@@ -79,7 +79,7 @@ export const KoreanTravellerSection: React.FC = () => {
           <div className="lg:col-span-4 flex flex-col gap-3">
             <button
               onClick={() => setIsBookingOpen(true)}
-              className="w-full bg-[#C9A227] hover:bg-[#E5C358] text-[#081B33] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg transition-colors flex items-center justify-center gap-2"
             >
               <Sparkles className="w-4 h-4 fill-current" />
               <span>{language === 'kr' ? "한국어 맞춤 상담 신청" : "Inquire with Korean Concierge"}</span>
@@ -88,7 +88,7 @@ export const KoreanTravellerSection: React.FC = () => {
               href="https://wa.me/94770008899"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-[#081B33] border border-[#C9A227]/40 text-[#C9A227] hover:bg-[#C9A227] hover:text-[#081B33] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors text-center flex items-center justify-center gap-2"
+              className="w-full bg-[#0B1F3A] border border-[#C8A45D]/40 text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors text-center flex items-center justify-center gap-2"
             >
               <PhoneCall className="w-4 h-4" />
               <span>카카오톡 / WhatsApp 상담</span>

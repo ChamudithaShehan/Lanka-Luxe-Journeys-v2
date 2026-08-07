@@ -14,13 +14,13 @@ export const InteractiveSvgMap: React.FC = () => {
   const selectedDest = DESTINATIONS.find((d) => d.id === activeDestId) || DESTINATIONS[0];
 
   return (
-    <section className="py-24 bg-[#040E1B] text-white border-t border-[#C9A227]/20 relative overflow-hidden">
+    <section className="py-24 bg-[#060F1D] text-white border-t border-[#C8A45D]/20 relative overflow-hidden">
       {/* Glow background */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#C9A227]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#C8A45D]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold mb-3">
             <Compass className="w-3.5 h-3.5" />
             Interactive Vector Map
           </div>
@@ -36,12 +36,12 @@ export const InteractiveSvgMap: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Vector Map SVG Canvas (LG: 7 Cols) */}
-          <div className="lg:col-span-7 bg-[#081B33] border border-[#C9A227]/30 rounded-2xl p-6 relative h-[520px] shadow-2xl flex items-center justify-center overflow-hidden">
+          <div className="lg:col-span-7 bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-2xl p-4 sm:p-6 relative h-[360px] sm:h-[460px] lg:h-[520px] shadow-2xl flex items-center justify-center overflow-hidden">
             {/* SVG Outline Container */}
             <div className="relative w-full h-full max-w-[380px] mx-auto">
               <svg
                 viewBox="0 0 400 500"
-                className="w-full h-full drop-shadow-[0_0_20px_rgba(201,162,39,0.15)]"
+                className="w-full h-full drop-shadow-[0_0_20px_rgba(200, 164, 93,0.15)]"
               >
                 {/* Island Path Silhouette */}
                 <path
@@ -50,8 +50,8 @@ export const InteractiveSvgMap: React.FC = () => {
                      C 310 360, 260 450, 190 475 
                      C 120 450, 75 360, 70 270 
                      C 65 170, 140 60, 210 30 Z"
-                  fill="#0D2647"
-                  stroke="#C9A227"
+                  fill="#122848"
+                  stroke="#C8A45D"
                   strokeWidth="2"
                   strokeDasharray="4 4"
                   className="opacity-70"
@@ -70,13 +70,13 @@ export const InteractiveSvgMap: React.FC = () => {
                   >
                     <div className="relative flex flex-col items-center">
                       {isSelected && (
-                        <span className="absolute w-8 h-8 rounded-full bg-[#C9A227]/40 animate-ping" />
+                        <span className="absolute w-8 h-8 rounded-full bg-[#C8A45D]/40 animate-ping" />
                       )}
                       <div
                         className={`w-7 h-7 rounded-full flex items-center justify-center transition-all ${
                           isSelected
-                            ? 'bg-[#C9A227] text-[#081B33] scale-125 shadow-[0_0_20px_#C9A227]'
-                            : 'bg-[#081B33] text-[#C9A227] border border-[#C9A227]/60 hover:scale-110 hover:border-[#C9A227]'
+                            ? 'bg-[#C8A45D] text-[#0B1F3A] scale-125 shadow-[0_0_20px_#C8A45D]'
+                            : 'bg-[#0B1F3A] text-[#C8A45D] border border-[#C8A45D]/60 hover:scale-110 hover:border-[#C8A45D]'
                         }`}
                       >
                         <MapPin className="w-3.5 h-3.5" />
@@ -84,8 +84,8 @@ export const InteractiveSvgMap: React.FC = () => {
                       <span
                         className={`mt-1 text-[10px] font-bold tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap transition-colors ${
                           isSelected
-                            ? 'bg-[#C9A227] text-[#081B33]'
-                            : 'bg-[#040E1B]/90 text-gray-200 border border-white/20 group-hover:border-[#C9A227]'
+                            ? 'bg-[#C8A45D] text-[#0B1F3A]'
+                            : 'bg-[#060F1D]/90 text-gray-200 border border-white/20 group-hover:border-[#C8A45D]'
                         }`}
                       >
                         {language === 'kr' ? dest.nameKr : dest.nameEn}
@@ -106,7 +106,7 @@ export const InteractiveSvgMap: React.FC = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="bg-[#0D2647] border border-[#C9A227]/40 rounded-2xl overflow-hidden shadow-2xl space-y-4"
+                className="bg-[#122848] border border-[#C8A45D]/40 rounded-2xl overflow-hidden shadow-2xl space-y-4"
               >
                 <div className="relative h-56 overflow-hidden">
                   <Image
@@ -116,8 +116,8 @@ export const InteractiveSvgMap: React.FC = () => {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D2647] via-transparent to-transparent" />
-                  <div className="absolute top-4 left-4 bg-[#081B33]/90 border border-[#C9A227] text-[#C9A227] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4 bg-[#0B1F3A]/90 border border-[#C8A45D] text-[#C8A45D] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                     Best Season: {language === 'kr' ? selectedDest.bestTimeKr : selectedDest.bestTimeEn}
                   </div>
                 </div>
@@ -127,7 +127,7 @@ export const InteractiveSvgMap: React.FC = () => {
                     <h3 className="text-2xl font-serif font-bold text-white">
                       {language === 'kr' ? selectedDest.nameKr : selectedDest.nameEn}
                     </h3>
-                    <span className="text-xs text-[#C9A227] font-semibold block mt-0.5">
+                    <span className="text-xs text-[#C8A45D] font-semibold block mt-0.5">
                       {language === 'kr' ? selectedDest.subtitleKr : selectedDest.subtitleEn}
                     </span>
                   </div>
@@ -136,8 +136,8 @@ export const InteractiveSvgMap: React.FC = () => {
                     {language === 'kr' ? selectedDest.descKr : selectedDest.descEn}
                   </p>
 
-                  <div className="p-3 bg-[#081B33] rounded-xl border border-[#C9A227]/20 text-xs space-y-1.5">
-                    <div className="text-[#C9A227] font-semibold flex items-center gap-1">
+                  <div className="p-3 bg-[#0B1F3A] rounded-xl border border-[#C8A45D]/20 text-xs space-y-1.5">
+                    <div className="text-[#C8A45D] font-semibold flex items-center gap-1">
                       <Sparkles className="w-3.5 h-3.5" />
                       Top Regional Attractions
                     </div>
@@ -150,7 +150,7 @@ export const InteractiveSvgMap: React.FC = () => {
 
                   <a
                     href="#contact"
-                    className="w-full bg-[#C9A227] hover:bg-[#E5C358] text-[#081B33] font-bold py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+                    className="w-full bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <span>Explore {selectedDest.nameEn}</span>
                     <ExternalLink className="w-4 h-4" />

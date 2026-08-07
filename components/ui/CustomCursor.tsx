@@ -50,7 +50,7 @@ export const CustomCursor: React.FC = () => {
     <div className="hidden lg:block pointer-events-none fixed inset-0 z-[9999]">
       {/* Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-[#C9A227] rounded-full pointer-events-none"
+        className="fixed top-0 left-0 w-2 h-2 bg-[#C8A45D] rounded-full pointer-events-none"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
@@ -60,12 +60,12 @@ export const CustomCursor: React.FC = () => {
       />
       {/* Outer Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-[#C9A227]/60 rounded-full pointer-events-none"
+        className="fixed top-0 left-0 w-8 h-8 border border-[#C8A45D]/60 rounded-full pointer-events-none"
         animate={{
           x: mousePosition.x - 16,
           y: mousePosition.y - 16,
           scale: isHovered ? 1.8 : 1,
-          borderColor: isHovered ? 'rgba(238, 195, 88, 0.9)' : 'rgba(201, 162, 39, 0.5)',
+          borderColor: isHovered ? 'rgba(238, 195, 88, 0.9)' : 'rgba(200, 164, 93, 0.5)',
         }}
         transition={{ type: 'spring', damping: 25, stiffness: 200, mass: 0.2 }}
       />

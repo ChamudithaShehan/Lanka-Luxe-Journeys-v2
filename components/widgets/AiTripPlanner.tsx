@@ -113,13 +113,13 @@ export const AiTripPlanner: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-[#081B33] relative overflow-hidden text-white border-t border-[#C9A227]/20">
+    <section className="py-20 bg-[#0B1F3A] relative overflow-hidden text-white border-t border-[#C8A45D]/20">
       {/* Glow background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C9A227]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C8A45D]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             {t.aiPlanner.tag}
           </div>
@@ -132,11 +132,11 @@ export const AiTripPlanner: React.FC = () => {
         </div>
 
         {/* Multi-step options card */}
-        <div className="bg-[#0D2647]/90 border border-[#C9A227]/30 rounded-2xl p-6 sm:p-8 shadow-[0_0_40px_rgba(8,27,51,0.8)] backdrop-blur-md">
+        <div className="bg-[#122848]/90 border border-[#C8A45D]/30 rounded-2xl p-4 sm:p-8 shadow-[0_0_40px_rgba(11, 31, 58,0.8)] backdrop-blur-md">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* Step 1: Style */}
             <div>
-              <label className="block text-xs font-semibold text-[#C9A227] uppercase tracking-wider mb-3">
+              <label className="block text-xs font-semibold text-[#C8A45D] uppercase tracking-wider mb-3">
                 {t.aiPlanner.step1}
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -154,8 +154,8 @@ export const AiTripPlanner: React.FC = () => {
                       onClick={() => setStyle(item.id as any)}
                       className={`flex flex-col items-center justify-center p-3 rounded-xl border text-xs transition-all ${
                         isSel
-                          ? 'bg-[#C9A227] text-[#081B33] font-bold border-[#C9A227] shadow-md'
-                          : 'bg-[#081B33] border-white/10 text-gray-300 hover:border-[#C9A227]/50'
+                          ? 'bg-[#C8A45D] text-[#0B1F3A] font-bold border-[#C8A45D] shadow-md'
+                          : 'bg-[#0B1F3A] border-white/10 text-gray-300 hover:border-[#C8A45D]/50'
                       }`}
                     >
                       <Icon className="w-4 h-4 mb-1" />
@@ -168,7 +168,7 @@ export const AiTripPlanner: React.FC = () => {
 
             {/* Step 2: Duration */}
             <div>
-              <label className="block text-xs font-semibold text-[#C9A227] uppercase tracking-wider mb-3">
+              <label className="block text-xs font-semibold text-[#C8A45D] uppercase tracking-wider mb-3">
                 {t.aiPlanner.step2}
               </label>
               <div className="flex flex-col gap-2">
@@ -184,8 +184,8 @@ export const AiTripPlanner: React.FC = () => {
                       onClick={() => setDays(item.id as any)}
                       className={`p-2.5 rounded-xl border text-xs text-left transition-all ${
                         isSel
-                          ? 'bg-[#C9A227] text-[#081B33] font-bold border-[#C9A227]'
-                          : 'bg-[#081B33] border-white/10 text-gray-300 hover:border-[#C9A227]/50'
+                          ? 'bg-[#C8A45D] text-[#0B1F3A] font-bold border-[#C8A45D]'
+                          : 'bg-[#0B1F3A] border-white/10 text-gray-300 hover:border-[#C8A45D]/50'
                       }`}
                     >
                       {language === 'kr' ? item.labelKr : item.labelEn}
@@ -197,7 +197,7 @@ export const AiTripPlanner: React.FC = () => {
 
             {/* Step 3: Lodging Standard */}
             <div>
-              <label className="block text-xs font-semibold text-[#C9A227] uppercase tracking-wider mb-3">
+              <label className="block text-xs font-semibold text-[#C8A45D] uppercase tracking-wider mb-3">
                 {t.aiPlanner.step3}
               </label>
               <div className="flex flex-col gap-2">
@@ -213,8 +213,8 @@ export const AiTripPlanner: React.FC = () => {
                       onClick={() => setStay(item.id as any)}
                       className={`p-2.5 rounded-xl border text-xs text-left transition-all ${
                         isSel
-                          ? 'bg-[#C9A227] text-[#081B33] font-bold border-[#C9A227]'
-                          : 'bg-[#081B33] border-white/10 text-gray-300 hover:border-[#C9A227]/50'
+                          ? 'bg-[#C8A45D] text-[#0B1F3A] font-bold border-[#C8A45D]'
+                          : 'bg-[#0B1F3A] border-white/10 text-gray-300 hover:border-[#C8A45D]/50'
                       }`}
                     >
                       {language === 'kr' ? item.labelKr : item.labelEn}
@@ -229,7 +229,7 @@ export const AiTripPlanner: React.FC = () => {
             <button
               onClick={handleGenerate}
               disabled={isGenerating}
-              className="bg-gradient-to-r from-[#C9A227] to-[#E5C358] hover:from-[#E5C358] hover:to-[#C9A227] text-[#081B33] font-bold py-3.5 px-8 rounded-full shadow-[0_0_20px_rgba(201,162,39,0.3)] transition-all flex items-center justify-center gap-2 mx-auto uppercase tracking-wider text-xs"
+              className="bg-gradient-to-r from-[#C8A45D] to-[#D4B87A] hover:from-[#D4B87A] hover:to-[#C8A45D] text-[#0B1F3A] font-bold py-3.5 px-8 rounded-full shadow-[0_0_20px_rgba(200, 164, 93,0.3)] transition-all flex items-center justify-center gap-2 mx-auto uppercase tracking-wider text-xs"
             >
               {isGenerating ? (
                 <>
@@ -252,9 +252,9 @@ export const AiTripPlanner: React.FC = () => {
                 initial={{ opacity: 0, height: 0, y: 15 }}
                 animate={{ opacity: 1, height: 'auto', y: 0 }}
                 exit={{ opacity: 0, height: 0, y: 15 }}
-                className="mt-8 pt-6 border-t border-[#C9A227]/40 bg-[#081B33]/80 p-6 rounded-xl border"
+                className="mt-8 pt-6 border-t border-[#C8A45D]/40 bg-[#0B1F3A]/80 p-6 rounded-xl border"
               >
-                <div className="flex items-center gap-2 text-[#C9A227] text-xs font-semibold uppercase tracking-wider mb-2">
+                <div className="flex items-center gap-2 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider mb-2">
                   <CheckCircle2 className="w-4 h-4" />
                   {t.aiPlanner.recommendedPlan}
                 </div>
@@ -262,25 +262,25 @@ export const AiTripPlanner: React.FC = () => {
                   {language === 'kr' ? result.titleKr : result.titleEn}
                 </h4>
                 <p className="text-xs text-gray-300 font-mono mb-4 bg-white/5 p-2 rounded border border-white/10">
-                  <strong className="text-[#C9A227]">Route:</strong> {language === 'kr' ? result.routeKr : result.routeEn}
+                  <strong className="text-[#C8A45D]">Route:</strong> {language === 'kr' ? result.routeKr : result.routeEn}
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-200 mb-6">
                   {(language === 'kr' ? result.highlightsKr : result.highlightsEn).map((hl, idx) => (
                     <div key={idx} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#C9A227]" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#C8A45D]" />
                       <span>{hl}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0D2647] p-4 rounded-xl border border-[#C9A227]/30">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#122848] p-4 rounded-xl border border-[#C8A45D]/30">
                   <div className="text-xs text-gray-300">
-                    <span className="text-[#C9A227] font-bold">Estimated Cost:</span> $5,800 - $9,500 USD per guest (Includes Private Helicopter & Concierge)
+                    <span className="text-[#C8A45D] font-bold">Estimated Cost:</span> $5,800 - $9,500 USD per guest (Includes Private Helicopter & Concierge)
                   </div>
                   <a
                     href="#contact"
-                    className="bg-[#C9A227] text-[#081B33] font-bold text-xs px-5 py-2.5 rounded-lg hover:bg-[#E5C358] transition-colors uppercase tracking-wider flex items-center gap-1.5"
+                    className="bg-[#C8A45D] text-[#0B1F3A] font-bold text-xs px-5 py-2.5 rounded-lg hover:bg-[#D4B87A] transition-colors uppercase tracking-wider flex items-center gap-1.5"
                   >
                     <span>Request Custom Itinerary</span>
                     <ArrowRight className="w-3.5 h-3.5" />

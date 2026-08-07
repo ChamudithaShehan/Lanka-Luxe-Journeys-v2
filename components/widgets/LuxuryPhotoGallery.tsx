@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -28,10 +28,10 @@ export const LuxuryPhotoGallery: React.FC = () => {
   });
 
   return (
-    <section className="py-24 bg-[#040E1B] text-white border-t border-[#C9A227]/20">
+    <section className="py-24 bg-[#060F1D] text-white border-t border-[#C8A45D]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] text-xs uppercase tracking-widest font-semibold mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold mb-3">
             <Camera className="w-3.5 h-3.5" />
             {t.photoGallery.tag}
           </div>
@@ -54,8 +54,8 @@ export const LuxuryPhotoGallery: React.FC = () => {
               }}
               className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                 selectedCategory === cat
-                  ? 'bg-[#C9A227] text-[#081B33] shadow-md'
-                  : 'bg-[#081B33] text-gray-300 border border-white/10 hover:border-[#C9A227]/50'
+                  ? 'bg-[#C8A45D] text-[#0B1F3A] shadow-md'
+                  : 'bg-[#0B1F3A] text-gray-300 border border-white/10 hover:border-[#C8A45D]/50'
               }`}
             >
               {cat}
@@ -71,7 +71,7 @@ export const LuxuryPhotoGallery: React.FC = () => {
               <div
                 key={idx}
                 onClick={() => setActiveImageIndex(idx)}
-                className={`relative h-72 rounded-2xl overflow-hidden border border-[#C9A227]/30 hover:border-[#C9A227] shadow-xl cursor-pointer group transition-all ${
+                className={`relative h-72 rounded-2xl overflow-hidden border border-[#C8A45D]/30 hover:border-[#C8A45D] shadow-xl cursor-pointer group transition-all ${
                   isHiddenMobile ? 'hidden sm:block' : 'block'
                 }`}
               >
@@ -82,15 +82,15 @@ export const LuxuryPhotoGallery: React.FC = () => {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-[#081B33]/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-6">
-                  <span className="self-start bg-[#C9A227] text-[#081B33] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                <div className="absolute inset-0 bg-[#0B1F3A]/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-6">
+                  <span className="self-start bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
                     {item.category}
                   </span>
                   <div className="flex items-center justify-between text-white">
                     <span className="font-serif font-bold text-base">
                       {language === 'kr' ? item.titleKr : item.titleEn}
                     </span>
-                    <ZoomIn className="w-5 h-5 text-[#C9A227]" />
+                    <ZoomIn className="w-5 h-5 text-[#C8A45D]" />
                   </div>
                 </div>
               </div>
@@ -103,7 +103,7 @@ export const LuxuryPhotoGallery: React.FC = () => {
           <div className="mt-8 text-center sm:hidden">
             <button
               onClick={() => setShowAllMobile(!showAllMobile)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#081B33] border border-[#C9A227] text-[#C9A227] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C9A227] hover:text-[#081B33] transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0B1F3A] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
             >
               <span>{showAllMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (View More)' : 'View More')}</span>
               <ChevronDown className={`w-4 h-4 transition-transform ${showAllMobile ? 'rotate-180' : ''}`} />
@@ -115,7 +115,7 @@ export const LuxuryPhotoGallery: React.FC = () => {
       {/* Lightbox Modal */}
       {activeImageIndex !== null && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div onClick={() => setActiveImageIndex(null)} className="fixed inset-0 bg-[#040E1B]/95 backdrop-blur-md" />
+          <div onClick={() => setActiveImageIndex(null)} className="fixed inset-0 bg-[#060F1D]/95 backdrop-blur-md" />
           <div className="relative z-10 w-full max-w-4xl max-h-[90vh] flex flex-col items-center">
             <button
               onClick={() => setActiveImageIndex(null)}
@@ -123,7 +123,7 @@ export const LuxuryPhotoGallery: React.FC = () => {
             >
               <X className="w-6 h-6" />
             </button>
-            <div className="relative w-full h-[70vh] rounded-2xl overflow-hidden border border-[#C9A227]">
+            <div className="relative w-full h-[70vh] rounded-2xl overflow-hidden border border-[#C8A45D]">
               <Image
                 src={filteredItems[activeImageIndex].src}
                 alt="Lightbox Fullscreen"
@@ -133,7 +133,7 @@ export const LuxuryPhotoGallery: React.FC = () => {
               />
             </div>
             <div className="text-center pt-4">
-              <span className="text-xs text-[#C9A227] uppercase tracking-widest font-semibold block">
+              <span className="text-xs text-[#C8A45D] uppercase tracking-widest font-semibold block">
                 {filteredItems[activeImageIndex].category}
               </span>
               <h4 className="text-xl font-serif font-bold text-white mt-1">

@@ -2,7 +2,7 @@ export interface TourPackage {
   id: string;
   titleEn: string;
   titleKr: string;
-  category: 'Luxury' | 'Golf' | 'Wildlife' | 'Culture' | 'Honeymoon' | 'Ayurveda';
+  category: 'Luxury' | 'Golf' | 'Wildlife' | 'Culture' | 'Honeymoon' | 'Family' | 'Ayurveda' | 'Beach' | 'TailorMade';
   duration: string;
   priceUSD: number;
   image: string;
@@ -17,6 +17,8 @@ export interface TourPackage {
   itineraryKr: { day: number; title: string; desc: string }[];
   includedEn: string[];
   includedKr: string[];
+  idealForEn?: string;
+  idealForKr?: string;
 }
 
 export interface GolfCourse {
@@ -262,151 +264,639 @@ export const GOLF_COURSES: GolfCourse[] = [
 
 export const TOUR_PACKAGES: TourPackage[] = [
   {
-    id: "grand-ceylon-luxury",
-    titleEn: "Grand Ceylon Royal Tour & Private Jet",
-    titleKr: "그랜드 실론 로열 투어 & 프라이빗 헬기",
+    id: "luxury-highlights",
+    titleEn: "Sri Lanka Luxury Highlights",
+    titleKr: "스리랑카 럭셔리 하이라이트",
     category: "Luxury",
-    duration: "10 Days / 9 Nights",
-    priceUSD: 8500,
+    duration: "8 Days / 7 Nights",
+    priceUSD: 4500,
+    idealForEn: "First-time visitors",
+    idealForKr: "스리랑카 첫 방문객 및 대표 명소 탐방",
     image: SRI_LANKA_IMAGES.sigiriyaCitadel,
     gallery: [
       SRI_LANKA_IMAGES.sigiriyaCitadel,
       SRI_LANKA_IMAGES.highlandTeaEstate,
       SRI_LANKA_IMAGES.galleDutchFort
     ],
-    locations: ["Colombo", "Sigiriya", "Nuwara Eliya", "Yala", "Galle"],
-    hotels: ["Amangalla", "Ceylon Tea Trails", "Wild Coast Tented Lodge"],
-    descriptionEn: "The ultimate signature journey across Sri Lanka featuring helicopter transfers, luxury Relais & Châteaux heritage bungalows, private tea tastings, and exclusive leopard safaris.",
-    descriptionKr: "프라이빗 헬기 이동, 릴레앤샤토 인가 고급 티 방갈로 숙박, 전용 표범 사파리가 포함된 스리랑카 시그니처 럭셔리 투어입니다.",
+    locations: ["Colombo", "Sigiriya", "Dambulla", "Kandy", "Nuwara Eliya", "Ella", "Yala", "Galle", "Bentota"],
+    hotels: ["Amangalla", "Ceylon Tea Trails", "Water Garden Sigiriya", "Anantara Peace Haven"],
+    descriptionEn: "Ideal for first-time visitors seeking the ultimate Sri Lankan luxury experience, combining UNESCO ancient fortresses, tea estate hills, wild safari game drives, and pristine beach luxury.",
+    descriptionKr: "스리랑카를 처음 방문하는 고객님을 위한 완벽한 플래그십 코스로, 유네스코 고대 유적부터 차밭 고원, 야라 사파리, 럭셔리 비치 휴양까지 스리랑카의 정수를 경험합니다.",
     highlightsEn: [
-      "Helicopter aerial transfers across inland routes",
-      "Private dining on top of Sigiriya Rock views",
-      "Exclusive leopard tracker in Yala National Park",
-      "Private tea harvesting with master blender"
+      "Airport VIP meet & greet service",
+      "Sigiriya Rock Fortress exploration",
+      "Dambulla Cave Temple visit",
+      "Temple of the Sacred Tooth Relic, Kandy",
+      "Tea plantations in Nuwara Eliya",
+      "Scenic train journey to Ella",
+      "Yala National Park safari experience",
+      "Galle Fort heritage tour",
+      "Beach relaxation in Bentota"
     ],
     highlightsKr: [
-      "내륙 전 구간 프라이빗 헬리콥터 이동",
-      "시기리야 암사원 뷰 프라이빗 샴페인 디너",
-      "야라 국립공원 1:1 전담 표범 트래커 사파리",
-      "마스터 블렌더와 함께하는 수제 차 체험"
+      "공항 VIP 의전 맞이 서비스",
+      "시기리야 암사원 탐험",
+      "담불라 황금 동굴 사원 관람",
+      "캔디 불치사(부처님 치아 사원) 방문",
+      "누와라엘리야 고원 차밭 시닉 투어",
+      "엘라 파노라마 스닉 열차 여정",
+      "야라 국립공원 지프 사파리",
+      "갈레 네덜란드 포트 헤리티지 투어",
+      "벤토타 럭셔리 해변 휴양"
     ],
     itineraryEn: [
-      { day: 1, title: "VIP Arrival in Colombo & Amangalla", desc: "Private runway fast-track arrival, luxury chauffeur transfer to Amangalla Fort estate." },
-      { day: 2, title: "Helicopter Flight to Cultural Triangle", desc: "Scenic flight over green canopy. Sunset champagne at Water Gardens Sigiriya." },
-      { day: 3, title: "Private Sunrise Access to Sigiriya", desc: "VIP early access to the Ancient Rock Fortress before public entry." },
-      { day: 4, title: "Tea Country Aerial Transfer", desc: "Helicopter landing at Ceylon Tea Trails. Private bungalow high tea." },
-      { day: 5, title: "Highland Luxury & Tea Heritage", desc: "Guided tea picking and vintage train ride with private observation carriage." },
-      { day: 6, title: "Flight to Wild Coast Tented Lodge Yala", desc: "Luxury cocoon tent stay by the ocean waves." },
-      { day: 7, title: "Exclusive Big Game Safari", desc: "Private 4x4 Land Cruiser safari targeting Sri Lankan leopards & elephants." },
-      { day: 8, title: "Galle Fort Coastal Estate", desc: "Transfer to Dutch Fort boutique villa. Sunset yacht charter." },
-      { day: 9, title: "Private Whale Watching Yacht", desc: "Exclusive catamaran cruise with private marine biologist." },
-      { day: 10, title: "VIP Airport Departure", desc: "Private chauffeur transfer to BIA with Lounge VIP fast-track." }
+      { day: 1, title: "VIP Arrival & Colombo Transfer", desc: "Airport meet & greet service with luxury chauffeur transport to 5-star hotel." },
+      { day: 2, title: "Sigiriya Citadel & Dambulla Caves", desc: "Private guided climb of Sigiriya Rock Fortress and ancient Dambulla Cave Temple." },
+      { day: 3, title: "Kandy Sacred City & Temple of the Tooth", desc: "Scenic drive to Kandy, visiting the revered Temple of the Sacred Tooth Relic." },
+      { day: 4, title: "Nuwara Eliya Highlands & Tea Estates", desc: "Travel to misty tea country, visiting historic tea plantations and colonial estates." },
+      { day: 5, title: "Scenic Train to Ella & Nine Arch Bridge", desc: "Board the iconic highland train to Ella across green mountain valleys." },
+      { day: 6, title: "Yala National Park Game Drive Safari", desc: "Drive to Yala for an afternoon private 4x4 safari tracking leopards and elephants." },
+      { day: 7, title: "Galle Dutch Fort & Bentota Beach", desc: "Coastal heritage tour of UNESCO Galle Fort followed by sunset beach luxury." },
+      { day: 8, title: "Bentota Relaxation & Airport Transfer", desc: "Leisure morning by the Indian Ocean before private VIP airport transfer." }
     ],
     itineraryKr: [
-      { day: 1, title: "콜롬보 VIP 입국 & 프라이빗 의전", desc: "공항 패스트트랙 입국 후 최고급 메르세데스 의전 차량으로 이동." },
-      { day: 2, title: "문화 삼각지대 헬기 이동", desc: "헬리콥터로 이동하며 샴페인 환영 레이크 디너 제공." },
-      { day: 3, title: "시기리야 프라이빗 프라이어리티 등반", desc: "일반 대중 입장에 앞서 전용 가이드와 함께 암사원 방문." },
-      { day: 4, title: "실론 티 트레일즈 헬기 착륙", desc: "차밭 중심에 위치한 최고급 방갈로 리조트 입실." },
-      { day: 5, title: "고원 지대 차 문화 & 프라이빗 열차", desc: "전용 관람 객차를 통한 세기적 열차 여행." },
-      { day: 6, title: "야라 와일드 코스트 텐티드 로지", desc: "인도양과 사파리 밀림이 접한 고급 코쿤 텐트 투숙." },
-      { day: 7, title: "표범 프라이빗 사파리", desc: "수석 트래커 동행 4x4 프라이빗 사파리." },
-      { day: 8, title: "갈레 포트 빌라 & 석양 요트", desc: "네덜란드 식민지 양식 빌라 투숙 및 프라이빗 요트 세일링." },
-      { day: 9, title: "대왕고래 관찰 카타마란 요트", desc: "해양 생물학자 동행 프라이빗 요트 투어." },
-      { day: 10, title: "VIP 출국 의전", desc: "공항 VIP 라운지 혜택 및 전용 쇼퍼 의전 출국." }
+      { day: 1, title: "VIP 입국 & 콜롬보 의전", desc: "공항 맞이 VIP 서비스 후 최고급 전용 차량으로 호텔 이동." },
+      { day: 2, title: "시기리야 바위 요새 & 담불라 동굴", desc: "시기리야 암사원 및 담불라 황금 동굴 사원 프라이빗 관람." },
+      { day: 3, title: "캔디 불치사 & 문화 탐방", desc: "불교 성지 캔디로 이동하여 부처님 치아 사원 방문." },
+      { day: 4, title: "누와라엘리야 차밭 고원 지대", desc: "운무 가득한 고원 차밭 방문 및 프리미엄 티 테이스팅." },
+      { day: 5, title: "파노라마 열차 & 엘라 나인 아치", desc: "세계에서 가장 아름다운 고원 열차 구간 탑승." },
+      { day: 6, title: "야라 국립공원 표범 사파리", desc: "야라 국립공원에서 야생 표범 및 코끼리 전용 4x4 사파리." },
+      { day: 7, title: "갈레 포트 & 벤토타 해변", desc: "유네스코 갈레 성벽 도시 탐방 후 벤토타 해변 입실." },
+      { day: 8, title: "해변 휴양 & VIP 출국 의전", desc: "인도양 리조트 휴식 후 공항 전용 의전 출국." }
     ],
-    includedEn: ["Private Helicopter flights", "Relais & Châteaux Lodging", "All Fine Dining Meals", "VIP Fast-track airport"],
-    includedKr: ["전 일정 프라이빗 헬기 탑승", "릴레앤샤토 5성급 숙박", "전 일정 파인 다이닝", "공항 VIP 패스트트랙"]
+    includedEn: [
+      "Luxury 4–5 star accommodation",
+      "Private luxury vehicle",
+      "Professional English-speaking chauffeur guide",
+      "Daily breakfast",
+      "All entrance arrangements",
+      "Airport transfers"
+    ],
+    includedKr: [
+      "럭셔리 4-5성급 프리미엄 숙소",
+      "전 일정 프라이빗 럭셔리 전용 차량",
+      "전문 영어/한국어 콘시어지 쇼퍼 가이드",
+      "전 일정 조식 제공",
+      "모든 주요 유적지 및 국립공원 입장권",
+      "공항 픽업 및 샌딩 전용 의전"
+    ]
   },
   {
-    id: "royal-golf-odyssey",
-    titleEn: "Sri Lanka PGA Royal Golf Odyssey",
-    titleKr: "스리랑카 PGA 로열 골프 오디세이",
+    id: "golf-escape",
+    titleEn: "Sri Lanka Golf Escape",
+    titleKr: "스리랑카 PGA 골프 이스케이프",
     category: "Golf",
-    duration: "8 Days / 7 Nights",
+    duration: "10 Days / 9 Nights",
     priceUSD: 5900,
+    idealForEn: "Golf enthusiasts",
+    idealForKr: "골프 애호가 및 아시아 명문 코스 탐방객",
     image: SRI_LANKA_IMAGES.victoriaGolf,
     gallery: [
       SRI_LANKA_IMAGES.victoriaGolf,
       SRI_LANKA_IMAGES.royalGolf,
       SRI_LANKA_IMAGES.shangrilaGolf
     ],
-    locations: ["Colombo", "Kandy", "Nuwara Eliya", "Hambantota"],
+    locations: ["Colombo", "Kandy", "Nuwara Eliya", "Hambantota", "Galle"],
     hotels: ["Shangri-La Colombo", "Santani Wellness Resort", "Ceylon Tea Trails", "Shangri-La Hambantota"],
-    descriptionEn: "Play 4 premier 18-hole championship golf courses across Sri Lanka: Royal Colombo, Victoria Kandy, Nuwara Eliya High Altitude, and Shangri-La Hambantota Ocean Golf.",
-    descriptionKr: "로열 콜롬보, 빅토리아 캔디, 누와라엘리야, 샹그릴라 함반토타 등 스리랑카 4대 명문 코스를 모두 라운딩하는 프리미엄 골프 패키지입니다.",
+    descriptionEn: "Designed exclusively for golf enthusiasts, featuring 4 premier 18-hole championship courses alongside rich cultural highlights, high tea estates, and luxury beach relaxation.",
+    descriptionKr: "스리랑카 4대 명문 PGA 규격 골프 코스 라운딩과 캔디 문화 탐방, 차밭 휴양, 오션뷰 럭셔리 리조트 휴양을 결합한 최고급 골프 여행입니다.",
     highlightsEn: [
-      "Guaranteed priority tee times at all 4 top golf courses",
-      "Private PGA professional caddies & buggy service",
-      "Luxury Mercedes V-Class chauffeur transport",
-      "Korean golf concierge & bag handling assistance"
+      "Colombo Golf Club (Royal Heritage Course)",
+      "Victoria Golf & Country Resort (Donald Steel Signature)",
+      "Nuwara Eliya Golf Club (6,000ft High Altitude)",
+      "Shangri-La Hambantota Golf Resort (Oceanfront Course)",
+      "Kandy city tour & Temple of the Tooth",
+      "Tea factory visit & high tea tasting",
+      "Galle Fort UNESCO exploration",
+      "Luxury beachfront resort stay"
     ],
     highlightsKr: [
-      "스리랑카 4대 명문 코스 프라이어리티 티타임 보장",
-      "1:1 전담 캐디 및 개인 카트 서비스",
-      "메르세데스 V-클래스 럭셔리 밴 의전 이동",
-      "한국어 가능 골프 전담 콘시어지 & 캐디백 의전"
+      "로열 콜롬보 골프 클럽 (1879년 영국 왕실 전통 코스)",
+      "빅토리아 골프 & 컨트리 리조트 (도널드 스틸 설계 아시아 Top 10)",
+      "누와라엘리야 골프 클럽 (해발 1,800m 고원 코스)",
+      "샹그릴라 함반토타 골프 리조트 (인도양 오션뷰 코스)",
+      "캔디 시티 투어 및 불치사 방문",
+      "실론 차 공장 견학 및 프라이빗 애프터눈 티",
+      "유네스코 갈레 성벽 도시 탐방",
+      "럭셔리 오션뷰 비치 휴양"
     ],
     itineraryEn: [
-      { day: 1, title: "Colombo Arrival & Royal Colombo Golf", desc: "Private airport transfer, afternoon 18-hole round at Royal Colombo Golf Club." },
-      { day: 2, title: "Transfer to Kandy & Victoria Golf Resort", desc: "Chauffeur transfer to Kandy. Warm-up sunset driving range." },
-      { day: 3, title: "18 Holes at Victoria Golf & Country Club", desc: "Championship round overlooking Victoria Reservoir and Knuckles Peaks." },
-      { day: 4, title: "Scenic Highlands & Nuwara Eliya Golf Club", desc: "Drive up to tea mountain heights. 18-hole round at 6,000ft altitude." },
-      { day: 5, title: "Tea Trails Relaxation & Whisky Lounge", desc: "Private tea picking, spa massage, and single malt tasting at colonial club." },
-      { day: 6, title: "Helicopter Transfer to Shangri-La Hambantota", desc: "Fly to south coast. 18 holes at oceanfront Rodney Wright course." },
-      { day: 7, title: "Final Championship Golf Round & Beach Spa", desc: "Morning round followed by luxury Ayurveda massage." },
-      { day: 8, title: "VIP Departure", desc: "Private airport transfer and VIP terminal lounge." }
+      { day: 1, title: "Arrival in Colombo & Royal Colombo Golf Round", desc: "Chauffeur pick-up, warm-up round at Royal Colombo Golf Club." },
+      { day: 2, title: "Transfer to Kandy & Scenic Valley Arrival", desc: "Drive to hill capital Kandy, hotel check-in overlooking Knuckles Range." },
+      { day: 3, title: "18-Hole Round at Victoria Golf & Country Resort", desc: "Championship round beside Victoria Lake reservoir." },
+      { day: 4, title: "Kandy Cultural Tour & Temple of the Tooth", desc: "Morning cultural excursion, visiting Sacred Tooth Relic temple." },
+      { day: 5, title: "Highland Ascent & Nuwara Eliya Golf Club", desc: "Drive to 6,000ft altitude. Afternoon golf at Nuwara Eliya Club." },
+      { day: 6, title: "Ceylon Tea Estate Tour & High Tea", desc: "Guided tea picking experience, master blender tasting session." },
+      { day: 7, title: "Coastal Transfer & Shangri-La Hambantota Golf", desc: "Drive to south coast. Afternoon round at Shangri-La Ocean Golf." },
+      { day: 8, title: "Final Championship Golf Round & Resort Spa", desc: "Morning 18 holes followed by Shangri-La Chi Spa treatment." },
+      { day: 9, title: "Galle Dutch Fort Tour & Luxury Beach Stay", desc: "Coastal heritage exploration inside Galle Fort, beach relaxation." },
+      { day: 10, title: "VIP Airport Transfer & Departure", desc: "Private chauffeur transfer to Colombo BIA Airport." }
     ],
     itineraryKr: [
-      { day: 1, title: "콜롬보 도착 & 로열 콜롬보 라운딩", desc: "공항 의전 차량 후 로열 콜롬보 18홀 라운딩." },
-      { day: 2, title: "캔디 이동 & 빅토리아 리조트", desc: "캔디로 이동 후 드라이빙 레인지 연습." },
-      { day: 3, title: "빅토리아 골프 클럽 18홀 라운딩", desc: "호수 뷰 아시아 10대 명문 코스 티샷." },
-      { day: 4, title: "누와라엘리야 고원 골프 18홀", desc: "해발 1,800m 청정 고원 지대 클래식 18홀 라운딩." },
-      { day: 5, title: "실론 티 휴식 & 위스키 라운지", desc: "차밭 산책 및 싱글몰트 위스키 테이스팅." },
-      { day: 6, title: "남해안 샹그릴라 헬기 이동 & 라운딩", desc: "남해안으로 이동 후 오션뷰 18홀 라운딩." },
-      { day: 7, title: "챔피언십 마무리 라운딩 & 아유르베다 스파", desc: "오전 18홀 후 최고급 리조트 스파 케어." },
-      { day: 8, title: "VIP 출국", desc: "공항 럭셔리 의전 차량 및 출국 패스트트랙." }
+      { day: 1, title: "콜롬보 도착 & 로열 콜롬보 라운딩", desc: "공항 의전 후 로열 콜롬보 골프 클럽 18홀 라운딩." },
+      { day: 2, title: "캔디 이동 & 산악 뷰 리조트 체크인", desc: "캔디로 이동 후 너클스 산맥 전경 리조트 입실." },
+      { day: 3, title: "빅토리아 골프 리조트 18홀 챔피언십", desc: "빅토리아 호수 배경 아시아 10대 명문 코스 티샷." },
+      { day: 4, title: "캔디 불치사 & 문화 탐방", desc: "캔디 문화 유적 및 부처님 치아 사원 프라이빗 관람." },
+      { day: 5, title: "고원 지대 이동 & 누와라엘리야 18홀", desc: "해발 1,800m 고원 코스에서 클래식 라운딩." },
+      { day: 6, title: "실론 차 공장 견학 & 프리미엄 애프터눈 티", desc: "수제 차 재배 체험 및 싱글 에스테이트 티 테이스팅." },
+      { day: 7, title: "남해안 이동 & 샹그릴라 오션뷰 18홀", desc: "남해안 샹그릴라 인도양 코스 라운딩." },
+      { day: 8, title: "마지막 챔피언십 라운딩 & 최고급 스파", desc: "오전 라운딩 후 샹그릴라 CHI 스파 케어." },
+      { day: 9, title: "갈레 성벽 도시 탐방 & 해변 휴양", desc: "네덜란드 포트 유적지 탐방 후 럭셔리 해변 휴식." },
+      { day: 10, title: "VIP 출국 의전", desc: "공항 전용 의전 차량 이동 및 출국." }
     ],
-    includedEn: ["All Green Fees & Buggies", "Private PGA Caddies", "Luxury Mercedes Transfer", "5-Star Resorts"],
-    includedKr: ["전 일정 그린피 & 개인 카트", "1:1 전담 캐디", "메르세데스 밴 의전", "5성급 최고급 리조트"]
+    includedEn: [
+      "Premium accommodation",
+      "Green fee arrangements",
+      "Tee-time reservations",
+      "Golf equipment transportation",
+      "Private chauffeur service"
+    ],
+    includedKr: [
+      "전 일정 프리미엄 5성급 숙소",
+      "전 일정 그린피 포함",
+      "프라이어리티 티타임 예약 보장",
+      "골프 캐디백 전용 의전 수송",
+      "전 일정 프라이빗 전용 쇼퍼 차량"
+    ]
   },
   {
-    id: "wildlife-leopard-safari",
-    titleEn: "Serendib Wildlife & Elephant Gathering",
-    titleKr: "야라 표범 사파리 & 미네리야 코끼리 투어",
+    id: "wildlife-adventure",
+    titleEn: "Sri Lanka Wildlife Adventure",
+    titleKr: "스리랑카 야생 동식물 사파리 어드벤처",
     category: "Wildlife",
     duration: "7 Days / 6 Nights",
-    priceUSD: 4800,
+    priceUSD: 4200,
+    idealForEn: "Nature enthusiasts and wildlife photographers",
+    idealForKr: "자연 애호가 및 야생 사진작가",
     image: SRI_LANKA_IMAGES.yalaLeopard,
     gallery: [
       SRI_LANKA_IMAGES.yalaLeopard,
       SRI_LANKA_IMAGES.asianElephant
     ],
-    locations: ["Wilpattu", "Minneriya", "Yala", "Bentota"],
+    locations: ["Wilpattu", "Minneriya", "Yala", "Udawalawe"],
     hotels: ["A luxury glamping lodge", "Chena Huts by Uga Escapes", "Wild Coast Tented Lodge"],
-    descriptionEn: "Private 4x4 safari adventures tracking the densest leopard population in the world, sloth bears, wild asian elephants, and blue whales.",
-    descriptionKr: "세계 최대 밀도의 스리랑카 표범, 아시아 코끼리, 야생 곰, 대왕고래를 탐험하는 프라이빗 4x4 와일드 사파리 여행입니다.",
-    highlightsEn: ["Private 4x4 Land Cruiser Safaris", "Expert Naturalist Guide", "Oceanfront Luxury Glamping", "Whale charter"],
-    highlightsKr: ["프라이빗 4x4 랜드크루저 사파리", "전담 자연학자 가이드", "해안가 럭셔리 글램핑", "대왕고래 관람 요트"],
+    descriptionEn: "An immersive journey through Sri Lanka's premier national parks, tracking elusive leopards, wild elephant herds, sloth bears, and rare endemic bird species with expert naturalists.",
+    descriptionKr: "스리랑카 4대 국립공원을 무대로 세계 최대 밀도의 표범, 아시아 코끼리 군집, 야생 곰, 희귀 조류를 수석 자연학자와 함께 탐험하는 사파리 패키지입니다.",
+    highlightsEn: [
+      "Wilpattu National Park safari (dense forest & lakes)",
+      "Minneriya Elephant Gathering (seasonal spectacle)",
+      "Yala National Park safari (highest leopard density)",
+      "Udawalawe Elephant Transit Home visit",
+      "Guided birdwatching & wildlife photography"
+    ],
+    highlightsKr: [
+      "윌파투 국립공원 사파리 (자연 호수와 야생동물)",
+      "미네리야 코끼리 대군집 관람 (계절별 장관)",
+      "야라 국립공원 사파리 (세계 최대 표범 밀도)",
+      "우다왈라웨 코끼리 보호 센터 방문",
+      "수석 가이드 동행 조망 및 야생 사진 촬영"
+    ],
     itineraryEn: [
-      { day: 1, title: "Colombo to Wilpattu Safari Park", desc: "Private luxury Land Cruiser transfer. Afternoon tracking wild leopards." },
-      { day: 2, title: "Minneriya Elephant Gathering", desc: "Witness hundreds of wild Asian elephants gathered by Ancient Tank water." },
-      { day: 3, title: "Transfer to Yala National Park", desc: "Check-in at Wild Coast Tented Lodge cocoon suite." },
-      { day: 4, title: "Exclusive Leopard Tracking Safari", desc: "Full day 4x4 land cruiser safari with chief wildlife naturalist." },
-      { day: 5, title: "Private Catamaran Whale Cruise", desc: "Mirissa blue whale watching charter with private marine biologist." },
-      { day: 6, title: "Bentota Riviera & Ayurveda Spa", desc: "Relaxation at oceanfront luxury villa with thermal massage." },
-      { day: 7, title: "VIP Airport Departure", desc: "Luxury chauffeur transfer with airport lounge fast-track." }
+      { day: 1, title: "Arrival & Transfer to Wilpattu National Park", desc: "Private 4x4 Land Cruiser transfer to Wilpattu wilderness lodge." },
+      { day: 2, title: "Wilpattu Lakes & Leopard Safari", desc: "Morning and afternoon safari tracking sloth bears, deer, and leopards." },
+      { day: 3, title: "Minneriya Elephant Gathering Safari", desc: "Drive to Minneriya to witness hundreds of wild Asian elephants." },
+      { day: 4, title: "Transfer to Yala National Park", desc: "Check-in at Wild Coast Tented Lodge oceanfront cocoon suite." },
+      { day: 5, title: "Full-Day Yala Game Safari", desc: "Dedicated 4x4 safari with chief wildlife naturalist guide." },
+      { day: 6, title: "Udawalawe Elephant Transit Home & Birdwatching", desc: "Morning visit to elephant rehab center followed by wetland birdwatching." },
+      { day: 7, title: "VIP Airport Departure", desc: "Private chauffeur transfer to Colombo BIA Airport." }
     ],
     itineraryKr: [
-      { day: 1, title: "콜롬보 - 윌파투 국립공원 이동", desc: "프라이빗 랜드크루저 이동 후 오후 표범 사파리." },
-      { day: 2, title: "미네리야 코끼리 군집 사파리", desc: "수백 마리의 야생 아시아 코끼리 장관 관찰." },
-      { day: 3, title: "야라 와일드 코스트 입실", desc: "인도양 코쿤 텐트 스위트룸 체크인." },
-      { day: 4, title: "수석 자연학자 표범 사파리", desc: "1:1 전담 수석 자연학자 동행 표범 탐험." },
-      { day: 5, title: "미릿사 대왕고래 카타마란 요트", desc: "해양 생물학자 동행 프라이빗 대왕고래 탐사." },
-      { day: 6, title: "벤토타 리비에라 & 아유르베다 스파", desc: "해안가 럭셔리 빌라 투숙 및 온열 아유르베다." },
-      { day: 7, title: "VIP 의전 출국", desc: "공항 패스트트랙 및 전용 쇼퍼 출국 의전." }
+      { day: 1, title: "입국 & 윌파투 국립공원 이동", desc: "프라이빗 4x4 전용 차량으로 윌파투 로지 이동." },
+      { day: 2, title: "윌파투 호수 & 표범 사파리", desc: "오전/오후 지프 사파리로 야생 곰, 사슴, 표범 탐험." },
+      { day: 3, title: "미네리야 코끼리 대군집 사파리", desc: "수백 마리의 야생 아시아 코끼리가 집결하는 미네리야 탐험." },
+      { day: 4, title: "야라 국립공원 이동 & 코쿤 텐트 체크인", desc: "야라 와일드 코스트 최고급 글램핑 입실." },
+      { day: 5, title: "야라 국립공원 전일 표범 탐험", desc: "1:1 수석 자연학자 동행 표범 중심 사파리." },
+      { day: 6, title: "우다왈라웨 코끼리 재활 센터 & 조류 탐사", desc: "어린 코끼리 보호소 방문 및 습지 조류 관찰." },
+      { day: 7, title: "VIP 출국 의전", desc: "콜롬보 공항 전용 쇼퍼 차량 출국 이동." }
     ],
-    includedEn: ["Private 4x4 Land Cruiser Safaris", "Expert Naturalists", "Oceanfront Glamping Suites", "Whale Catamaran Charter"],
-    includedKr: ["전 일정 프라이빗 4x4 사파리", "전담 수석 자연학자", "해안가 글램핑 스위트", "대왕고래 프라이빗 요트"]
+    includedEn: [
+      "Luxury wilderness glamping lodge stays",
+      "Private 4x4 Land Cruiser safaris",
+      "Expert wildlife naturalist guides",
+      "All national park permits & fees",
+      "Private luxury transport"
+    ],
+    includedKr: [
+      "최고급 럭셔리 사파리 글램핑 로지 숙박",
+      "전 일정 프라이빗 4x4 랜드크루저 지프",
+      "전담 수석 야생동물 자연학자 가이드",
+      "모든 국립공원 입장 허가권 및 세금 포함",
+      "전 일정 프라이빗 럭셔리 수송"
+    ]
+  },
+  {
+    id: "cultural-heritage",
+    titleEn: "Cultural Heritage Journey",
+    titleKr: "스리랑카 찬란한 문화 유산 여정",
+    category: "Culture",
+    duration: "7 Days / 6 Nights",
+    priceUSD: 3800,
+    idealForEn: "History lovers and cultural travelers",
+    idealForKr: "역사, 유네스코 유적지 및 문화 탐방객",
+    image: SRI_LANKA_IMAGES.sigiriyaCitadel,
+    gallery: [
+      SRI_LANKA_IMAGES.sigiriyaCitadel,
+      SRI_LANKA_IMAGES.kandyLake
+    ],
+    locations: ["Anuradhapura", "Mihintale", "Sigiriya", "Polonnaruwa", "Dambulla", "Kandy"],
+    hotels: ["Uga Ulagalla", "Water Garden Sigiriya", "The Kingsbury Kandy"],
+    descriptionEn: "Travel back through 2,500 years of royal Sri Lankan history across ancient sacred capitals, rock fortresses, golden cave temples, and authentic village traditions.",
+    descriptionKr: "2,500년 역사의 왕실 수사 고대 도시, 암사원 요새, 황금 동굴 사원, 불교 성지 캔디를 탐방하는 영감 깊은 문화 유산 여정입니다.",
+    highlightsEn: [
+      "Anuradhapura ancient sacred city",
+      "Mihintale sacred site (cradle of Buddhism)",
+      "Sigiriya Rock Fortress UNESCO climb",
+      "Polonnaruwa royal ancient city ruins",
+      "Dambulla Cave Temple golden caves",
+      "Kandy city tour & Temple of the Tooth",
+      "Traditional village tour & authentic Sri Lankan lunch",
+      "Cultural dance performance & Gem museum visit"
+    ],
+    highlightsKr: [
+      "아누라다푸라 고대 성도 유적지 탐방",
+      "미힌탈레 불교 발상지 성지 방문",
+      "시기리야 암사원 바위 요새 등반",
+      "폴론나루와 왕실 고대 도시 유적",
+      "담불라 황금 동굴 사원 관람",
+      "캔디 시티 투어 및 부처님 치아 사원",
+      "전통 마을 방문 및 정통 스리랑카 오가닉 런치",
+      "캔디 전통 댄스 공연 & 보석 박물관 관람"
+    ],
+    itineraryEn: [
+      { day: 1, title: "Arrival & Transfer to Anuradhapura Ancient City", desc: "Private luxury chauffeur drive to ancient royal capital Anuradhapura." },
+      { day: 2, title: "Anuradhapura Sacred Stupas & Mihintale Sanctuary", desc: "Guided tour of Sri Maha Bodhi tree, Ruwanwelisaya stupa, and Mihintale." },
+      { day: 3, title: "Sigiriya Rock Fortress & Village Culinary Experience", desc: "Morning climb of Lion Rock citadel, followed by authentic village lunch." },
+      { day: 4, title: "Polonnaruwa Royal Ruins & Parakrama Reservoir", desc: "Explore 12th-century royal palace, Gal Vihara stone Buddhas, and ancient engineering." },
+      { day: 5, title: "Dambulla Cave Temple & Transfer to Kandy", desc: "Tour UNESCO cave murals in Dambulla before driving to hill capital Kandy." },
+      { day: 6, title: "Kandy Sacred Tooth Relic Temple & Cultural Show", desc: "Private docent tour of Temple of the Tooth, afternoon Kandyan cultural dance." },
+      { day: 7, title: "Gem Museum Tour & VIP Airport Departure", desc: "Visit Ceylon gem heritage gallery before private chauffeur transfer to airport." }
+    ],
+    itineraryKr: [
+      { day: 1, title: "입국 & 아누라다푸라 고대 성도 이동", desc: "콜롬보 도착 후 고대 왕도 아누라다푸라로 의전 이동." },
+      { day: 2, title: "아누라다푸라 대탑 & 미힌탈레 성지", desc: "스리 마하 보디 나무 및 미힌탈레 불교 성지 관람." },
+      { day: 3, title: "시기리야 바위 요새 & 전통 마을 런치", desc: "시기리야 암사원 등반 후 전통 유기농 마을 오가닉 런치." },
+      { day: 4, title: "폴론나루와 고대 왕궁 유적", desc: "12세기 석굴 불상 갈 비하라 및 왕궁 유적 탐방." },
+      { day: 5, title: "담불라 동굴 사원 & 캔디 이동", desc: "담불라 황금 동굴 사원 벽화 관람 후 캔디 이동." },
+      { day: 6, title: "캔디 불치사 & 전통 댄스 공연", desc: "부처님 치아 사원 전용 도슨트 관람 및 캔디언 댄스 관람." },
+      { day: 7, title: "보석 박물관 & VIP 출국 의전", desc: "실론 보석 박물관 관람 후 공항 샌딩." }
+    ],
+    includedEn: [
+      "Heritage boutique hotel stays",
+      "Private chauffeur-driven luxury vehicle",
+      "All heritage site admission tickets",
+      "Traditional village lunch experience",
+      "Daily breakfast"
+    ],
+    includedKr: [
+      "부티크 헤리티지 호텔 투숙",
+      "전 일정 프라이빗 전용 럭셔리 차량",
+      "모든 유네스코 유적지 및 박물관 입장권",
+      "전통 마을 오가닉 런치 체험",
+      "전 일정 조식 포함"
+    ]
+  },
+  {
+    id: "romantic-honeymoon",
+    titleEn: "Romantic Honeymoon in Paradise",
+    titleKr: "스리랑카 로맨틱 허니문 인 파라다이스",
+    category: "Honeymoon",
+    duration: "8 Days / 7 Nights",
+    priceUSD: 4900,
+    idealForEn: "Newlyweds and anniversary celebrations",
+    idealForKr: "신혼부부 및 기념일 특별 여행객",
+    image: SRI_LANKA_IMAGES.bentotaBeach,
+    gallery: [
+      SRI_LANKA_IMAGES.bentotaBeach,
+      SRI_LANKA_IMAGES.nineArchBridge,
+      SRI_LANKA_IMAGES.catamaranYacht
+    ],
+    locations: ["Colombo", "Tea Country", "Ella", "Bentota", "Mirissa"],
+    hotels: ["Cape Weligama", "Ceylon Tea Trails", "Anantara Peace Haven Tangalle"],
+    descriptionEn: "An enchanting tropical sanctuary crafted for couples, combining beachfront private villas, candlelit oceanfront dining, scenic train journeys, and signature couple’s Ayurveda spa treatments.",
+    descriptionKr: "인도양 오션뷰 프라이빗 빌라, 해변 촛불 디너, 고원 낭만 열차 여행 및 부부 전용 아유르베다 스파가 포함된 로맨틱 허니문 패키지입니다.",
+    highlightsEn: [
+      "Private beachfront candlelight dining experience",
+      "Luxury beachfront resort stay with private plunge pool",
+      "Scenic mountain train journey in private carriage",
+      "Rejuvenating couple’s Ayurveda spa treatment",
+      "Private sunset ocean catamaran cruise",
+      "Professional honeymoon photography session"
+    ],
+    highlightsKr: [
+      "프라이빗 해변 촛불 로맨틱 디너 연출",
+      "개인 풀빌라 럭셔리 비치 리조트 투숙",
+      "고원 산악 낭만 열차 여행",
+      "커플 전담 아유르베다 스파 테라피",
+      "프라이빗 선셋 인도양 요트 크루즈",
+      "전문 스냅 작가 허니문 포토 세션"
+    ],
+    itineraryEn: [
+      { day: 1, title: "VIP Arrival & Luxury Suite Check-In", desc: "Champagne welcome upon arrival, luxury chauffeur transfer to romantic suite." },
+      { day: 2, title: "Highland Journey to Ceylon Tea Trails", desc: "Travel to romantic tea country, private high tea overlooking misty lake." },
+      { day: 3, title: "Observation Train Journey & Honeymoon Photos", desc: "Scenic mountain train trip to Ella with private photography session." },
+      { day: 4, title: "Transfer to South Coast Ocean Villa", desc: "Check-in at luxury beachfront resort with private plunge pool." },
+      { day: 5, title: "Rejuvenating Couple's Ayurveda Spa", desc: "Full-day couple's wellness ritual with herbal oil baths." },
+      { day: 6, title: "Private Sunset Yacht Cruise & Champagne", desc: "Private catamaran charter into the Indian Ocean for sunset views." },
+      { day: 7, title: "Private Candlelight Beach Dining", desc: "Tailored multi-course seafood dinner served right on the beach." },
+      { day: 8, title: "VIP Departure", desc: "Leisure morning before luxury chauffeur airport transfer." }
+    ],
+    itineraryKr: [
+      { day: 1, title: "VIP 입국 & 럭셔리 스위트 입실", desc: "공항 샴페인 맞이 의전 후 허니문 스위트룸 체크인." },
+      { day: 2, title: "실론 티 트레일즈 고원 이동", desc: "낭만적인 차밭 고원으로 이동하여 에메랄드 호수 뷰 애프터눈 티." },
+      { day: 3, title: "낭만 고원 열차 & 허니문 스냅 촬영", desc: "엘라 구간 프라이빗 열차 탑승 및 전문 작가 스냅 촬영." },
+      { day: 4, title: "남해안 풀빌라 리조트 체크인", desc: "인도양 오션뷰 프라이빗 풀빌라 입실." },
+      { day: 5, title: "커플 전용 아유르베다 스파", desc: "천연 오일 수치료 및 부부 전용 웰니스 리추얼." },
+      { day: 6, title: "프라이빗 선셋 요트 크루즈", desc: "인도양 석양을 감상하는 전용 카타마란 세일링." },
+      { day: 7, title: "프라이빗 캔들라이트 비치 디너", desc: "해변가에서 펼쳐지는 최고급 해산물 멀티코스 디너." },
+      { day: 8, title: "VIP 의전 출국", desc: "리조트 조식 후 공항 샌딩 의전." }
+    ],
+    includedEn: [
+      "Luxury 5-star honeymoon suites",
+      "Private candlelight beach dinner",
+      "Couple's spa session",
+      "Private luxury transport",
+      "Champagne welcome upon arrival"
+    ],
+    includedKr: [
+      "5성급 럭셔리 허니문 풀빌라/스위트룸",
+      "해변가 프라이빗 촛불 디너 포함",
+      "커플 전용 아유르베다 스파 케어",
+      "전 일정 프라이빗 럭셔리 전용 차량",
+      "공항 입국 샴페인 웰컴 세트"
+    ]
+  },
+  {
+    id: "family-discovery",
+    titleEn: "Family Discovery Tour",
+    titleKr: "스리랑카 패밀리 디스커버리 투어",
+    category: "Family",
+    duration: "9 Days / 8 Nights",
+    priceUSD: 5200,
+    idealForEn: "Families with children of all age groups",
+    idealForKr: "전 연령대 자녀 동반 가족 여행객",
+    image: SRI_LANKA_IMAGES.asianElephant,
+    gallery: [
+      SRI_LANKA_IMAGES.asianElephant,
+      SRI_LANKA_IMAGES.nineArchBridge,
+      SRI_LANKA_IMAGES.bentotaBeach
+    ],
+    locations: ["Colombo", "Pinnawala", "Sigiriya", "Kandy", "Yala", "Galle", "Bentota"],
+    hotels: ["Shangri-La Hambantota", "Water Garden Sigiriya", "Cinnamon Bentota Beach"],
+    descriptionEn: "A fun-filled, safe, and educational family adventure connecting elephant sanctuaries, mangrove boat safaris, ancient castles, scenic trains, and water sports.",
+    descriptionKr: "코끼리 고아원, 마두강 맹그로브 사파리, 시기리야 요새, 산악 열차, 해변 워터 스포츠가 결합된 전 연령대 자녀 동반 가족 맞춤 투어입니다.",
+    highlightsEn: [
+      "Pinnawala Elephant Orphanage experience",
+      "Sea turtle hatchery sanctuary visit",
+      "Madu River boat safari through mangroves",
+      "Yala National Park family safari",
+      "Galle Fort historic rampart walk",
+      "Beach leisure activities & water sports",
+      "Scenic mountain train journey"
+    ],
+    highlightsKr: [
+      "핀나왈라 코끼리 고아원 목욕 관람",
+      "바다거북 부화장 및 보호 센터 방문",
+      "마두강 맹그로브 보트 사파리",
+      "야라 국립공원 가족 전용 지프 사파리",
+      "갈레 요새 성벽 역사 탐방",
+      "해변 워터 스포츠 & 수상 액티비티",
+      "파노라마 고원 산악 열차 여행"
+    ],
+    itineraryEn: [
+      { day: 1, title: "Colombo Arrival & Spacious Van Transfer", desc: "VIP airport pick-up with spacious luxury family van." },
+      { day: 2, title: "Pinnawala Elephants & Sigiriya Arrival", desc: "Watch elephants bathing in river before driving to Sigiriya." },
+      { day: 3, title: "Sigiriya Citadel & Family Village Tour", desc: "Easy climb of Sigiriya Fortress and bullock cart village adventure." },
+      { day: 4, title: "Kandy Cultural Center & Scenic Train Ride", desc: "Visit Kandy lake and board the mountain train to tea country." },
+      { day: 5, title: "Highland Tea Country & Waterfall Walk", desc: "Family walk to St. Clair waterfalls and fresh tea tasting." },
+      { day: 6, title: "Yala National Park Family Safari", desc: "Private 4x4 safari tracking elephants, leopards, and crocodiles." },
+      { day: 7, title: "Turtle Sanctuary & Madu River Boat Safari", desc: "Explore mangrove islands and baby sea turtle sanctuary." },
+      { day: 8, title: "Bentota Beach Water Sports & Leisure", desc: "Enjoy banana boat, jet skis, and resort beach pool relaxation." },
+      { day: 9, title: "VIP Airport Transfer & Departure", desc: "Private transfer to Colombo BIA Airport." }
+    ],
+    itineraryKr: [
+      { day: 1, title: "콜롬보 도착 & 대형 럭셔리 밴 이동", desc: "가족 전용 대형 럭셔리 밴 차량 픽업." },
+      { day: 2, title: "핀나왈라 코끼리 관람 & 시기리야 이동", desc: "강가에서 강수욕하는 코끼리 관람 후 이동." },
+      { day: 3, title: "시기리야 바위 요새 & 전통 마차 체험", desc: "시기리야 탐험 및 가족 우마차 마을 체험." },
+      { day: 4, title: "캔디 문화 탐방 & 산악 열차 탑승", desc: "캔디 호수 관람 후 고원 산악 열차 여정." },
+      { day: 5, title: "고원 차밭 & 폭포 산책", desc: "세인트 클레어 폭포 산책 및 실론 차 체험." },
+      { day: 6, title: "야라 국립공원 가족 사파리", desc: "전용 지프 차량으로 코끼리, 표범, 악어 탐험." },
+      { day: 7, title: "바다거북 보호소 & 마두강 보트 사파리", desc: "맹그로브 섬 보트 사파리 및 바다거북 관람." },
+      { day: 8, title: "벤토타 해변 워터 스포츠 & 리조트 휴양", desc: "제트스키, 바나나보트 및 수영장 휴식." },
+      { day: 9, title: "VIP 출국 의전", desc: "공항 전용 밴 차량 샌딩." }
+    ],
+    includedEn: [
+      "Family-friendly luxury suites/villas",
+      "Private spacious minivan with chauffeur",
+      "Child-friendly activities & entries",
+      "Daily breakfast",
+      "Dedicated family concierge support"
+    ],
+    includedKr: [
+      "가족 전용 럭셔리 커넥팅 스위트/빌라",
+      "대형 프라이빗 전용 밴 및 쇼퍼 가이드",
+      "어린이 맞춤 액티비티 및 입장권 포함",
+      "전 일정 조식 제공",
+      "24시간 가족 전담 콘시어지 지원"
+    ]
+  },
+  {
+    id: "wellness-ayurveda",
+    titleEn: "Wellness & Ayurveda Retreat",
+    titleKr: "로열 아유르베다 & 웰니스 리트릿",
+    category: "Ayurveda",
+    duration: "10 Days / 9 Nights",
+    priceUSD: 5400,
+    idealForEn: "Guests seeking relaxation, healing, and rejuvenation",
+    idealForKr: "휴식, 심신 치유 및 리프레시를 원하는 고객",
+    image: SRI_LANKA_IMAGES.highlandTeaEstate,
+    gallery: [
+      SRI_LANKA_IMAGES.highlandTeaEstate,
+      SRI_LANKA_IMAGES.kandyLake
+    ],
+    locations: ["Kandy", "Nuwara Eliya", "Bentota"],
+    hotels: ["Santani Wellness Resort", "Ceylon Tea Trails", "Saman Villas Bentota"],
+    descriptionEn: "A transformative 10-day holistic sanctuary offering daily authentic Ayurvedic doctor treatments, organic farm-to-table dining, mountain yoga, and beachside thermal baths.",
+    descriptionKr: "전담 아유르베다 전문의 체질 진단을 바탕으로 일일 천연 오일 마사지, 운무 요가, 오가닉 웰니스 식단이 제공되는 최고급 치유 리트릿입니다.",
+    highlightsEn: [
+      "Daily Ayurveda treatments & doctor consultations",
+      "Guided sunrise yoga sessions overlooking misty mountains",
+      "Guided meditation & mindfulness practices",
+      "Healthy organic wellness cuisine (customized diet)",
+      "Nature walks & herbal garden discovery",
+      "Beachside relaxation & thermal water therapy"
+    ],
+    highlightsKr: [
+      "전담 아유르베다 전문의 1:1 진단 및 일일 스파 케어",
+      "운무 산맥 전경의 일출 정통 요가 세션",
+      "명상 및 마인드풀니스 클래스",
+      "맞춤형 유기농 오가닉 웰니스 파인 다이닝",
+      "약초 원림 탐방 및 자연 산책",
+      "해안가 온열 치료 & 프라이빗 스파"
+    ],
+    itineraryEn: [
+      { day: 1, title: "Arrival & Transfer to Santani Wellness Resort", desc: "Private chauffeur transfer to mountain sanctuary Santani Kandy." },
+      { day: 2, title: "Ayurvedic Physician Diagnosis & First Treatment", desc: "Personal consultation, dosha diagnosis, herbal oil bath therapy." },
+      { day: 3, title: "Sunrise Yoga & Detoxifying Shirodhara Massage", desc: "Early morning mountain yoga session followed by warm oil Shirodhara treatment." },
+      { day: 4, title: "Herbal Garden Walk & Mindfulness Meditation", desc: "Discover ancient Sri Lankan healing herbs with resident herbalist doctor." },
+      { day: 5, title: "Highland Transfer to Tea Estate Sanctuary", desc: "Travel to Ceylon Tea Trails for fresh mountain air and organic dining." },
+      { day: 6, title: "High Altitude Forest Bathing & Body Rituals", desc: "Gentle nature walk through tea fields followed by deep tissue herbal wrap." },
+      { day: 7, title: "Coastal Transfer to Saman Villas Bentota", desc: "Drive to oceanfront luxury villa for coastal thermal therapy." },
+      { day: 8, title: "Oceanfront Thermal Bath & Sound Healing", desc: "Warm seawater hydrotherapy and sunset sound bowl meditation." },
+      { day: 9, title: "Final Rejuvenation Ritual & Detox Feast", desc: "Full-body abhyanga massage and celebratory organic dinner." },
+      { day: 10, title: "VIP Departure", desc: "Leisure morning before private chauffeur airport transfer." }
+    ],
+    itineraryKr: [
+      { day: 1, title: "입국 & 산타니 웰니스 리조트 이동", desc: "캔디 고원 지대 웰니스 사원 산타니로 이동." },
+      { day: 2, title: "아유르베다 전문의 체질 진단 & 1차 치료", desc: "1:1 진단을 통한 도샤 체질 분류 및 천연 오일 수치료." },
+      { day: 3, title: "일출 요가 & 시로다라 온열 오일 마사지", desc: "너클스 산맥 일출 요가 후 시로다라 두피 테라피." },
+      { day: 4, title: "약초 원림 산책 & 마인드풀니스 명상", desc: "전문의 동행 스리랑카 전통 약초 원림 탐방." },
+      { day: 5, title: "차밭 고원 지대 이동 & 오가닉 식단", desc: "실론 티 트레일즈로 이동하여 유기농 웰니스 다이닝." },
+      { day: 6, title: "고원 산림욕 & 아유르베다 바디 바스", desc: "차밭 산림욕 및 허브 보디 랩 마사지." },
+      { day: 7, title: "남해안 사만 빌라 이동", desc: "벤토타 해안가 럭셔리 빌라 체크인." },
+      { day: 8, title: "해안 온열 테라피 & 사운드 힐링", desc: "해수 온열 수치료 및 싱잉볼 사운드 명상." },
+      { day: 9, title: "마지막 리프레시 리추얼 & 데톡스 피스트", desc: "전신 아비양가 마사지 및 유기농 파인 다이닝." },
+      { day: 10, title: "VIP 출국 의전", desc: "공항 전용 차량 이동 후 출국." }
+    ],
+    includedEn: [
+      "Ayurvedic doctor consultation & customized plan",
+      "Daily spa & oil therapies",
+      "Full board organic wellness meals",
+      "Yoga & meditation equipment",
+      "Luxury wellness resort lodging"
+    ],
+    includedKr: [
+      "아유르베다 전문의 1:1 진단 및 맞춤 케어",
+      "전 일정 일일 럭셔리 스파 & 오일 마사지",
+      "전 일정 맞춤형 오가닉 웰니스 풀보드 식단",
+      "요가 & 명상 전용 장비 지원",
+      "5성급 웰니스 리조트 전 일정 숙박"
+    ]
+  },
+  {
+    id: "luxury-beach",
+    titleEn: "Luxury Beach Holiday",
+    titleKr: "스리랑카 럭셔리 휴양지 비치 홀리데이",
+    category: "Beach",
+    duration: "7 Days / 6 Nights",
+    priceUSD: 4100,
+    idealForEn: "Beach lovers and tropical leisure travelers",
+    idealForKr: "해변 휴양, 요트 및 워터 스포츠 선호 여행객",
+    image: SRI_LANKA_IMAGES.bentotaBeach,
+    gallery: [
+      SRI_LANKA_IMAGES.bentotaBeach,
+      SRI_LANKA_IMAGES.catamaranYacht
+    ],
+    locations: ["Bentota", "Mirissa", "Weligama", "Tangalle"],
+    hotels: ["Cape Weligama", "Anantara Peace Haven Tangalle", "Cinnamon Bentota Beach"],
+    descriptionEn: "Unwind along Sri Lanka's finest tropical coastlines featuring 5-star oceanfront resorts, blue whale watching charters, sunset seafood dining, water sports, and beach spa bliss.",
+    descriptionKr: "벤토타, 미릿사, 웰리 가마, 탕갈레로 이어지는 에메랄드 인도양 해안 라인에서 대왕고래 관찰, 요트 크루즈, 시푸드 다이닝을 즐기는 휴양 패키지입니다.",
+    highlightsEn: [
+      "Bentota, Mirissa, Weligama & Tangalle coastlines",
+      "Whale watching ocean charter (seasonal)",
+      "Water sports activities (jet ski, surfing, snorkeling)",
+      "Sunset ocean catamaran cruises",
+      "Fine seafood oceanfront dining",
+      "Spa and wellness ocean treatments"
+    ],
+    highlightsKr: [
+      "벤토타, 미릿사, 웰리가마, 탕갈레 4대 대표 해변 탐방",
+      "대왕고래 관측 카타마란 프라이빗 요트 투어",
+      "제트스키, 서핑, 스노클링 등 수상 액티비티",
+      "인도양 석양 세일링 요트 크루즈",
+      "최고급 프라이빗 신선 해산물 파인 다이닝",
+      "해안가 럭셔리 5성급 리조트 스파"
+    ],
+    itineraryEn: [
+      { day: 1, title: "Arrival & Coastal Chauffeur Drive to Bentota", desc: "Private luxury chauffeur transfer straight to oceanfront resort." },
+      { day: 2, title: "Bentota Golden Beach & Water Sports", desc: "Full day of jet skiing, windsurfing, or private beach lounge relaxation." },
+      { day: 3, title: "Transfer to Cape Weligama Ocean Cliff Resort", desc: "Scenic coastal drive, check-in at cliffside infinity pool resort." },
+      { day: 4, title: "Mirissa Blue Whale Watching Catamaran Cruise", desc: "Early morning private yacht charter to spot blue whales and dolphins." },
+      { day: 5, title: "Weligama Surf Bay & Seafood Sunset Dining", desc: "Private surfing lesson or beach club relaxing followed by lobster dinner." },
+      { day: 6, title: "Tangalle Cove Relaxation & Spa Ritual", desc: "Day at secluded Tangalle beach cove with oceanfront spa treatments." },
+      { day: 7, title: "VIP Airport Departure", desc: "Leisure morning before luxury chauffeur airport transfer." }
+    ],
+    itineraryKr: [
+      { day: 1, title: "입국 & 벤토타 해안 의전 이동", desc: "공항 도착 후 최고급 차량으로 해안가 리조트 체크인." },
+      { day: 2, title: "벤토타 골든 비치 & 수상 액티비티", desc: "제트스키, 윈드서핑 또는 카바나 카바나 휴식." },
+      { day: 3, title: "케이프 웰리가마 절벽 리조트 입실", desc: "인도양 절벽 전경의 인피니티 풀 리조트 입실." },
+      { day: 4, title: "미릿사 대왕고래 프라이빗 요트 세일링", desc: "전용 카타마란 요트로 대왕고래 및 돌고래 관람." },
+      { day: 5, title: "웰리가마 서핑 베이 & 바비큐 시푸드 디너", desc: "서핑 레슨 후 갓 잡은 랍스터 디너 뷔페." },
+      { day: 6, title: "탕갈레 은밀한 코브 휴양 & 스파 케어", desc: "프라이빗 해변 코브에서 하루 종일 스파 & 휴식." },
+      { day: 7, title: "VIP 의전 출국", desc: "리조트 조식 후 공항 샌딩 의전." }
+    ],
+    includedEn: [
+      "Luxury 5-star beachfront resort stays",
+      "Private luxury airport & coastal transfers",
+      "Whale watching tickets",
+      "Daily breakfast & seafood dinner credit",
+      "Water sports access"
+    ],
+    includedKr: [
+      "5성급 럭셔리 해안 오션뷰 리조트 투숙",
+      "전 일정 프라이빗 공항/해안 이동 의전 차량",
+      "대왕고래 관찰 카타마란 요트 티켓",
+      "전 일정 조식 & 최고급 해산물 디너 지원",
+      "수상 액티비티 이용권 포함"
+    ]
+  },
+  {
+    id: "tailor-made",
+    titleEn: "Tailor-Made Sri Lanka Experience",
+    titleKr: "100% 맞춤형 스리랑카 비스포크 트래블",
+    category: "TailorMade",
+    duration: "Flexible",
+    priceUSD: 0,
+    idealForEn: "Travelers seeking a fully customized bespoke journey",
+    idealForKr: "나만의 100% 맞춤 일정을 원하는 고객",
+    image: SRI_LANKA_IMAGES.helicopter,
+    gallery: [
+      SRI_LANKA_IMAGES.helicopter,
+      SRI_LANKA_IMAGES.catamaranYacht
+    ],
+    locations: ["Custom Locations Across Sri Lanka"],
+    hotels: ["Tailored 5-Star Hotels & Relais & Châteaux Properties"],
+    descriptionEn: "Every traveler is unique. Our executive travel specialists design 100% customized luxury itineraries based on your exact travel dates, budget, personal interests, group size, golf, wildlife, or wellness preferences.",
+    descriptionKr: "고객 단 한 분만을 위해 일자, 예산, 관심사(골프, 사파리, 웰니스, 비치), 그룹 인원, 럭셔리 등급에 맞춰 100% 프라이빗 비스포크 투어를 설계해 드립니다.",
+    highlightsEn: [
+      "Travel dates & duration flexibility",
+      "Tailored to your exact budget & luxury preferences",
+      "Customized for personal interests (golf, wildlife, culture, beach)",
+      "Group or family size adaptations (VIP couples to multi-gen families)",
+      "Helicopter charters, private yachts & luxury chauffeur vehicle options",
+      "Personalized culinary & accommodation selections"
+    ],
+    highlightsKr: [
+      "원하는 일정 및 여행 기간 100% 자유 지정",
+      "고객 맞춤형 예산 및 럭셔리 등급 설정",
+      "관심 분야(골프, 사파리, 문화 유적, 비치) 자유 조합",
+      "커플, 가족, 대규모 VIP 동호회 맞춤 커스텀",
+      "헬리콥터, 요트, 럭셔리 의전 차량 옵션 제공",
+      "맞춤형 다이닝 및 선호 5성급 리조트 지정"
+    ],
+    itineraryEn: [
+      { day: 1, title: "1:1 Dedicated Concierge Consultation", desc: "Speak directly with our Executive Concierge to outline your dream Sri Lanka travel style." },
+      { day: 2, title: "Bespoke Itinerary & Accommodation Drafting", desc: "Receive a tailored day-by-day plan with helicopter, resort, and activity options." },
+      { day: 3, title: "Unlimited Revisions & Confirmation", desc: "Fine-tune every detail until your itinerary is 100% perfect." },
+      { day: 4, title: "Seamless Execution & 24/7 Guest Support", desc: "Experience Sri Lanka with white-glove VIP precision and continuous concierge care." }
+    ],
+    itineraryKr: [
+      { day: 1, title: "1:1 전담 콘시어지 맞춤 상담", desc: "전문 트래블 스페셜리스트와 1:1 상담을 통해 원하는 여행 스타일 조율." },
+      { day: 2, title: "비스포크 일정 및 숙소 1차 제안서 구성", desc: "헬리콥터, 리조트, 골프, 사파리가 포함된 맞춤형 제안서 발송." },
+      { day: 3, title: "무제한 일정 수정 및 완벽 확정", desc: "고객님의 만족할 때까지 일정, 숙소, 차량 100% 피드백 반영." },
+      { day: 4, title: "24시간 VIP 의전 케어 및 완벽한 여정", desc: "전 일정 100% 케어 속에서 잊지 못할 럭셔리 여행 만끽." }
+    ],
+    includedEn: [
+      "1:1 Dedicated travel specialist consultation",
+      "Unlimited itinerary revisions & adjustments",
+      "Private luxury transportation",
+      "24/7 Guest concierge support"
+    ],
+    includedKr: [
+      "1:1 전담 트래블 스페셜리스트 상담",
+      "무제한 일정 수정 및 디자인 반영",
+      "전 일정 프라이빗 럭셔리 전용 수송",
+      "24시간 VIP 전담 콘시어지 밀착 케어"
+    ]
   }
 ];
 
@@ -570,7 +1060,7 @@ export const PREMIUM_SERVICES: PremiumService[] = [
     descKr: "메르세데스 벤츠 V-클래스 및 랜드크루저 전용 의전 차량과 전문 쇼퍼 서비스."
   },
   {
-    id: "service-[#C9A227]-fasttrack",
+    id: "service-[#C8A45D]-fasttrack",
     titleEn: "Airport Runway VIP Fast Track",
     titleKr: "공항 활주로 패스트트랙 입국",
     iconName: "ShieldCheck",

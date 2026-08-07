@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { cn } from '@/lib/utils';
@@ -31,7 +31,7 @@ const SRI_LANKA_GALLERY = [
 
 export function ImageGallery() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center py-12 px-4 bg-[#081B33]">
+    <div className="relative flex w-full flex-col items-center justify-center py-12 px-4 bg-[#0B1F3A]">
       <div className="mx-auto grid w-full max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {SRI_LANKA_GALLERY.map((colImages, colIndex) => (
           <div key={colIndex} className="grid gap-6">
@@ -72,11 +72,11 @@ function AnimatedImage({ alt, src, ratio, placeholder }: AnimatedImageProps) {
   };
 
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-[#C9A227]/30 hover:border-[#C9A227] transition-all shadow-xl">
+    <div className="group relative overflow-hidden rounded-2xl border border-[#C8A45D]/30 hover:border-[#C8A45D] transition-all shadow-xl">
       <AspectRatio
         ref={ref}
         ratio={ratio}
-        className="bg-[#0D2647] relative size-full rounded-2xl overflow-hidden"
+        className="bg-[#122848] relative size-full rounded-2xl overflow-hidden"
       >
         <img
           alt={alt}
@@ -91,7 +91,7 @@ function AnimatedImage({ alt, src, ratio, placeholder }: AnimatedImageProps) {
           loading="lazy"
           onError={handleError}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex items-end">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex items-end">
           <span className="font-serif text-sm font-bold text-white tracking-wide">{alt}</span>
         </div>
       </AspectRatio>

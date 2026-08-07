@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
@@ -18,18 +18,18 @@ export const FloatingWhatsApp: React.FC = () => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-[90] flex items-center gap-3 bg-[#081B33]/90 hover:bg-[#081B33] border border-[#C9A227]/50 text-white px-4 py-3 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-105 hover:border-[#C9A227] group"
+      className="fixed bottom-6 right-6 z-[90] flex items-center gap-3 bg-[#0B1F3A]/90 hover:bg-[#0B1F3A] border border-[#C8A45D]/50 text-white px-4 py-3 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-105 hover:border-[#C8A45D] group"
       aria-label="WhatsApp VIP Concierge"
     >
       <div className="relative">
         <div className="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center text-white shadow-md">
           <MessageCircle className="w-6 h-6 fill-current" />
         </div>
-        <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#C9A227] rounded-full animate-ping" />
-        <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#C9A227] rounded-full" />
+        <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#C8A45D] rounded-full animate-ping" />
+        <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#C8A45D] rounded-full" />
       </div>
       <div className="hidden sm:flex flex-col text-left">
-        <span className="text-[10px] uppercase tracking-wider text-[#C9A227] font-semibold">VIP Concierge</span>
+        <span className="text-[10px] uppercase tracking-wider text-[#C8A45D] font-semibold">VIP Concierge</span>
         <span className="text-xs font-medium tracking-wide">
           {language === 'kr' ? "WhatsApp 1:1 상담" : "Chat on WhatsApp"}
         </span>

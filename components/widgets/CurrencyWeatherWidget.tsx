@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { Sun, CloudRain, Thermometer, DollarSign, RefreshCw, Landmark } from 'lucide-react';
@@ -28,12 +28,12 @@ export const CurrencyWeatherWidget: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-[#081B33] border-y border-[#C9A227]/20 text-white">
+    <section className="py-16 bg-[#0B1F3A] border-y border-[#C8A45D]/20 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Weather Grid (LG: 7 Cols) */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="flex items-center gap-2 text-[#C9A227] text-xs font-semibold uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider">
               <Thermometer className="w-4 h-4" />
               {language === 'kr' ? "스리랑카 실시간 여행지 기후" : "Live Sri Lanka Destination Weather"}
             </div>
@@ -47,13 +47,13 @@ export const CurrencyWeatherWidget: React.FC = () => {
                 return (
                   <div
                     key={idx}
-                    className="bg-[#0D2647] border border-[#C9A227]/30 rounded-xl p-4 text-center hover:border-[#C9A227] transition-all group"
+                    className="bg-[#122848] border border-[#C8A45D]/30 rounded-xl p-3 sm:p-4 text-center hover:border-[#C8A45D] transition-all group"
                   >
-                    <Icon className="w-6 h-6 text-[#C9A227] mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                    <Icon className="w-6 h-6 text-[#C8A45D] mx-auto mb-2 group-hover:scale-110 transition-transform" />
                     <div className="text-sm font-bold font-serif text-white">
                       {language === 'kr' ? item.cityKr : item.cityEn}
                     </div>
-                    <div className="text-xl font-bold text-[#C9A227] my-1">{item.temp}</div>
+                    <div className="text-xl font-bold text-[#C8A45D] my-1">{item.temp}</div>
                     <div className="text-[11px] text-gray-300">
                       {language === 'kr' ? item.condKr : item.condEn}
                     </div>
@@ -64,9 +64,9 @@ export const CurrencyWeatherWidget: React.FC = () => {
           </div>
 
           {/* Currency Calculator (LG: 5 Cols) */}
-          <div className="lg:col-span-5 bg-[#0D2647] border border-[#C9A227]/40 rounded-2xl p-6 shadow-xl space-y-4">
+          <div className="lg:col-span-5 bg-[#122848] border border-[#C8A45D]/40 rounded-2xl p-6 shadow-xl space-y-4">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <div className="flex items-center gap-2 text-[#C9A227] text-xs font-semibold uppercase tracking-wider">
+              <div className="flex items-center gap-2 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider">
                 <Landmark className="w-4 h-4" />
                 {language === 'kr' ? "실시간 통화 환율 계산기" : "Live Luxury Currency Calculator"}
               </div>
@@ -79,12 +79,12 @@ export const CurrencyWeatherWidget: React.FC = () => {
                   {language === 'kr' ? "USD 금액 (미국 달러)" : "Amount in USD ($)"}
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2.5 text-[#C9A227] font-bold">$</span>
+                  <span className="absolute left-3 top-2.5 text-[#C8A45D] font-bold">$</span>
                   <input
                     type="number"
                     value={amountUSD}
                     onChange={(e) => setAmountUSD(Number(e.target.value))}
-                    className="w-full bg-[#081B33] border border-[#C9A227]/30 rounded-lg pl-8 pr-4 py-2 text-sm text-white focus:outline-none focus:border-[#C9A227]"
+                    className="w-full bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-lg pl-8 pr-4 py-2 text-sm text-white focus:outline-none focus:border-[#C8A45D]"
                   />
                 </div>
               </div>
@@ -100,8 +100,8 @@ export const CurrencyWeatherWidget: React.FC = () => {
                       onClick={() => setSelectedCurrency(curr)}
                       className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all ${
                         selectedCurrency === curr
-                          ? 'bg-[#C9A227] text-[#081B33]'
-                          : 'bg-[#081B33] text-gray-300 border border-white/10 hover:border-[#C9A227]/40'
+                          ? 'bg-[#C8A45D] text-[#0B1F3A]'
+                          : 'bg-[#0B1F3A] text-gray-300 border border-white/10 hover:border-[#C8A45D]/40'
                       }`}
                     >
                       {curr === 'KRW' ? 'KRW (₩)' : curr === 'EUR' ? 'EUR (€)' : 'LKR (Rs)'}
@@ -110,11 +110,11 @@ export const CurrencyWeatherWidget: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-4 bg-[#081B33] rounded-xl border border-[#C9A227]/30 text-center">
+              <div className="p-4 bg-[#0B1F3A] rounded-xl border border-[#C8A45D]/30 text-center">
                 <div className="text-xs text-gray-400 uppercase tracking-wider mb-1">
                   {language === 'kr' ? "환율 예상 금액" : "Estimated Value"}
                 </div>
-                <div className="text-2xl font-serif font-bold text-[#C9A227]">
+                <div className="text-2xl font-serif font-bold text-[#C8A45D]">
                   {selectedCurrency === 'KRW' ? `₩ ${convertedValue}` : selectedCurrency === 'EUR' ? `€ ${convertedValue}` : `LKR ${convertedValue}`}
                 </div>
                 <div className="text-[10px] text-gray-400 mt-1">

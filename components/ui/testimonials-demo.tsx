@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { TestimonialsColumn, Testimonial } from "@/components/ui/testimonials-columns-1";
 import { motion } from "motion/react";
@@ -67,7 +67,7 @@ const thirdColumn = testimonialsData.slice(6, 9);
 
 export const Testimonials = () => {
   return (
-    <section className="bg-[#040E1B] py-20 relative overflow-hidden border-t border-[#C9A227]/20 text-white">
+    <section className="bg-[#060F1D] py-20 relative overflow-hidden border-t border-[#C8A45D]/20 text-white">
       <div className="container z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,7 +77,7 @@ export const Testimonials = () => {
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto text-center"
         >
           <div className="flex justify-center">
-            <div className="border border-[#C9A227]/40 bg-[#C9A227]/10 text-[#C9A227] py-1 px-4 rounded-full text-xs uppercase tracking-widest font-semibold flex items-center gap-1.5">
+            <div className="border border-[#C8A45D]/40 bg-[#C8A45D]/10 text-[#C8A45D] py-1 px-4 rounded-full text-xs uppercase tracking-widest font-semibold flex items-center gap-1.5">
               <Award className="w-3.5 h-3.5" />
               <span>Discerning Guest Reviews</span>
             </div>

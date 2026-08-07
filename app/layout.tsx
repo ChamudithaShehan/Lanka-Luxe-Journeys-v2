@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -59,7 +59,7 @@ export default function RootLayout({
       <head>
         <JsonLd />
       </head>
-      <body className="min-h-full flex flex-col bg-[#081B33] text-white selection:bg-[#C9A227] selection:text-[#081B33] pb-14 lg:pb-0" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-[#0B1F3A] text-white selection:bg-[#C8A45D] selection:text-[#0B1F3A] pb-20 lg:pb-0" suppressHydrationWarning>
         <LanguageProvider>
           <LoadingScreen />
           <ScrollProgress />

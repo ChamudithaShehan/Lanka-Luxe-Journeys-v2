@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { motion } from "motion/react";
@@ -34,7 +34,7 @@ export const TestimonialsColumn = (props: {
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, image, name, role }, i) => (
                 <div
-                  className="p-8 rounded-3xl border border-[#C9A227]/30 bg-[#0D2647] shadow-xl shadow-black/20 max-w-xs w-full text-white hover:border-[#C9A227] transition-all"
+                  className="p-5 sm:p-8 rounded-3xl border border-[#C8A45D]/30 bg-[#122848] shadow-xl shadow-black/20 max-w-full sm:max-w-xs w-full text-white hover:border-[#C8A45D] transition-all"
                   key={i}
                 >
                   <div className="text-xs text-gray-200 leading-relaxed italic">"{text}"</div>
@@ -44,11 +44,11 @@ export const TestimonialsColumn = (props: {
                       height={40}
                       src={image}
                       alt={name}
-                      className="h-10 w-10 rounded-full border border-[#C9A227] object-cover"
+                      className="h-10 w-10 rounded-full border border-[#C8A45D] object-cover"
                     />
                     <div className="flex flex-col">
                       <div className="font-serif font-bold text-sm tracking-tight leading-5 text-white">{name}</div>
-                      <div className="text-[11px] text-[#C9A227] leading-5 tracking-tight font-medium">{role}</div>
+                      <div className="text-[11px] text-[#C8A45D] leading-5 tracking-tight font-medium">{role}</div>
                     </div>
                   </div>
                 </div>

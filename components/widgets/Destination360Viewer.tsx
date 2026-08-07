@@ -29,7 +29,7 @@ export const Destination360Viewer: React.FC = () => {
   };
 
   return (
-    <section className="relative py-28 overflow-hidden text-white border-t border-[#C9A227]/30">
+    <section className="relative py-28 overflow-hidden text-white border-t border-[#C8A45D]/30">
       {/* Background Panorama Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -39,12 +39,12 @@ export const Destination360Viewer: React.FC = () => {
           sizes="100vw"
           className="object-cover object-center scale-105 filter brightness-75 transition-all duration-1000"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#040E1B] via-[#081B33]/80 to-[#040E1B]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#060F1D] via-[#0B1F3A]/80 to-[#060F1D]" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C9A227]/20 border border-[#C9A227]/50 text-[#FFE79A] text-xs uppercase tracking-widest font-semibold backdrop-blur-md">
-          <RotateCw className="w-4 h-4 text-[#C9A227]" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C8A45D]/20 border border-[#C8A45D]/50 text-[#F0D898] text-xs uppercase tracking-widest font-semibold backdrop-blur-md">
+          <RotateCw className="w-4 h-4 text-[#C8A45D]" />
           {t.destinations360.tag}
         </div>
 
@@ -68,8 +68,8 @@ export const Destination360Viewer: React.FC = () => {
               onClick={() => setActiveTour(item.id as any)}
               className={`px-4 py-2 rounded-full text-xs font-semibold backdrop-blur-md transition-all ${
                 activeTour === item.id
-                  ? 'bg-[#C9A227] text-[#081B33] font-bold shadow-lg'
-                  : 'bg-[#081B33]/80 text-gray-200 border border-white/20 hover:border-[#C9A227]'
+                  ? 'bg-[#C8A45D] text-[#0B1F3A] font-bold shadow-lg'
+                  : 'bg-[#0B1F3A]/80 text-gray-200 border border-white/20 hover:border-[#C8A45D]'
               }`}
             >
               {language === 'kr' ? item.nameKr : item.nameEn}
@@ -80,7 +80,7 @@ export const Destination360Viewer: React.FC = () => {
         <div className="pt-4">
           <button
             onClick={() => setIsOpen360(true)}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#C9A227] to-[#E5C358] hover:from-[#E5C358] hover:to-[#C9A227] text-[#081B33] font-bold py-4 px-8 rounded-full shadow-[0_0_30px_rgba(201,162,39,0.4)] transition-all uppercase tracking-wider text-xs sm:text-sm"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#C8A45D] to-[#D4B87A] hover:from-[#D4B87A] hover:to-[#C8A45D] text-[#0B1F3A] font-bold py-4 px-8 rounded-full shadow-[0_0_30px_rgba(200, 164, 93,0.4)] transition-all uppercase tracking-wider text-xs sm:text-sm"
           >
             <Eye className="w-5 h-5" />
             <span>{t.destinations360.launchTour}</span>
@@ -91,10 +91,10 @@ export const Destination360Viewer: React.FC = () => {
       {/* 360 Viewer Modal */}
       {isOpen360 && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div onClick={() => setIsOpen360(false)} className="fixed inset-0 bg-[#040E1B]/90 backdrop-blur-lg" />
-          <div className="relative w-full max-w-5xl bg-[#081B33] border border-[#C9A227]/50 rounded-2xl p-4 shadow-2xl text-white z-10 space-y-4">
+          <div onClick={() => setIsOpen360(false)} className="fixed inset-0 bg-[#060F1D]/90 backdrop-blur-lg" />
+          <div className="relative w-full max-w-5xl bg-[#0B1F3A] border border-[#C8A45D]/50 rounded-2xl p-4 shadow-2xl text-white z-10 space-y-4">
             <div className="flex items-center justify-between border-b border-white/10 pb-3 px-2">
-              <div className="flex items-center gap-2 text-[#C9A227] font-serif font-bold text-lg">
+              <div className="flex items-center gap-2 text-[#C8A45D] font-serif font-bold text-lg">
                 <RotateCw className="w-5 h-5 animate-spin" />
                 <span>{tourData[activeTour].titleEn}</span>
               </div>
@@ -104,7 +104,7 @@ export const Destination360Viewer: React.FC = () => {
             </div>
 
             {/* Simulated Interactive 360 Viewer Viewport */}
-            <div className="relative h-[480px] rounded-xl overflow-hidden border border-[#C9A227]/30 group cursor-grab active:cursor-grabbing">
+            <div className="relative h-[480px] rounded-xl overflow-hidden border border-[#C8A45D]/30 group cursor-grab active:cursor-grabbing">
               <Image
                 src={tourData[activeTour].image}
                 alt="360 View"
@@ -113,10 +113,10 @@ export const Destination360Viewer: React.FC = () => {
                 className="object-cover object-center scale-125 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-[#C9A227]/80 backdrop-blur-md flex items-center justify-center text-[#081B33] shadow-2xl animate-pulse">
+                <div className="w-16 h-16 rounded-full bg-[#C8A45D]/80 backdrop-blur-md flex items-center justify-center text-[#0B1F3A] shadow-2xl animate-pulse">
                   <RotateCw className="w-8 h-8" />
                 </div>
-                <span className="text-xs font-bold text-white uppercase tracking-widest mt-3 bg-[#081B33]/80 px-4 py-1.5 rounded-full border border-[#C9A227]">
+                <span className="text-xs font-bold text-white uppercase tracking-widest mt-3 bg-[#0B1F3A]/80 px-4 py-1.5 rounded-full border border-[#C8A45D]">
                   Drag to rotate 360° panorama
                 </span>
               </div>

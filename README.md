@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🇱🇰 Lanka Luxe Journeys — Premier Ultra-Luxury & Golf DMC
 
-## Getting Started
+> **Where Luxury Meets Authentic Sri Lankan Experiences**  
+> Lanka Luxe Journeys is a bespoke Destination Management Company (DMC) delivering ultra-luxury private aviation, 5-star Relais & Châteaux tea estate stays, PGA championship golf holidays, and 1:1 VIP chauffeur concierges across Sri Lanka.
 
-First, run the development server:
+🌐 **Live Website:** [https://lanka-luxe-journeys-v2.vercel.app/](https://lanka-luxe-journeys-v2.vercel.app/)
+
+---
+
+## 🎨 Brand Identity & Palette
+
+Crafted with a timeless, high-contrast luxury design system:
+
+- **Deep Navy** (`#0B1F3A`) — Primary dark background & luxury authority
+- **Luxury Gold** (`#C8A45D`) — Accents, borders, badges & text gradients
+- **Pure White** (`#FFFFFF`) — Clean typography & card overlays
+- **Light Beige** (`#F8F5EF`) — Soft warm background in light mode
+
+---
+
+## 💎 9 Premium Tour Packages
+
+1. **Sri Lanka Luxury Highlights** (8 Days / 7 Nights) — Sigiriya Citadel, Tooth Relic Temple, Nuwara Eliya tea estates, Ella train, Yala safari & Bentota beach.
+2. **Sri Lanka Golf Escape** (10 Days / 9 Nights) — All 4 premier PGA courses (*Royal Colombo, Victoria Kandy, Nuwara Eliya, Shangri-La Hambantota*).
+3. **Sri Lanka Wildlife Adventure** (7 Days / 6 Nights) — Yala leopards, Minneriya Elephant Gathering, Wilpattu lakes & Mirissa blue whales.
+4. **Cultural Heritage Journey** (7 Days / 6 Nights) — 2,500 years of history across Anuradhapura, Mihintale, Sigiriya, Polonnaruwa, Dambulla & Kandy.
+5. **Romantic Honeymoon in Paradise** (8 Days / 7 Nights) — Candlelight beach dining, ocean plunge pool villas, couple's Ayurveda spa & sunset yacht cruises.
+6. **Family Discovery Tour** (9 Days / 8 Nights) — Pinnawala elephant bathing, turtle hatcheries, mangrove boat safaris & water sports.
+7. **Wellness & Ayurveda Retreat** (10 Days / 9 Nights) — 1:1 Ayurvedic doctor consultations, herbal oil baths, sunrise mountain yoga & organic dining.
+8. **Luxury Beach Holiday** (7 Days / 6 Nights) — Bentota, Mirissa, Weligama & Tangalle coastlines with blue whale charters and seafood dining.
+9. **Tailor-Made Sri Lanka Experience** — 100% bespoke itinerary designed around travel dates, budget, group size, and personal interests.
+
+---
+
+## 🌟 Why Choose Lanka Luxe Journeys?
+
+The platform features our 7 core service pillars:
+
+1. **Personalized Travel Experiences:** 100% tailor-made itineraries matching guest pace and budget.
+2. **Local Expertise:** Deep knowledge of famous landmarks and hidden island gems.
+3. **Luxury with Authenticity:** 5-star Relais & Châteaux bungalows, Aman estates & authentic Sri Lankan hospitality.
+4. **Professional & Reliable Service:** White-glove VIP airport transfers, chauffeur guides & end-to-end logistics.
+5. **Flexible Itineraries:** Fully custom schedules for quick weekend escapes or multi-week retreats.
+6. **Passion for Excellence:** Honest advice, 1:1 concierge care, and uncompromised quality.
+7. **Explore with Confidence:** 24/7 guest support and meticulous attention to security & privacy.
+
+---
+
+## 🛡️ Trust & Credibility Credentials
+
+- **Google Reviews:** 5.0 ★★★★★ (*240+ Verified High-Net-Worth Guest Reviews*)
+- **TripAdvisor Choice:** 5.0 ★★★★★ (*Travelers' Choice Winner 2026*)
+- **Government Accreditation:** Sri Lanka Tourism Development Authority (SLTDA) `Licence No: TA/2026/Luxe-084`
+- **Payment Security:** 256-Bit SSL Encrypted Gateway (*Visa, MasterCard, American Express, Apple Pay*)
+
+---
+
+## 🚀 Key Interactive Features
+
+- **Interactive SVG Sri Lanka Map:** Visual destination exploration highlighting key luxury hubs.
+- **PGA Golf Course Comparison Tool:** Detailed specs, green fees, difficulty ratings & mobile swipe hints.
+- **AI Trip Planner Widget:** Interactive itinerary generator matching user preferences.
+- **Real-Time Currency & Weather Calculator:** Live USD/KRW/LKR rates and regional weather updates.
+- **Travel Cost Estimator:** Interactive budget breakdown for accommodation, transport, and experiences.
+- **Bilingual Internationalization:** Instant English ↔ Korean (한국어) switching via React Context.
+- **Mobile First Design:** Dedicated floating bottom bar, touch-friendly navigation, and streamlined responsive layouts.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework:** Next.js 16 (App Router, Turbopack, Static Site Generation)
+- **Core:** React 19, TypeScript
+- **Styling:** Tailwind CSS v4, Vanilla CSS Custom Variables (`app/globals.css`)
+- **Icons & Animations:** Lucide-React, Framer Motion
+
+---
+
+## 💻 Getting Started
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build for production:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Start production server:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run start
+```

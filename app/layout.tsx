@@ -55,11 +55,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         <JsonLd />
       </head>
-      <body className="min-h-full flex flex-col bg-[#081B33] text-white selection:bg-[#C9A227] selection:text-[#081B33] pb-14 lg:pb-0">
+      <body className="min-h-full flex flex-col bg-[#081B33] text-white selection:bg-[#C9A227] selection:text-[#081B33] pb-14 lg:pb-0" suppressHydrationWarning>
         <LanguageProvider>
           <LoadingScreen />
           <ScrollProgress />

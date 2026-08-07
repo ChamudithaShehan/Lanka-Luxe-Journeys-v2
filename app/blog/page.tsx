@@ -84,7 +84,7 @@ export default function BlogPage() {
               className="bg-[#0D2647] border border-[#C9A227]/30 hover:border-[#C9A227] rounded-2xl overflow-hidden shadow-2xl cursor-pointer transition-all duration-300 hover:-translate-y-2 group flex flex-col"
             >
               <div className="relative h-64 overflow-hidden">
-                <Image src={art.image} alt={art.titleEn} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                <Image src={art.image} alt={art.titleEn} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D2647] via-transparent to-transparent" />
                 <div className="absolute top-4 left-4 bg-[#C9A227] text-[#081B33] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                   {art.category}
@@ -127,7 +127,7 @@ export default function BlogPage() {
             <span className="text-xs text-[#C9A227] uppercase tracking-wider font-semibold">{selectedArticle.category} • {selectedArticle.date}</span>
             <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white">{language === 'kr' ? selectedArticle.titleKr : selectedArticle.titleEn}</h2>
             <div className="relative h-64 rounded-xl overflow-hidden border border-[#C9A227]/30">
-              <Image src={selectedArticle.image} alt={selectedArticle.titleEn} fill className="object-cover" />
+              <Image src={selectedArticle.image} alt={selectedArticle.titleEn} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
             </div>
             <p className="text-sm text-gray-300 leading-relaxed">
               {language === 'kr' ? selectedArticle.contentKr : selectedArticle.contentEn}

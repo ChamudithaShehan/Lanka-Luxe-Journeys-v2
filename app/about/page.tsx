@@ -25,6 +25,7 @@ export default function AboutPage() {
             src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1920&q=80"
             alt="About Lanka Luxe"
             fill
+            sizes="100vw"
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#081B33] via-[#081B33]/80 to-[#081B33]" />
@@ -80,6 +81,7 @@ export default function AboutPage() {
               src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80"
               alt="Golf & Luxury Estate"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#081B33] via-transparent to-transparent" />
@@ -135,7 +137,7 @@ export default function AboutPage() {
           {TEAM_MEMBERS.map((member, idx) => (
             <div key={idx} className="bg-[#0D2647] border border-[#C9A227]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C9A227] transition-all group">
               <div className="relative h-72">
-                <Image src={member.image} alt={member.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D2647] via-transparent to-transparent" />
               </div>
               <div className="p-6 space-y-2">

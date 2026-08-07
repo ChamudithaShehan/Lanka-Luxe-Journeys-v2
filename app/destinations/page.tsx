@@ -46,6 +46,7 @@ export default function DestinationsPage() {
                   src={dest.image}
                   alt={dest.nameEn}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D2647] via-transparent to-transparent opacity-90" />
@@ -94,7 +95,7 @@ export default function DestinationsPage() {
             </button>
 
             <div className="relative h-60 rounded-xl overflow-hidden border border-[#C9A227]/30">
-              <Image src={selectedDest.image} alt={selectedDest.nameEn} fill className="object-cover" />
+              <Image src={selectedDest.image} alt={selectedDest.nameEn} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#081B33] via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4">
                 <h3 className="text-3xl font-serif font-bold text-white">

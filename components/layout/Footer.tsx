@@ -92,7 +92,7 @@ export const Footer: React.FC = () => {
             <p className="text-xs text-gray-400 leading-relaxed">
               {t.footer.newsletterSub}
             </p>
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-2 pt-1">
+            <form onSubmit={(e) => e.preventDefault()} className="space-y-2 pt-1" suppressHydrationWarning>
               <input
                 type="email"
                 placeholder="vip@luxury.com"

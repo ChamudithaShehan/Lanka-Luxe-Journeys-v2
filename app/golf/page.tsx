@@ -50,6 +50,7 @@ export default function GolfPage() {
             src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1920&q=80"
             alt="Golf Holidays Sri Lanka"
             fill
+            sizes="100vw"
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#081B33] via-[#081B33]/80 to-[#081B33]" />
@@ -89,6 +90,7 @@ export default function GolfPage() {
                   src={course.image}
                   alt={course.nameEn}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                 />
                 <div className="absolute top-4 left-4 bg-[#081B33]/90 border border-[#C9A227] text-[#C9A227] text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full">

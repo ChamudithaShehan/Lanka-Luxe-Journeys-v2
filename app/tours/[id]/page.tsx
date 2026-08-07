@@ -26,6 +26,7 @@ export default function PackageDetailPage({ params }: { params: Promise<{ id: st
           alt={pkg.titleEn}
           fill
           priority
+          sizes="100vw"
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#081B33] via-[#081B33]/60 to-[#040E1B]/70" />
@@ -74,7 +75,7 @@ export default function PackageDetailPage({ params }: { params: Promise<{ id: st
               <div className="grid grid-cols-3 gap-4">
                 {pkg.gallery.map((img, idx) => (
                   <div key={idx} className="relative h-40 rounded-xl overflow-hidden border border-[#C9A227]/30">
-                    <Image src={img} alt="Gallery" fill className="object-cover" />
+                    <Image src={img} alt="Gallery" fill sizes="(max-width: 768px) 33vw, 25vw" className="object-cover" />
                   </div>
                 ))}
               </div>

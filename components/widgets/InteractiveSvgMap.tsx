@@ -113,6 +113,7 @@ export const InteractiveSvgMap: React.FC = () => {
                     src={selectedDest.image}
                     alt={selectedDest.nameEn}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0D2647] via-transparent to-transparent" />

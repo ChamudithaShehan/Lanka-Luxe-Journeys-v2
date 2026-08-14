@@ -1,25 +1,37 @@
 @import "tailwindcss";
 
 /* ─── Brand Color Tokens (Tailwind v4 @theme) ─────────────────────────────
-   Registers the four canonical brand colors as named Tailwind utilities:
-     Deep Navy   #0B1F3A  →  bg-navy  / text-navy  / border-navy
-     Luxury Gold #C8A45D  →  bg-gold  / text-gold  / border-gold
-     White       #FFFFFF  →  (use Tailwind's built-in `white`)
-     Light Beige #F8F5EF  →  bg-beige / text-beige / border-beige
+   Registers the canonical brand colors as named Tailwind utilities:
+     Deep Navy    #0B1F3A  →  bg-navy     / text-navy     / border-navy
+     Luxury Gold  #BFA46A  →  bg-gold     / text-gold     / border-gold
+       (refined for Korean luxury market — cooler, more restrained than
+        the previous #C8A45D; aligns with Lotte/Shilla hotel gold standards)
+     White        #FFFFFF  →  (use Tailwind's built-in `white`)
+     Light Beige  #F8F5EF  →  bg-beige    / text-beige    / border-beige
+     Celadon      #8BAF9A  →  bg-celadon  / text-celadon  (KR cultural accent)
+     Stone        #C9C0B1  →  bg-stone    / text-stone    (hanji-paper neutral)
    ──────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-navy:      #0B1F3A;
-  --color-navy-mid:  #122848;
+  --color-navy: #0B1F3A;
+  --color-navy-mid: #122848;
   --color-navy-dark: #060F1D;
 
-  --color-gold:      #C8A45D;
-  --color-gold-light:#D4B87A;
-  --color-gold-dark: #A8873A;
-  --color-gold-pale: #F0D898;
+  /* Gold — refined for Korean luxury market (cooler, more restrained) */
+  --color-gold: #BFA46A;
+  --color-gold-light: #CEBB8A;
+  --color-gold-dark: #9A8050;
+  --color-gold-pale: #E8D8A0;
 
-  --color-beige:     #F8F5EF;
-  --color-cream:     #F4F6F9;
-  --color-muted:     #94A3B8;
+  --color-beige: #F8F5EF;
+  --color-cream: #F4F6F9;
+  --color-muted: #78899A;
+  /* darkened from #94A3B8 for Hangul body legibility */
+
+  /* Korean cultural accent tokens — use sparingly (dividers, icon fills) */
+  --color-celadon: #8BAF9A;
+  /* celadon pottery — trust, nature */
+  --color-stone: #C9C0B1;
+  /* hanji paper — warmth without fussiness */
 }
 
 @layer base {
@@ -27,17 +39,21 @@
     --bg-dark: #0B1F3A;
     --bg-dark-secondary: #122848;
     --bg-darkest: #060F1D;
-    --gold: #C8A45D;
-    --gold-light: #D4B87A;
-    --gold-dark: #A8873A;
-    --gold-pale: #F0D898;
+    --gold: #BFA46A;
+    --gold-light: #CEBB8A;
+    --gold-dark: #9A8050;
+    --gold-pale: #E8D8A0;
     --beige: #F8F5EF;
     --soft-white: #FFFFFF;
     --soft-gray: #F4F6F9;
-    --text-muted: #94A3B8;
+    --text-muted: #78899A;
+    /* Korean cultural accents */
+    --celadon: #8BAF9A;
+    --stone: #C9C0B1;
   }
 
-  html, body {
+  html,
+  body {
     background-color: var(--bg-dark);
     color: #FFFFFF;
     font-family: var(--font-inter), sans-serif;
@@ -47,61 +63,233 @@
     transition: background-color 0.4s ease, color 0.4s ease;
   }
 
-  h1, h2, h3, h4, .font-serif-luxury {
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif-luxury {
     font-family: var(--font-playfair), serif;
+  }
+
+  /* ── Korean Typography ────────────────────────────────────────────────────
+     Applied when the html element carries lang="ko" (set dynamically by
+     LanguageContext). Noto Serif KR replaces Playfair for headings and
+     Noto Sans KR replaces Inter for body text — both render Hangul cleanly.
+     word-break: keep-all prevents mid-syllable line breaks; line-height 1.8
+     gives Hangul glyphs the vertical breathing room they need.
+     ─────────────────────────────────────────────────────────────────────── */
+  :lang(ko) h1,
+  :lang(ko) h2,
+  :lang(ko) h3,
+  :lang(ko) h4,
+  :lang(ko) .font-serif-luxury {
+    font-family: var(--font-noto-serif-kr), var(--font-playfair), serif;
+    letter-spacing: -0.01em;
+  }
+
+  :lang(ko) body,
+  :lang(ko) p,
+  :lang(ko) span,
+  :lang(ko) a,
+  :lang(ko) button,
+  :lang(ko) label,
+  :lang(ko) input,
+  :lang(ko) textarea,
+  :lang(ko) select,
+  :lang(ko) li {
+    font-family: var(--font-noto-sans-kr), var(--font-inter), sans-serif;
+    word-break: keep-all;
   }
 }
 
-/* LIGHT MODE OVERRIDES */
-html.light-mode body {
+
+/* LIGHT MODE OVERRIDES - ALL LIGHT BACKGROUNDS & PURE BLACK TEXT & GOLD ICONS */
+html.light-mode {
+  color-scheme: light;
+}
+
+html.light-mode body,
+html.light-mode main,
+html.light-mode div.relative.overflow-hidden.bg-\[\#0B1F3A\] {
   background-color: #F8F5EF !important;
-  color: #0B1F3A !important;
+  color: #000000 !important;
 }
 
-html.light-mode section.bg-\[\#0B1F3A\],
-html.light-mode div.bg-\[\#0B1F3A\] {
+/* ALL Sections, Footers, and Background Containers turn Light Warm Beige (#F8F5EF) */
+html.light-mode section,
+html.light-mode section[class*="bg-"],
+html.light-mode div[class*="bg-[#0B1F3A]"],
+html.light-mode div[class*="bg-[#060F1D]"],
+html.light-mode section[class*="bg-[#060F1D]"],
+html.light-mode footer,
+html.light-mode footer[class*="bg-"] {
   background-color: #F8F5EF !important;
-  color: #0B1F3A !important;
+  color: #000000 !important;
 }
 
-html.light-mode section.bg-\[\#060F1D\],
-html.light-mode div.bg-\[\#060F1D\] {
+/* Cards, Modals, Drawers, Floating Panels turn to Pure White (#FFFFFF) */
+html.light-mode div[class*="bg-[#122848]"],
+html.light-mode .glass-panel,
+html.light-mode .glass-card-gold,
+html.light-mode .modal-container,
+html.light-mode .floating-widget,
+html.light-mode div.relative [class*="bg-[#0B1F3A]"],
+html.light-mode div.relative [class*="bg-black/"] {
   background-color: #FFFFFF !important;
-  color: #0B1F3A !important;
+  border-color: rgba(191, 164, 106, 0.4) !important;
+  color: #000000 !important;
+  box-shadow: 0 10px 30px rgba(11, 31, 58, 0.06) !important;
 }
 
-html.light-mode div.bg-\[\#122848\] {
+/* Hero Sections: Transparent section background & photo overlay preservation so hero images are 100% vibrant & visible */
+html.light-mode section.hero-section,
+html.light-mode section.min-h-\[92vh\],
+html.light-mode div.hero-banner {
+  background-color: transparent !important;
+}
+
+html.light-mode section.hero-section h1,
+html.light-mode section.hero-section p,
+html.light-mode section.hero-section .text-white {
+  color: #FFFFFF !important;
+}
+
+/* Headings in Light Mode - Pure Black (#000000) */
+html.light-mode h1,
+html.light-mode h2,
+html.light-mode h3,
+html.light-mode h4,
+html.light-mode h5,
+html.light-mode h6 {
+  color: #000000 !important;
+}
+
+/* Body Text, Paragraphs, Spans, Lists, Labels in Light Mode - Pure Black (#000000) */
+html.light-mode p,
+html.light-mode span,
+html.light-mode li,
+html.light-mode strong,
+html.light-mode b,
+html.light-mode label,
+html.light-mode div,
+html.light-mode dt,
+html.light-mode dd {
+  color: #000000;
+}
+
+/* Force all text color utility classes to Pure Black in Light Mode */
+html.light-mode [class*="text-white"],
+html.light-mode [class*="text-gray-"],
+html.light-mode [class*="text-slate-"],
+html.light-mode [class*="text-zinc-"],
+html.light-mode [class*="text-neutral-"],
+html.light-mode [class*="text-stone-"],
+html.light-mode [class*="text-[#F0D898]"],
+html.light-mode [class*="text-[#E8D8A0]"],
+html.light-mode [class*="text-[#F8F5EF]"],
+html.light-mode [class*="text-gold-light"] {
+  color: #000000 !important;
+}
+
+/* Icons in Light Mode - Luxury Gold (#C8A45D) */
+html.light-mode svg {
+  color: #C8A45D !important;
+  stroke: #C8A45D !important;
+}
+
+/* All Buttons & Action Links in Light Mode - Light / Gold Backgrounds with Pure Black Text */
+html.light-mode button,
+html.light-mode a {
+  color: #000000;
+}
+
+html.light-mode button[class*="bg-[#122848]"],
+html.light-mode a[class*="bg-[#122848]"],
+html.light-mode button[class*="bg-[#0B1F3A]"],
+html.light-mode a[class*="bg-[#0B1F3A]"] {
   background-color: #FFFFFF !important;
-  border-color: rgba(200, 164, 93, 0.4) !important;
-  color: #0B1F3A !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+  color: #000000 !important;
+  border-color: rgba(191, 164, 106, 0.6) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
 }
 
-html.light-mode .text-white {
-  color: #0B1F3A !important;
+html.light-mode button[class*="bg-[#122848]"] *,
+html.light-mode a[class*="bg-[#122848]"] *,
+html.light-mode button[class*="bg-[#0B1F3A]"] *,
+html.light-mode a[class*="bg-[#0B1F3A]"] * {
+  color: #000000 !important;
 }
 
-html.light-mode .text-gray-200,
-html.light-mode .text-gray-300 {
-  color: #475569 !important;
+html.light-mode button[class*="bg-[#C8A45D]"],
+html.light-mode a[class*="bg-[#C8A45D]"],
+html.light-mode button[class*="bg-[#BFA46A]"],
+html.light-mode a[class*="bg-[#BFA46A]"],
+html.light-mode [class*="from-[#C8A45D]"] {
+  background-color: #C8A45D !important;
+  color: #000000 !important;
 }
 
-html.light-mode .text-gray-400 {
+html.light-mode button[class*="bg-[#C8A45D]"] *,
+html.light-mode a[class*="bg-[#C8A45D]"] *,
+html.light-mode button[class*="bg-[#BFA46A]"] *,
+html.light-mode a[class*="bg-[#BFA46A]"] *,
+html.light-mode [class*="from-[#C8A45D]"] * {
+  color: #000000 !important;
+}
+
+/* Header & Navigation in Light Mode - Completely Transparent Header */
+html.light-mode header {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+html.light-mode header nav {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-color: rgba(191, 164, 106, 0.35) !important;
+}
+
+html.light-mode header nav a:not([class*="bg-[#C8A45D]"]):not([class*="bg-[#BFA46A]"]) {
+  color: #000000 !important;
+}
+
+html.light-mode header .font-serif.font-bold {
+  color: #000000 !important;
+}
+
+/* Form inputs & textareas in Light Mode */
+html.light-mode input,
+html.light-mode textarea,
+html.light-mode select {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: rgba(191, 164, 106, 0.4) !important;
+}
+
+html.light-mode input::placeholder,
+html.light-mode textarea::placeholder {
   color: #64748B !important;
 }
 
-html.light-mode .border-white\/10,
-html.light-mode .border-white\/20,
-html.light-mode .border-white\/30 {
-  border-color: rgba(11, 31, 58, 0.15) !important;
+/* Scrollbar in Light Mode */
+html.light-mode ::-webkit-scrollbar-track {
+  background: #F0EDE7 !important;
 }
+
+html.light-mode ::-webkit-scrollbar-thumb {
+  background: #BFA46A !important;
+}
+
+
 
 /* Glassmorphism Utilities */
 .glass-panel {
   background: rgba(11, 31, 58, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(200, 164, 93, 0.2);
+  border: 1px solid rgba(191, 164, 106, 0.2);
 }
 
 .glass-panel-light {
@@ -112,28 +300,28 @@ html.light-mode .border-white\/30 {
 }
 
 .glass-card-gold {
-  background: linear-gradient(135deg, rgba(200, 164, 93, 0.1) 0%, rgba(11, 31, 58, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(191, 164, 106, 0.1) 0%, rgba(11, 31, 58, 0.8) 100%);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(200, 164, 93, 0.3);
+  border: 1px solid rgba(191, 164, 106, 0.3);
 }
 
 /* Luxury Gold Gradients & Text */
 .gold-text-gradient {
-  background: linear-gradient(135deg, #F0D898 0%, #C8A45D 50%, #A8873A 100%);
+  background: linear-gradient(135deg, #E8D8A0 0%, #BFA46A 50%, #9A8050 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gold-border-gradient {
-  border-image: linear-gradient(135deg, #C8A45D, rgba(200, 164, 93, 0.2)) 1;
+  border-image: linear-gradient(135deg, #BFA46A, rgba(191, 164, 106, 0.2)) 1;
 }
 
 .gold-glow {
-  box-shadow: 0 0 25px rgba(200, 164, 93, 0.25);
+  box-shadow: 0 0 25px rgba(191, 164, 106, 0.25);
 }
 
 .gold-glow-hover:hover {
-  box-shadow: 0 0 35px rgba(200, 164, 93, 0.4);
+  box-shadow: 0 0 35px rgba(191, 164, 106, 0.4);
   transform: translateY(-4px);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -142,30 +330,51 @@ html.light-mode .border-white\/30 {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #060F1D;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #C8A45D;
+  background: #BFA46A;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4B87A;
+  background: #CEBB8A;
 }
 
 /* Animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
+
 .animate-float {
   animation: float 5s ease-in-out infinite;
 }
 
 @keyframes pulse-gold {
-  0%, 100% { opacity: 0.8; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
+
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
 }
+
 .animate-pulse-gold {
   animation: pulse-gold 3s infinite ease-in-out;
 }

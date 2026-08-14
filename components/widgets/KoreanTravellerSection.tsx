@@ -1,8 +1,7 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { UserCheck, Trophy, Utensils, FileText, PhoneCall, CheckCircle2, ShieldCheck, Sparkles, Globe } from 'lucide-react';
+import { UserCheck, Trophy, Utensils, FileText, PhoneCall, ShieldCheck, Sparkles, Globe, CalendarDays } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { BookingModal } from '@/components/ui/BookingModal';
 
@@ -34,6 +33,20 @@ export const KoreanTravellerSection: React.FC = () => {
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
             {t.koreanSection.subtitle}
           </p>
+
+          {/* ── Seasonal Korean Holiday Badge ────────────────────────────────
+               Korean HNW travelers heavily plan around 추석 (Chuseok, Oct)
+               and 설날 (Seollal, Feb). This badge surfaces timely relevance. */}
+          <div className="flex flex-wrap justify-center gap-2 pt-1">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-900/30 border border-red-500/40 text-red-300 text-[11px] font-semibold">
+              <CalendarDays className="w-3 h-3" />
+              {language === 'kr' ? '🎑 추석 특별 골프 패키지 (9–10월)' : '🎑 Chuseok Season Golf Package (Sep–Oct)'}
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-900/30 border border-red-500/40 text-red-300 text-[11px] font-semibold">
+              <CalendarDays className="w-3 h-3" />
+              {language === 'kr' ? '🌸 설날 커플 허니문 패키지 (1–2월)' : '🌸 Seollal Honeymoon Package (Jan–Feb)'}
+            </span>
+          </div>
         </div>
 
         {/* 4 Feature Pillars Grid */}
@@ -51,7 +64,7 @@ export const KoreanTravellerSection: React.FC = () => {
                 <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors">
                   {language === 'kr' ? perk.titleKr : perk.titleEn}
                 </h3>
-                <p className="text-xs text-gray-300 leading-relaxed">
+                <p className="text-sm text-gray-300 leading-relaxed">
                   {language === 'kr' ? perk.descKr : perk.descEn}
                 </p>
               </div>
@@ -69,7 +82,7 @@ export const KoreanTravellerSection: React.FC = () => {
             <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
               박민준 이사 (Head of Korean Operations)
             </h3>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+            <p className="text-sm text-gray-300 leading-relaxed">
               {language === 'kr'
                 ? "한국 기업인 및 VIP 골퍼분들을 위한 카카오톡 실시간 상담, 골프백 전담 차량 수송 및 공항 활주로 패스트트랙 수속을 전담합니다."
                 : "Dedicated fluent Korean operations manager providing 1:1 KakaoTalk consultation, golf bag logistics, and VIP runway clearance."}
@@ -77,6 +90,21 @@ export const KoreanTravellerSection: React.FC = () => {
           </div>
 
           <div className="lg:col-span-4 flex flex-col gap-3">
+            {/* ── KakaoTalk: PRIMARY CTA ────────────────────────────────────
+                 KakaoTalk has ~97% Korean user penetration. It must be the
+                 first and most prominent contact option. Official Kakao yellow
+                 (#FEE500) is instantly recognisable to Korean users. */}
+            <a
+              href="https://open.kakao.com/o/lankaluxe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-[#FEE500] hover:bg-[#FFD900] text-[#191919] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
+            >
+              <span className="w-5 h-5 rounded-full bg-[#3C1E1E] text-[#FEE500] flex items-center justify-center font-bold text-[9px] shrink-0">톡</span>
+              <span>{language === 'kr' ? '카카오톡 1:1 무료 상담' : 'KakaoTalk 1:1 Concierge'}</span>
+            </a>
+
+            {/* ── Custom inquiry form */}
             <button
               onClick={() => setIsBookingOpen(true)}
               className="w-full bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg transition-colors flex items-center justify-center gap-2"
@@ -84,14 +112,16 @@ export const KoreanTravellerSection: React.FC = () => {
               <Sparkles className="w-4 h-4 fill-current" />
               <span>{language === 'kr' ? "한국어 맞춤 상담 신청" : "Inquire with Korean Concierge"}</span>
             </button>
+
+            {/* ── WhatsApp: SECONDARY CTA for non-Korean / international guests */}
             <a
               href="https://wa.me/94770008899"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-[#0B1F3A] border border-[#C8A45D]/40 text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors text-center flex items-center justify-center gap-2"
+              className="w-full bg-[#0B1F3A] border border-[#C8A45D]/40 text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors text-center flex items-center justify-center gap-2"
             >
               <PhoneCall className="w-4 h-4" />
-              <span>카카오톡 / WhatsApp 상담</span>
+              <span>WhatsApp {language === 'kr' ? '상담' : 'Concierge'}</span>
             </a>
           </div>
         </div>

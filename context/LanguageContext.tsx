@@ -24,6 +24,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const savedLang = localStorage.getItem('lanka_luxe_lang') as Language;
     if (savedLang && (savedLang === 'en' || savedLang === 'kr')) {
       setLanguageState(savedLang);
+      // Apply html lang attribute from saved preference immediately
+      document.documentElement.lang = savedLang === 'kr' ? 'ko' : 'en';
     }
     const savedTheme = localStorage.getItem('lanka_luxe_theme') as Theme;
     if (savedTheme && (savedTheme === 'dark' || savedTheme === 'light')) {
@@ -37,6 +39,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem('lanka_luxe_lang', lang);
+    // Update <html lang="..."> so :lang(ko) CSS selectors and Naver/Google indexing fire correctly
+    document.documentElement.lang = lang === 'kr' ? 'ko' : 'en';
   };
 
   const setTheme = (newTheme: Theme) => {

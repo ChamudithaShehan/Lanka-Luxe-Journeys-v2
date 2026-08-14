@@ -6,8 +6,13 @@ import { Compass, Sparkles } from 'lucide-react';
 
 export const LoadingScreen: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+  // Read language preference before React hydration so KR users see Korean immediately
+  const [isKorean, setIsKorean] = useState(false);
 
   useEffect(() => {
+    const savedLang = localStorage.getItem('lanka_luxe_lang');
+    setIsKorean(savedLang === 'kr');
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1200);
@@ -29,7 +34,7 @@ export const LoadingScreen: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center gap-4"
           >
-            <div className="w-16 h-16 rounded-full border-2 border-[#C8A45D] flex items-center justify-center bg-[#0B1F3A] shadow-[0_0_30px_rgba(200, 164, 93,0.5)]">
+            <div className="w-16 h-16 rounded-full border-2 border-[#C8A45D] flex items-center justify-center bg-[#0B1F3A] shadow-[0_0_30px_rgba(200,164,93,0.5)]">
               <Compass className="w-8 h-8 text-[#C8A45D] animate-spin" style={{ animationDuration: '6s' }} />
             </div>
             <div className="text-center space-y-1">
@@ -37,7 +42,7 @@ export const LoadingScreen: React.FC = () => {
                 LANKA LUXE
               </span>
               <span className="text-[10px] uppercase tracking-[0.3em] text-[#C8A45D] font-sans block">
-                JOURNEYS • SRI LANKA
+                {isKorean ? '스리랑카 럭셔리 여행 전문' : 'JOURNEYS • SRI LANKA'}
               </span>
             </div>
 
@@ -53,7 +58,7 @@ export const LoadingScreen: React.FC = () => {
 
             <div className="flex items-center gap-1.5 text-[11px] text-[#C8A45D] uppercase tracking-wider font-semibold pt-1">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Preparing VIP Experience</span>
+              <span>{isKorean ? 'VIP 맞춤 여정 준비 중' : 'Preparing VIP Experience'}</span>
             </div>
           </motion.div>
         </motion.div>

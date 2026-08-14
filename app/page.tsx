@@ -48,6 +48,10 @@ export default function HomePage() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedBookingPackage, setSelectedBookingPackage] = useState('');
   const [showAllGolfMobile, setShowAllGolfMobile] = useState(false);
+  const [showAllToursMobile, setShowAllToursMobile] = useState(false);
+  const [showAllWhyUsMobile, setShowAllWhyUsMobile] = useState(false);
+  const [showAllWellnessMobile, setShowAllWellnessMobile] = useState(false);
+  const [showAllBlogMobile, setShowAllBlogMobile] = useState(false);
 
   const heroSlides = [
     {
@@ -100,7 +104,7 @@ export default function HomePage() {
   return (
     <div className="relative overflow-hidden bg-[#0B1F3A]">
       {/* SUN-DROPPED VIBRANT HERO SECTION */}
-      <section className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-28 pb-12">
+      <section className="relative min-h-[75vh] sm:min-h-[92vh] flex flex-col justify-between overflow-hidden pt-24 sm:pt-28 pb-8 sm:pb-12 hero-section">
         {/* Background Image Carousel - Sunlit & Crystal Clear */}
         <AnimatePresence mode="wait">
           <motion.div
@@ -125,14 +129,14 @@ export default function HomePage() {
         </AnimatePresence>
 
         {/* Hero Central Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto pt-8">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center my-auto pt-4 sm:pt-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#0B1F3A]/85 border border-[#C8A45D]/70 text-[#F0D898] text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] mb-8 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+            className="inline-flex items-center gap-2 px-4 py-1.5 sm:px-5 sm:py-2 rounded-full bg-[#0B1F3A]/85 border border-[#C8A45D]/70 text-[#F0D898] text-[10px] sm:text-sm font-semibold uppercase tracking-[0.2em] mb-4 sm:mb-8 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
           >
-            <Sparkles className="w-4 h-4 text-[#C8A45D]" />
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-[#C8A45D]" />
             <span>{heroSlides[currentHeroIndex].tag}</span>
           </motion.div>
 
@@ -140,7 +144,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-3xl sm:text-5xl lg:text-7xl xl:text-8xl font-serif font-bold text-white tracking-tight leading-[1.1] mb-6 drop-shadow-[0_8px_25px_rgba(0,0,0,0.9)]"
+            className="text-2xl sm:text-5xl lg:text-7xl xl:text-8xl font-serif font-bold text-white tracking-tight leading-[1.15] mb-3 sm:mb-6 drop-shadow-[0_8px_25px_rgba(0,0,0,0.9)]"
           >
             {heroSlides[currentHeroIndex].title}
           </motion.h1>
@@ -149,7 +153,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-base sm:text-xl text-white font-medium max-w-3xl mx-auto leading-relaxed mb-10 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]"
+            className="hidden sm:block text-base sm:text-xl text-white font-medium max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-10 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]"
           >
             {heroSlides[currentHeroIndex].sub}
           </motion.p>
@@ -159,27 +163,28 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-10"
           >
             <Link
               href="/tours"
-              className="w-full sm:w-auto bg-gradient-to-r from-[#C8A45D] via-[#F0D898] to-[#C8A45D] text-[#0B1F3A] font-bold py-4 px-9 rounded-full shadow-[0_0_35px_rgba(200, 164, 93,0.6)] transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 uppercase tracking-wider text-xs sm:text-sm"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#C8A45D] via-[#F0D898] to-[#C8A45D] text-[#0B1F3A] font-bold py-3.5 sm:py-4 px-8 sm:px-9 rounded-full shadow-[0_0_35px_rgba(200,164,93,0.6)] transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 uppercase tracking-wider text-xs sm:text-sm"
             >
-              <Compass className="w-4.5 h-4.5" />
+              <Compass className="w-4 h-4" />
               <span>{t.hero.exploreTours}</span>
             </Link>
 
             <Link
               href="/golf"
-              className="w-full sm:w-auto bg-[#0B1F3A]/90 hover:bg-[#0B1F3A] border border-[#C8A45D]/80 text-white font-bold py-4 px-9 rounded-full shadow-2xl backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:border-[#C8A45D] flex items-center justify-center gap-2 uppercase tracking-wider text-xs sm:text-sm"
+              className="w-full sm:w-auto bg-[#0B1F3A]/90 hover:bg-[#0B1F3A] border border-[#C8A45D]/80 text-white font-bold py-3.5 sm:py-4 px-8 sm:px-9 rounded-full shadow-2xl backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:border-[#C8A45D] flex items-center justify-center gap-2 uppercase tracking-wider text-xs sm:text-sm"
             >
-              <Trophy className="w-4.5 h-4.5 text-[#C8A45D]" />
+              <Trophy className="w-4 h-4 text-[#C8A45D]" />
               <span>{t.hero.golfHolidays}</span>
             </Link>
 
+            {/* Bespoke button hidden on small mobile, visible sm+ */}
             <button
               onClick={() => handleOpenBooking()}
-              className="w-full sm:w-auto bg-black/40 hover:bg-black/60 border border-white/50 text-white font-bold py-4 px-7 rounded-full backdrop-blur-md transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg"
+              className="hidden sm:flex w-full sm:w-auto bg-black/40 hover:bg-black/60 border border-white/50 text-white font-bold py-4 px-7 rounded-full backdrop-blur-md transition-all text-xs uppercase tracking-wider items-center justify-center gap-2 shadow-lg"
             >
               <Sparkles className="w-4 h-4 text-[#C8A45D]" />
               <span>{language === 'kr' ? "맞춤 여행 상담" : "Bespoke Concierge"}</span>
@@ -252,21 +257,21 @@ export default function HomePage() {
       <TrustDisplay onOpenBooking={handleOpenBooking} />
 
       {/* WHY CHOOSE US */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+      <section className="py-12 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold mb-3">
             <Award className="w-3.5 h-3.5" />
             {t.whyUs.tag}
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white">
+          <h2 className="text-2xl sm:text-5xl font-serif font-bold text-white">
             {t.whyUs.title}
           </h2>
-          <p className="text-gray-300 text-sm mt-3 leading-relaxed">
+          <p className="hidden sm:block text-gray-300 text-sm mt-3 leading-relaxed">
             {t.whyUs.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
           {[
             { title: t.whyUs.chauffeur, desc: t.whyUs.chauffeurDesc, icon: Car },
             { title: t.whyUs.hotels, desc: t.whyUs.hotelsDesc, icon: Hotel },
@@ -276,24 +281,38 @@ export default function HomePage() {
             { title: t.whyUs.tailorMade, desc: t.whyUs.tailorMadeDesc, icon: Sparkles },
           ].map((item, idx) => {
             const Icon = item.icon;
+            const isHiddenMobile = !showAllWhyUsMobile && idx >= 4;
             return (
               <motion.div
                 key={idx}
-                whileHover={{ y: -8 }}
-                className="bg-[#122848] border border-[#C8A45D]/25 hover:border-[#C8A45D] rounded-2xl p-8 transition-all duration-300 shadow-xl group"
+                whileHover={{ y: -4 }}
+                className={`bg-[#122848] border border-[#C8A45D]/25 hover:border-[#C8A45D] rounded-xl sm:rounded-2xl p-4 sm:p-8 transition-all duration-300 shadow-xl group ${
+                  isHiddenMobile ? 'hidden md:block' : 'block'
+                }`}
               >
-                <div className="w-12 h-12 rounded-xl bg-[#0B1F3A] border border-[#C8A45D]/40 flex items-center justify-center text-[#C8A45D] mb-6 group-hover:scale-110 transition-transform">
-                  <Icon className="w-6 h-6" />
+                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#0B1F3A] border border-[#C8A45D]/40 flex items-center justify-center text-[#C8A45D] mb-3 sm:mb-6 group-hover:scale-110 transition-transform">
+                  <Icon className="w-4 h-4 sm:w-6 sm:h-6" />
                 </div>
-                <h3 className="text-xl font-serif font-bold text-white mb-2 group-hover:text-[#C8A45D] transition-colors">
+                <h3 className="text-sm sm:text-xl font-serif font-bold text-white mb-1 sm:mb-2 group-hover:text-[#C8A45D] transition-colors leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-300 leading-relaxed">
+                <p className="hidden sm:block text-sm text-gray-300 leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Mobile View More Button for Why Choose Us — shows after 4 cards */}
+        <div className="mt-4 text-center md:hidden">
+          <button
+            onClick={() => setShowAllWhyUsMobile(!showAllWhyUsMobile)}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
+          >
+            <span>{showAllWhyUsMobile ? (language === 'kr' ? '접기' : 'Show Less') : (language === 'kr' ? '더보기' : 'See All')}</span>
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showAllWhyUsMobile ? 'rotate-180' : ''}`} />
+          </button>
         </div>
       </section>
 
@@ -320,58 +339,75 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {TOUR_PACKAGES.map((pkg) => (
-              <div
-                key={pkg.id}
-                className="bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-2xl group flex flex-col"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={pkg.image}
-                    alt={pkg.titleEn}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-transparent to-transparent opacity-90" />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
-                      {pkg.category}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-gray-200">
-                    <span className="flex items-center gap-1 font-medium bg-[#0B1F3A]/80 px-2.5 py-1 rounded-full border border-white/10">
-                      <Clock className="w-3.5 h-3.5 text-[#C8A45D]" />
-                      {pkg.duration}
-                    </span>
-                    <span className="text-[#C8A45D] font-bold text-base">
-                      ${pkg.priceUSD.toLocaleString()} USD
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div>
-                    <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors line-clamp-1">
-                      {language === 'kr' ? pkg.titleKr : pkg.titleEn}
-                    </h3>
-                    <p className="text-xs text-gray-300 mt-2 line-clamp-2 leading-relaxed">
-                      {language === 'kr' ? pkg.descriptionKr : pkg.descriptionEn}
-                    </p>
+            {TOUR_PACKAGES.map((pkg, idx) => {
+              const isHiddenMobile = !showAllToursMobile && idx >= 3;
+              return (
+                <div
+                  key={pkg.id}
+                  className={`bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-2xl group flex flex-col ${
+                    isHiddenMobile ? 'hidden md:flex' : 'flex'
+                  }`}
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={pkg.image}
+                      alt={pkg.titleEn}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-transparent to-transparent opacity-90" />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                        {pkg.category}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-gray-200">
+                      <span className="flex items-center gap-1 font-medium bg-[#0B1F3A]/80 px-2.5 py-1 rounded-full border border-white/10">
+                        <Clock className="w-3.5 h-3.5 text-[#C8A45D]" />
+                        {pkg.duration}
+                      </span>
+                      <span className="text-[#C8A45D] font-bold text-base">
+                        ${pkg.priceUSD.toLocaleString()} USD
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="pt-2 border-t border-white/10 flex items-center justify-between">
-                    <button
-                      onClick={() => handleOpenBooking(pkg.titleEn)}
-                      className="w-full bg-[#122848] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-[#C8A45D] border border-[#C8A45D]/40 font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5"
-                    >
-                      <span>Read More & Reserve</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
+                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                      <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors line-clamp-1">
+                        {language === 'kr' ? pkg.titleKr : pkg.titleEn}
+                      </h3>
+                      <p className="text-xs text-gray-300 mt-2 line-clamp-2 leading-relaxed">
+                        {language === 'kr' ? pkg.descriptionKr : pkg.descriptionEn}
+                      </p>
+                    </div>
+
+                    <div className="pt-2 border-t border-white/10 flex items-center justify-between">
+                      <button
+                        onClick={() => handleOpenBooking(pkg.titleEn)}
+                        className="w-full bg-[#122848] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-[#C8A45D] border border-[#C8A45D]/40 font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5"
+                      >
+                        <span>Read More & Reserve</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* Mobile View All Tour Packages Link to Dedicated Page */}
+          <div className="mt-6 text-center md:hidden">
+            <Link
+              href="/tours"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-xs font-bold uppercase tracking-wider shadow-lg transition-all"
+            >
+              <Compass className="w-4 h-4 text-[#C8A45D]" />
+              <span>{language === 'kr' ? '모든 투어 패키지 보기' : 'View All Tour Packages'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
           {/* Section CTAs */}
@@ -457,18 +493,17 @@ export default function HomePage() {
             })}
           </div>
 
-          {/* Mobile View More Button for Golf Courses */}
-          {GOLF_COURSES.length > 3 && (
-            <div className="mt-6 text-center md:hidden">
-              <button
-                onClick={() => setShowAllGolfMobile(!showAllGolfMobile)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
-              >
-                <span>{showAllGolfMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (View More)' : 'View More Golf Courses')}</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${showAllGolfMobile ? 'rotate-180' : ''}`} />
-              </button>
-            </div>
-          )}
+          {/* Mobile View All Golf Courses Link to Dedicated Page */}
+          <div className="mt-6 text-center md:hidden">
+            <Link
+              href="/golf"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-xs font-bold uppercase tracking-wider shadow-lg transition-all"
+            >
+              <Trophy className="w-4 h-4 text-[#C8A45D]" />
+              <span>{language === 'kr' ? '모든 골프 코스 보기' : 'View All Golf Packages'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
 
           <div className="mt-12 text-center flex flex-col items-center gap-6">
             <Link
@@ -615,18 +650,32 @@ export default function HomePage() {
                 descKr: "해안가 럭셔리 빌라에서 펼쳐지는 온열 치료 및 싱잉볼 사운드 힐링.",
                 image: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=600&q=80"
               }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group">
-                <div className="relative h-48">
-                  <Image src={item.image} alt={item.titleEn} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
+            ].map((item, idx) => {
+              const isHiddenMobile = !showAllWellnessMobile && idx >= 3;
+              return (
+                <div key={idx} className={`bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group ${isHiddenMobile ? 'hidden md:block' : 'block'}`}>
+                  <div className="relative h-48">
+                    <Image src={item.image} alt={item.titleEn} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
+                  </div>
+                  <div className="p-6 space-y-2">
+                    <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors">{language === 'kr' ? item.titleKr : item.titleEn}</h3>
+                    <p className="text-xs text-gray-300 leading-relaxed">{language === 'kr' ? item.descKr : item.descEn}</p>
+                  </div>
                 </div>
-                <div className="p-6 space-y-2">
-                  <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors">{language === 'kr' ? item.titleKr : item.titleEn}</h3>
-                  <p className="text-xs text-gray-300 leading-relaxed">{language === 'kr' ? item.descKr : item.descEn}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* Mobile View More Button for Wellness Retreats */}
+          <div className="mt-6 text-center md:hidden">
+            <button
+              onClick={() => setShowAllWellnessMobile(!showAllWellnessMobile)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
+            >
+              <span>{showAllWellnessMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (See More)' : 'See More Retreats')}</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${showAllWellnessMobile ? 'rotate-180' : ''}`} />
+            </button>
           </div>
 
           <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Wellness Retreats" />
@@ -727,37 +776,51 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {BLOG_ARTICLES.slice(0, 3).map((art) => (
-              <div key={art.id} className="bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group flex flex-col justify-between">
-                <div>
-                  <div className="relative h-48 overflow-hidden">
-                    <Image src={art.image} alt={art.titleEn} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4 bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                      {art.category}
+            {BLOG_ARTICLES.slice(0, 6).map((art, idx) => {
+              const isHiddenMobile = !showAllBlogMobile && idx >= 3;
+              return (
+                <div key={art.id} className={`bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group flex flex-col justify-between ${isHiddenMobile ? 'hidden md:flex' : 'flex'}`}>
+                  <div>
+                    <div className="relative h-48 overflow-hidden">
+                      <Image src={art.image} alt={art.titleEn} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
+                      <div className="absolute top-4 left-4 bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                        {art.category}
+                      </div>
+                    </div>
+                    <div className="p-6 space-y-3">
+                      <span className="text-[11px] text-gray-400 block">{art.date} • {art.readTime} read</span>
+                      <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors line-clamp-2">
+                        {language === 'kr' ? art.titleKr : art.titleEn}
+                      </h3>
+                      <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">
+                        {language === 'kr' ? art.excerptKr : art.excerptEn}
+                      </p>
                     </div>
                   </div>
-                  <div className="p-6 space-y-3">
-                    <span className="text-[11px] text-gray-400 block">{art.date} • {art.readTime} read</span>
-                    <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors line-clamp-2">
-                      {language === 'kr' ? art.titleKr : art.titleEn}
-                    </h3>
-                    <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">
-                      {language === 'kr' ? art.excerptKr : art.excerptEn}
-                    </p>
+                  <div className="px-6 pb-6 pt-2">
+                    <Link
+                      href="/blog"
+                      className="inline-flex items-center gap-1.5 text-xs text-[#C8A45D] font-bold uppercase tracking-wider hover:underline"
+                    >
+                      <span>Read Guide</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
                   </div>
                 </div>
-                <div className="px-6 pb-6 pt-2">
-                  <Link
-                    href="/blog"
-                    className="inline-flex items-center gap-1.5 text-xs text-[#C8A45D] font-bold uppercase tracking-wider hover:underline"
-                  >
-                    <span>Read Guide</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* Mobile View More Button for Blog Articles */}
+          <div className="mt-6 text-center md:hidden">
+            <button
+              onClick={() => setShowAllBlogMobile(!showAllBlogMobile)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
+            >
+              <span>{showAllBlogMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (See More)' : 'See More Articles')}</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${showAllBlogMobile ? 'rotate-180' : ''}`} />
+            </button>
           </div>
 
           <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Travel Blog" />

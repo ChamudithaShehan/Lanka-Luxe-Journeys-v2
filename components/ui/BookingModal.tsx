@@ -183,6 +183,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, pre
                         <option value="2 Guests">2 Guests (Couple / Pair)</option>
                         <option value="4 Golfers">4 Golfers (Full Flight)</option>
                         <option value="Private Group (6+)">Private Group (6+ Guests)</option>
+                        {/* 단체 여행 option — prominent for Korean corporate/golf group travel */}
+                        <option value="Korean Group Tour (8+)">{language === 'kr' ? '단체 여행 (8인 이상) — 골프 / 기업 투어' : 'Group Tour (8+ Guests) — Golf / Corporate'}</option>
                       </select>
                     </div>
                   </div>
@@ -212,10 +214,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, pre
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                         className="w-full bg-[#122848] border border-[#C8A45D]/30 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#C8A45D]"
                       >
-                        <option value="$3,000 - $5,000">$3,000 - $5,000 USD</option>
-                        <option value="$5,000 - $10,000">$5,000 - $10,000 USD</option>
-                        <option value="$10,000 - $25,000">$10,000 - $25,000 USD (Ultra Luxe)</option>
-                        <option value="$25,000+">$25,000+ USD (Private Jet Charter)</option>
+                        {language === 'kr' ? (
+                          <>
+                            <option value="$3,000 - $5,000">₩3,900,000 – ₩6,500,000 (USD $3K–$5K)</option>
+                            <option value="$5,000 - $10,000">₩6,500,000 – ₩13,000,000 (USD $5K–$10K)</option>
+                            <option value="$10,000 - $25,000">₩13,000,000 – ₩32,500,000 (Ultra Luxe)</option>
+                            <option value="$25,000+">₩32,500,000+ (프라이빗 제트 전세)</option>
+                          </>
+                        ) : (
+                          <>
+                            <option value="$3,000 - $5,000">$3,000 - $5,000 USD</option>
+                            <option value="$5,000 - $10,000">$5,000 - $10,000 USD</option>
+                            <option value="$10,000 - $25,000">$10,000 - $25,000 USD (Ultra Luxe)</option>
+                            <option value="$25,000+">$25,000+ USD (Private Jet Charter)</option>
+                          </>
+                        )}
                       </select>
                     </div>
                   </div>

@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -138,6 +138,7 @@ export const BookingDrawer: React.FC<BookingDrawerProps> = ({ isOpen, onClose })
                         <option value="1 Guest">1 VIP Guest</option>
                         <option value="2 Guests">2 Guests (Couple)</option>
                         <option value="4 Golfers">4 Golfers (Flight)</option>
+                        <option value="Korean Group Tour (8+)">{language === 'kr' ? '단체 여행 (8인+)' : 'Group Tour (8+)'}</option>
                       </select>
                     </div>
 
@@ -195,10 +196,18 @@ export const BookingDrawer: React.FC<BookingDrawerProps> = ({ isOpen, onClose })
             </div>
 
             <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
-              <a href="https://wa.me/94770008899" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[#25D366] hover:underline font-semibold">
-                <PhoneCall className="w-3.5 h-3.5" />
-                WhatsApp Direct
-              </a>
+              {/* KakaoTalk — primary for Korean users, WhatsApp secondary */}
+              {language === 'kr' ? (
+                <a href="https://open.kakao.com/o/lankaluxe" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline font-bold" style={{ color: '#FEE500' }}>
+                  <span className="w-4 h-4 rounded-full bg-[#3C1E1E] text-[#FEE500] flex items-center justify-center text-[8px] font-black shrink-0">카카오</span>
+                  카카오톡 1:1 직접 상담
+                </a>
+              ) : (
+                <a href="https://wa.me/94770008899" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[#25D366] hover:underline font-semibold">
+                  <PhoneCall className="w-3.5 h-3.5" />
+                  WhatsApp Direct
+                </a>
+              )}
               <span className="flex items-center gap-1 text-[#C8A45D]">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 100% Confidential

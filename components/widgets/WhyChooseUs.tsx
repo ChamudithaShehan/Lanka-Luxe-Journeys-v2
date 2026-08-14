@@ -6,6 +6,7 @@ import { useLanguage } from '@/context/LanguageContext';
 
 export function WhyChooseUs() {
   const { language } = useLanguage();
+  const [showAllPillarsMobile, setShowAllPillarsMobile] = React.useState(false);
 
   const pillars = [
     {
@@ -85,10 +86,13 @@ export function WhyChooseUs() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {pillars.map((pillar, idx) => {
             const IconComponent = pillar.icon;
+            const isHiddenMobile = !showAllPillarsMobile && idx >= 3;
             return (
               <div
                 key={idx}
-                className="bg-[#122848] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl p-7 transition-all duration-300 shadow-xl space-y-4 flex flex-col justify-between group hover:-translate-y-1"
+                className={`bg-[#122848] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl p-7 transition-all duration-300 shadow-xl space-y-4 flex flex-col justify-between group hover:-translate-y-1 ${
+                  isHiddenMobile ? 'hidden md:flex' : 'flex'
+                }`}
               >
                 <div className="space-y-4">
                   <div className="w-12 h-12 rounded-xl bg-[#0B1F3A] border border-[#C8A45D]/40 flex items-center justify-center text-[#C8A45D] group-hover:bg-[#C8A45D] group-hover:text-[#0B1F3A] transition-all">
@@ -108,6 +112,17 @@ export function WhyChooseUs() {
               </div>
             );
           })}
+        </div>
+
+        {/* Mobile View More Button for 7 Pillars */}
+        <div className="mt-6 text-center md:hidden">
+          <button
+            onClick={() => setShowAllPillarsMobile(!showAllPillarsMobile)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
+          >
+            <span>{showAllPillarsMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (See More)' : 'See More Pillars')}</span>
+            <ArrowRight className={`w-4 h-4 transition-transform ${showAllPillarsMobile ? '-rotate-90' : 'rotate-90'}`} />
+          </button>
         </div>
 
         {/* Closing Luxury Tagline Banner */}

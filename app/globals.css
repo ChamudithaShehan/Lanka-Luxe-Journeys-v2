@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+/* ─── Brand Color Tokens (Tailwind v4 @theme) ─────────────────────────────
+   Registers the four canonical brand colors as named Tailwind utilities:
+     Deep Navy   #0B1F3A  →  bg-navy  / text-navy  / border-navy
+     Luxury Gold #C8A45D  →  bg-gold  / text-gold  / border-gold
+     White       #FFFFFF  →  (use Tailwind's built-in `white`)
+     Light Beige #F8F5EF  →  bg-beige / text-beige / border-beige
+   ──────────────────────────────────────────────────────────────────────── */
+@theme {
+  --color-navy:      #0B1F3A;
+  --color-navy-mid:  #122848;
+  --color-navy-dark: #060F1D;
+
+  --color-gold:      #C8A45D;
+  --color-gold-light:#D4B87A;
+  --color-gold-dark: #A8873A;
+  --color-gold-pale: #F0D898;
+
+  --color-beige:     #F8F5EF;
+  --color-cream:     #F4F6F9;
+  --color-muted:     #94A3B8;
+}
+
 @layer base {
   :root {
     --bg-dark: #0B1F3A;

@@ -94,4 +94,4 @@ Start production server:
 
 ```bash
 npm run start
-```
+```.

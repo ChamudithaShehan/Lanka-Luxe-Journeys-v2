@@ -508,7 +508,7 @@ export default function HomePage() {
           <div className="mt-12 text-center flex flex-col items-center gap-6">
             <Link
               href="/golf"
-              className="inline-flex items-center gap-2 bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] font-bold py-3.5 px-8 rounded-full text-xs uppercase tracking-wider transition-all shadow-lg"
+              className="hidden md:inline-flex items-center gap-2 bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] font-bold py-3.5 px-8 rounded-full text-xs uppercase tracking-wider transition-all shadow-lg"
             >
               <Trophy className="w-4 h-4" />
               <span>Explore All Golf Courses</span>

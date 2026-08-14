@@ -1,7 +1,8 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Star, Hotel, MapPin, CheckCircle2, ArrowRight, X, Sparkles, ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { LUXURY_HOTELS, LuxuryHotel } from '@/data/travelData';
@@ -133,18 +134,17 @@ export const LuxuryHotelShowcase: React.FC = () => {
           })}
         </div>
 
-        {/* Mobile View More Button */}
-        {filteredHotels.length > 3 && (
-          <div className="mt-8 text-center md:hidden">
-            <button
-              onClick={() => setShowAllMobile(!showAllMobile)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
-            >
-              <span>{showAllMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (View More)' : 'View More')}</span>
-              <ChevronDown className={`w-4 h-4 transition-transform ${showAllMobile ? 'rotate-180' : ''}`} />
-            </button>
-          </div>
-        )}
+        {/* Mobile View All Hotels & Resorts Link to Dedicated Page */}
+        <div className="mt-8 text-center md:hidden">
+          <Link
+            href="/destinations"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-xs font-bold uppercase tracking-wider shadow-lg transition-all"
+          >
+            <Hotel className="w-4 h-4 text-[#C8A45D]" />
+            <span>{language === 'kr' ? '모든 럭셔리 호텔 & 리조트 보기' : 'View All Hotels & Resorts'}</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
 
       {/* Hotel Detail Modal */}

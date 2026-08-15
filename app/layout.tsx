@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter, Noto_Serif_KR, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { Navbar } from "@/components/layout/Navbar";
@@ -114,7 +113,6 @@ export default function RootLayout({
         <LanguageProvider>
           <LoadingScreen />
           <ScrollProgress />
-          <CustomCursor />
           <Navbar />
           <main className="flex-grow">{children}</main>
           <FloatingWhatsApp />

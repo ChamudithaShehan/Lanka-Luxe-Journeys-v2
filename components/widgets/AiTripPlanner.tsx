@@ -151,7 +151,10 @@ export const AiTripPlanner: React.FC = () => {
                   return (
                     <button
                       key={item.id}
-                      onClick={() => setStyle(item.id as any)}
+                      onClick={() => {
+                        setStyle(item.id as any);
+                        setResult(null);
+                      }}
                       className={`flex flex-col items-center justify-center p-3 rounded-xl border text-xs transition-all ${
                         isSel
                           ? 'bg-[#C8A45D] text-[#0B1F3A] font-bold border-[#C8A45D] shadow-md'
@@ -181,7 +184,10 @@ export const AiTripPlanner: React.FC = () => {
                   return (
                     <button
                       key={item.id}
-                      onClick={() => setDays(item.id as any)}
+                      onClick={() => {
+                        setDays(item.id as any);
+                        setResult(null);
+                      }}
                       className={`p-2.5 rounded-xl border text-xs text-left transition-all ${
                         isSel
                           ? 'bg-[#C8A45D] text-[#0B1F3A] font-bold border-[#C8A45D]'
@@ -210,7 +216,10 @@ export const AiTripPlanner: React.FC = () => {
                   return (
                     <button
                       key={item.id}
-                      onClick={() => setStay(item.id as any)}
+                      onClick={() => {
+                        setStay(item.id as any);
+                        setResult(null);
+                      }}
                       className={`p-2.5 rounded-xl border text-xs text-left transition-all ${
                         isSel
                           ? 'bg-[#C8A45D] text-[#0B1F3A] font-bold border-[#C8A45D]'
@@ -254,9 +263,17 @@ export const AiTripPlanner: React.FC = () => {
                 exit={{ opacity: 0, height: 0, y: 15 }}
                 className="mt-8 pt-6 border-t border-[#C8A45D]/40 bg-[#0B1F3A]/80 p-6 rounded-xl border"
               >
-                <div className="flex items-center gap-2 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider mb-2">
-                  <CheckCircle2 className="w-4 h-4" />
-                  {t.aiPlanner.recommendedPlan}
+                <div className="flex items-center justify-between text-[#C8A45D] text-xs font-semibold uppercase tracking-wider mb-2">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4" />
+                    {t.aiPlanner.recommendedPlan}
+                  </div>
+                  <button
+                    onClick={() => setResult(null)}
+                    className="text-gray-400 hover:text-white transition-colors text-[10px] font-mono tracking-wider uppercase border border-white/10 hover:border-white/30 rounded px-2 py-0.5"
+                  >
+                    Hide Plan
+                  </button>
                 </div>
                 <h4 className="text-xl sm:text-2xl font-serif font-bold text-white mb-2">
                   {language === 'kr' ? result.titleKr : result.titleEn}

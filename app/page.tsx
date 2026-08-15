@@ -26,7 +26,7 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { GOLF_COURSES, TOUR_PACKAGES, EXPERIENCES, TESTIMONIALS, BLOG_ARTICLES } from '@/data/travelData';
-import { AiTripPlanner } from '@/components/widgets/AiTripPlanner';
+
 import { LuxuryHotelShowcase } from '@/components/widgets/LuxuryHotelShowcase';
 import { LuxuryPhotoGallery } from '@/components/widgets/LuxuryPhotoGallery';
 import { LuxuryVideoStories } from '@/components/widgets/LuxuryVideoStories';
@@ -532,9 +532,6 @@ export default function HomePage() {
 
       {/* PREMIUM LOGISTICS SERVICES GRID */}
       <PremiumServicesGrid />
-
-      {/* AI TRIP PLANNER WIDGET */}
-      <AiTripPlanner />
 
       {/* WEATHER & CURRENCY CALCULATOR */}
       <CurrencyWeatherWidget />

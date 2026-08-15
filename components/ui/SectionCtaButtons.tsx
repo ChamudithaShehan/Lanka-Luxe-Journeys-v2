@@ -29,7 +29,7 @@ export function SectionCtaButtons({ onOpenBooking, categoryName }: SectionCtaBut
       </button>
 
       <a
-        href="https://wa.me/94771234567"
+        href="https://wa.me/94770008899"
         target="_blank"
         rel="noopener noreferrer"
         className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#0B1F3A] hover:bg-white/10 text-emerald-400 border border-emerald-500/40 font-bold text-xs uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2"

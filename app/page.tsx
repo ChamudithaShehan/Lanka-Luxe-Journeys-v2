@@ -410,8 +410,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Section CTAs */}
-          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Luxury Experiences" />
+
         </div>
       </section>
 
@@ -514,7 +513,7 @@ export default function HomePage() {
               <span>Explore All Golf Courses</span>
             </Link>
 
-            <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Golf Holidays" />
+
           </div>
         </div>
       </section>
@@ -548,9 +547,7 @@ export default function HomePage() {
 
       {/* WHY CHOOSE LANKA LUXE JOURNEYS */}
       <WhyChooseUs />
-      <div className="max-w-7xl mx-auto px-4 pb-16">
-        <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Why Choose Lanka Luxe" />
-      </div>
+
 
       {/* WILDLIFE SAFARIS SECTION */}
       <section className="py-24 bg-[#060F1D] border-t border-[#C8A45D]/20">
@@ -605,7 +602,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Wildlife Safaris" />
+
         </div>
       </section>
 
@@ -678,7 +675,7 @@ export default function HomePage() {
             </button>
           </div>
 
-          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Wellness Retreats" />
+
         </div>
       </section>
 
@@ -743,15 +740,13 @@ export default function HomePage() {
             </div>
           </div>
 
-          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Honeymoon Packages" />
+
         </div>
       </section>
 
       {/* TESTIMONIALS SCROLLING COLUMNS */}
       <Testimonials />
-      <div className="max-w-7xl mx-auto px-4 pb-16">
-        <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Customer Reviews" />
-      </div>
+
 
       {/* TRAVEL BLOG SECTION */}
       <section className="py-24 bg-[#0B1F3A] border-t border-[#C8A45D]/20">
@@ -823,7 +818,7 @@ export default function HomePage() {
             </button>
           </div>
 
-          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Travel Blog" />
+
         </div>
       </section>
 
@@ -880,23 +875,7 @@ export default function HomePage() {
             {t.contactCta.subtitle}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <button
-              onClick={() => handleOpenBooking()}
-              className="w-full sm:w-auto bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-4 px-8 rounded-full shadow-[0_0_25px_rgba(200, 164, 93,0.4)] transition-all uppercase tracking-wider text-xs sm:text-sm"
-            >
-              {t.contactCta.bookBtn}
-            </button>
-            <a
-              href="https://wa.me/94770008899"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-transparent border border-white hover:border-[#C8A45D] text-white hover:text-[#C8A45D] font-bold py-4 px-8 rounded-full transition-all uppercase tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2"
-            >
-              <PhoneCall className="w-4 h-4 text-[#25D366]" />
-              {t.contactCta.whatsappBtn}
-            </a>
-          </div>
+          <SectionCtaButtons onOpenBooking={handleOpenBooking} categoryName="Footer CTA" />
         </div>
       </section>
 

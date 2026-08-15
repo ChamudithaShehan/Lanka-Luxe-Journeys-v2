@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { TestimonialsColumn, Testimonial } from "@/components/ui/testimonials-columns-1";
 import { motion } from "motion/react";
@@ -65,6 +65,53 @@ const firstColumn = testimonialsData.slice(0, 3);
 const secondColumn = testimonialsData.slice(3, 6);
 const thirdColumn = testimonialsData.slice(6, 9);
 
+const TestimonialsHorizontal = ({ testimonials }: { testimonials: Testimonial[] }) => {
+  return (
+    <div
+      className="md:hidden overflow-hidden w-full relative py-4 mt-8"
+      style={{
+        WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+        maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+      }}
+    >
+      <motion.div
+        animate={{
+          translateX: "-50%",
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear",
+          repeatType: "loop",
+        }}
+        className="flex gap-6 w-max"
+      >
+        {[...testimonials, ...testimonials].map((item, idx) => (
+          <div
+            key={idx}
+            className="p-6 rounded-2xl border border-[#C8A45D]/30 bg-[#122848] shadow-xl w-[290px] text-white hover:border-[#C8A45D] transition-all shrink-0 flex flex-col justify-between"
+          >
+            <div className="text-xs text-gray-200 leading-relaxed italic">"{item.text}"</div>
+            <div className="flex items-center gap-3 mt-4 pt-3 border-t border-white/10">
+              <img
+                width={36}
+                height={36}
+                src={item.image}
+                alt={item.name}
+                className="h-9 w-9 rounded-full border border-[#C8A45D] object-cover"
+              />
+              <div className="flex flex-col">
+                <div className="font-serif font-bold text-xs tracking-tight leading-4 text-white">{item.name}</div>
+                <div className="text-[10px] text-[#C8A45D] leading-4 tracking-tight font-medium">{item.role}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
 export const Testimonials = () => {
   return (
     <section className="bg-[#060F1D] py-20 relative overflow-hidden border-t border-[#C8A45D]/20 text-white">
@@ -91,7 +138,11 @@ export const Testimonials = () => {
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-6 mt-12 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)] max-h-[740px] overflow-hidden">
+        {/* Horizontal auto-scrolling row on mobile only */}
+        <TestimonialsHorizontal testimonials={testimonialsData} />
+
+        {/* Vertical auto-scrolling columns on desktop/tablet */}
+        <div className="hidden md:flex justify-center gap-6 mt-12 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)] max-h-[740px] overflow-hidden">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
           <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />

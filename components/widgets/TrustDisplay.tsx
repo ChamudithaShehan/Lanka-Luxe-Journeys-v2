@@ -148,7 +148,7 @@ export function TrustDisplay({ onOpenBooking }: { onOpenBooking: (pkgName?: stri
               {language === 'kr' ? "여행 계획하기" : "Plan My Journey"}
             </button>
             <a
-              href="https://wa.me/94771234567"
+              href="https://wa.me/94770008899"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2 shadow-lg"

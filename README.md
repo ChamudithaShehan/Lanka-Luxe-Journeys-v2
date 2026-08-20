@@ -67,6 +67,16 @@ The platform features our 7 core service pillars:
 
 ---
 
+## ⚙️ Admin Dashboard & CMS
+
+A powerful, custom-built local Content Management System (CMS) allows for complete control over the website's content without needing external databases:
+
+- **Complete Content Control:** Manage Tours, Golf Courses, Destinations, Luxury Hotels, Experiences, Testimonials, Team Members, Blog Articles, and Hero Slides directly from the `/admin` dashboard.
+- **LocalStorage as CMS:** All content changes are synchronized seamlessly and persisted client-side using `localStorage`, keeping the application fast and purely static.
+- **ImgBB Image Uploads:** Integrated direct-to-ImgBB image upload functionality within the dashboard allows for instant image hosting and seamless content updates.
+
+---
+
 ## 🛠️ Technology Stack
 
 - **Framework:** Next.js 16 (App Router, Turbopack, Static Site Generation)

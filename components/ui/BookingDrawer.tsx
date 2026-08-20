@@ -6,6 +6,8 @@ import { X, Calendar, Users, Sparkles, CheckCircle2, ShieldCheck, PhoneCall, Mai
 import { useLanguage } from '@/context/LanguageContext';
 import confetti from 'canvas-confetti';
 
+import { useAdmin } from '@/context/AdminContext';
+
 interface BookingDrawerProps {
   isOpen: boolean;
   onClose: () => void;
@@ -13,6 +15,7 @@ interface BookingDrawerProps {
 
 export const BookingDrawer: React.FC<BookingDrawerProps> = ({ isOpen, onClose }) => {
   const { t, language } = useLanguage();
+  const { siteSettings } = useAdmin();
   const [submitted, setSubmitted] = useState(false);
 
   const [form, setForm] = useState({
@@ -21,7 +24,7 @@ export const BookingDrawer: React.FC<BookingDrawerProps> = ({ isOpen, onClose })
     phone: '',
     dates: '',
     guests: '2 Guests',
-    package: 'Grand Ceylon Royal Tour',
+    package: siteSettings.bookingPackages[0] || 'Grand Ceylon Royal Tour',
     language: language === 'kr' ? 'Korean' : 'English',
     notes: '',
   });
@@ -111,6 +114,22 @@ export const BookingDrawer: React.FC<BookingDrawerProps> = ({ isOpen, onClose })
                     />
                   </div>
 
+                  {/* Dynamic Tour Package Selection field */}
+                  <div>
+                    <label className="block text-[11px] font-semibold text-[#C8A45D] uppercase tracking-wider mb-1">
+                      Select Package *
+                    </label>
+                    <select
+                      value={form.package}
+                      onChange={(e) => setForm({ ...form, package: e.target.value })}
+                      className="w-full bg-[#122848] border border-[#C8A45D]/30 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#C8A45D]"
+                    >
+                      {siteSettings.bookingPackages.map((pkg) => (
+                        <option key={pkg} value={pkg}>{pkg}</option>
+                      ))}
+                    </select>
+                  </div>
+
                   <div>
                     <label className="block text-[11px] font-semibold text-[#C8A45D] uppercase tracking-wider mb-1">
                       {t.bookingModal.phone} *
@@ -198,12 +217,12 @@ export const BookingDrawer: React.FC<BookingDrawerProps> = ({ isOpen, onClose })
             <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
               {/* KakaoTalk — primary for Korean users, WhatsApp secondary */}
               {language === 'kr' ? (
-                <a href="https://open.kakao.com/o/lankaluxe" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline font-bold" style={{ color: '#FEE500' }}>
+                <a href={siteSettings.kakaoLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline font-bold" style={{ color: '#FEE500' }}>
                   <span className="w-4 h-4 rounded-full bg-[#3C1E1E] text-[#FEE500] flex items-center justify-center text-[8px] font-black shrink-0">카카오</span>
                   카카오톡 1:1 직접 상담
                 </a>
               ) : (
-                <a href="https://wa.me/94770008899" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[#25D366] hover:underline font-semibold">
+                <a href={`https://wa.me/${siteSettings.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[#25D366] hover:underline font-semibold">
                   <PhoneCall className="w-3.5 h-3.5" />
                   WhatsApp Direct
                 </a>

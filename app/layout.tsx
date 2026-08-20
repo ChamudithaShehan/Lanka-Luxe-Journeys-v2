@@ -9,6 +9,9 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { MobileBottomBar } from "@/components/ui/MobileBottomBar";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { AdminProvider } from "@/context/AdminContext";
+import { LayoutContent } from "@/components/layout/LayoutContent";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -110,15 +113,21 @@ export default function RootLayout({
         <link rel="alternate" hrefLang="x-default" href="https://lankaluxejourneys.com" />
       </head>
       <body className="min-h-full flex flex-col text-white selection:bg-[#C8A45D] selection:text-[#0B1F3A] pb-20 lg:pb-0" suppressHydrationWarning>
-        <LanguageProvider>
-          <LoadingScreen />
-          <ScrollProgress />
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <FloatingWhatsApp />
-          <MobileBottomBar />
-          <Footer />
-        </LanguageProvider>
+        <AdminProvider>
+          <LanguageProvider>
+            <LayoutContent
+              loadingScreen={<LoadingScreen />}
+              scrollProgress={<ScrollProgress />}
+              customCursor={<CustomCursor />}
+              navbar={<Navbar />}
+              floatingWhatsApp={<FloatingWhatsApp />}
+              mobileBottomBar={<MobileBottomBar />}
+              footer={<Footer />}
+            >
+              {children}
+            </LayoutContent>
+          </LanguageProvider>
+        </AdminProvider>
       </body>
     </html>
   );

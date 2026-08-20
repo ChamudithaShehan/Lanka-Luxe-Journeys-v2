@@ -42,8 +42,11 @@ import { SectionCtaButtons } from '@/components/ui/SectionCtaButtons';
 import { BookingModal } from '@/components/ui/BookingModal';
 import Testimonials from '@/components/ui/testimonials-demo';
 
+import { useAdmin } from '@/context/AdminContext';
+
 export default function HomePage() {
   const { t, language } = useLanguage();
+  const { heroSlides } = useAdmin();
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedBookingPackage, setSelectedBookingPackage] = useState('');
@@ -52,33 +55,6 @@ export default function HomePage() {
   const [showAllWhyUsMobile, setShowAllWhyUsMobile] = useState(false);
   const [showAllWellnessMobile, setShowAllWellnessMobile] = useState(false);
   const [showAllBlogMobile, setShowAllBlogMobile] = useState(false);
-
-  const heroSlides = [
-    {
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
-      tag: language === 'kr' ? "스리랑카 최고급 VIP 럭셔리 투어" : "SRI LANKA ULTRA-LUXURY JOURNEYS",
-      title: language === 'kr' ? "인도양의 보석, 스리랑카 VIP 오디세이" : "Experience Sri Lanka Beyond Luxury",
-      sub: language === 'kr' ? "프라이빗 헬기 직항, 5성급 릴레앤샤토 방갈로, 1:1 전담 한국어 콘시어지와 함께하는 특별한 여정." : "Exclusive private jet charters, 5-star Relais & Châteaux tea estate bungalows, and bespoke travel concierge.",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=1920&q=80",
-      tag: language === 'kr' ? "실론 고원 차밭 & 파노라마 뷰" : "CEYLON HIGHLAND TEA ESTATES",
-      title: language === 'kr' ? "운무 속 푸른 실론 차밭과 마호가니 열차" : "Misty Tea Bungalows & Royal Trains",
-      sub: language === 'kr' ? "해발 1,800m 청정 티 방갈로 입실 및 마호가니 전용 열차에서 즐기는 애프터눈 티." : "Stay at colonial planter bungalows surrounded by emerald tea hills and private train carriages.",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1920&q=80",
-      tag: language === 'kr' ? "PGA 규격 4대 명문 코스 라운딩" : "PGA CHAMPIONSHIP GOLF HOLIDAYS",
-      title: language === 'kr' ? "인도양 오션뷰 & 호수 파노라마 골프" : "Championship Golf & Ocean Views",
-      sub: language === 'kr' ? "캔디 빅토리아, 로열 콜롬보, 누와라엘리야에서 즐기는 1:1 전담 캐디 의전 라운딩." : "Play on Asia's top courses with guaranteed morning tee times and private PGA caddies.",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1920&q=80",
-      tag: language === 'kr' ? "유네스코 고대 암사원 요새" : "ANCIENT SIGIRIYA CITADEL",
-      title: language === 'kr' ? "천년 역사의 거암 요새 프라이빗 일출" : "Sunrise Access to Royal Rock Fortress",
-      sub: language === 'kr' ? "대중 입장에 앞서 전용 가이드와 함께 오르는 시기리야 고대 왕국의 일출 전경." : "VIP early access to the 200-meter-high granite citadel surrounded by ancient water gardens.",
-    }
-  ];
 
   useEffect(() => {
     const timer = setInterval(() => {

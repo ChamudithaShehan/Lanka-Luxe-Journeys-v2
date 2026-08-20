@@ -3,6 +3,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Language, translations } from '@/data/translations';
 
+import { useAdmin } from '@/context/AdminContext';
+
 export type Theme = 'dark' | 'light';
 
 interface LanguageContextType {
@@ -17,6 +19,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { siteTranslations } = useAdmin();
   const [language, setLanguageState] = useState<Language>('en');
   const [theme, setThemeState] = useState<Theme>('dark');
 
@@ -57,7 +60,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
-  const t = translations[language] || translations.en;
+  const t = siteTranslations[language] || siteTranslations.en;
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, theme, setTheme, toggleTheme, t }}>

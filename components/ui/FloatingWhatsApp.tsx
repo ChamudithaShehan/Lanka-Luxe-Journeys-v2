@@ -4,17 +4,20 @@ import React, { useState } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
+import { useAdmin } from '@/context/AdminContext';
+
 export const FloatingWhatsApp: React.FC = () => {
   const { language } = useLanguage();
+  const { siteSettings } = useAdmin();
   const [isOpen, setIsOpen] = useState(false);
   
-  const whatsappNumber = "+94770008899";
+  const whatsappNumber = siteSettings.whatsappNumber;
   const defaultText = language === 'kr' 
     ? "안녕하세요, 스리랑카 럭셔리 골프 투어 및 프라이빗 맞춤 여행 견적 문의드립니다."
     : "Hello, I would like to inquire about a luxury travel itinerary and golf package in Sri Lanka.";
 
   const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/\+/g, '')}?text=${encodeURIComponent(defaultText)}`;
-  const kakaoUrl = "https://pf.kakao.com/_lankaluxe"; // Custom KakaoTalk channel link
+  const kakaoUrl = siteSettings.kakaoLink;
 
   return (
     <div className="hidden sm:flex fixed bottom-6 right-6 z-[90] flex-col items-end gap-3">

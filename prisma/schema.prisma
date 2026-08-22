@@ -1,0 +1,215 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// ─── ADMIN USERS ─────────────────────────────────────────────────
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   // bcrypt hash
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── TOUR PACKAGES ───────────────────────────────────────────────
+
+model TourPackage {
+  id            String   @id @default(cuid())
+  titleEn       String
+  titleKr       String
+  category      String
+  duration      String
+  priceUSD      Float
+  image         String   @db.Text
+  gallery       Json     // String[]
+  descriptionEn String   @db.LongText
+  descriptionKr String   @db.LongText
+  highlightsEn  Json     // String[]
+  highlightsKr  Json     // String[]
+  itineraryEn   Json     // {day,title,desc}[]
+  itineraryKr   Json     // {day,title,desc}[]
+  includedEn    Json     // String[]
+  includedKr    Json     // String[]
+  locations     Json     // String[]
+  hotels        Json     // String[]
+  idealForEn    String?
+  idealForKr    String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ─── GOLF COURSES ────────────────────────────────────────────────
+
+model GolfCourse {
+  id           String   @id @default(cuid())
+  nameEn       String
+  nameKr       String
+  location     String
+  holes        Int
+  par          Int
+  established  Int
+  designer     String
+  image        String   @db.Text
+  hotel        String
+  duration     String
+  greenFeeUSD  Float
+  difficultyEn String
+  difficultyKr String
+  rating       Float
+  recommended  Boolean  @default(false)
+  overviewEn   String   @db.LongText
+  overviewKr   String   @db.LongText
+  featuresEn   Json     // String[]
+  featuresKr   Json     // String[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// ─── DESTINATIONS ────────────────────────────────────────────────
+
+model Destination {
+  id           String   @id @default(cuid())
+  nameEn       String
+  nameKr       String
+  subtitleEn   String
+  subtitleKr   String
+  image        String   @db.Text
+  gallery      Json     // String[]
+  hotels       Json     // String[]
+  highlightsEn Json     // String[]
+  highlightsKr Json     // String[]
+  bestTimeEn   String
+  bestTimeKr   String
+  descEn       String   @db.LongText
+  descKr       String   @db.LongText
+  svgPosX      Float
+  svgPosY      Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// ─── LUXURY HOTELS ───────────────────────────────────────────────
+
+model LuxuryHotel {
+  id               String   @id @default(cuid())
+  nameEn           String
+  nameKr           String
+  category         String
+  locationEn       String
+  locationKr       String
+  rating           Float
+  image            String   @db.Text
+  gallery          Json     // String[]
+  facilitiesEn     Json     // String[]
+  facilitiesKr     Json     // String[]
+  pricePerNightUSD Float
+  descEn           String   @db.LongText
+  descKr           String   @db.LongText
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+// ─── BLOG ARTICLES ───────────────────────────────────────────────
+
+model BlogArticle {
+  id        String   @id @default(cuid())
+  titleEn   String
+  titleKr   String
+  category  String
+  date      String
+  author    String
+  image     String   @db.Text
+  readTime  String
+  excerptEn String   @db.Text
+  excerptKr String   @db.Text
+  contentEn String   @db.LongText
+  contentKr String   @db.LongText
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── EXPERIENCES ─────────────────────────────────────────────────
+
+model Experience {
+  id       String @id @default(cuid())
+  titleEn  String
+  titleKr  String
+  category String
+  image    String @db.Text
+  descEn   String @db.Text
+  descKr   String @db.Text
+}
+
+// ─── TESTIMONIALS ────────────────────────────────────────────────
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  nameEn      String
+  nameKr      String
+  countryEn   String
+  countryKr   String
+  rating      Float
+  reviewEn    String   @db.Text
+  reviewKr    String   @db.Text
+  tourPackage String?
+  image       String?  @db.Text
+  createdAt   DateTime @default(now())
+}
+
+// ─── TEAM MEMBERS ────────────────────────────────────────────────
+
+model TeamMember {
+  id     String @id @default(cuid())
+  nameEn String
+  nameKr String
+  roleEn String
+  roleKr String
+  bioEn  String @db.Text
+  bioKr  String @db.Text
+  image  String @db.Text
+}
+
+// ─── HERO SLIDES ─────────────────────────────────────────────────
+
+model HeroSlide {
+  id    String @id @default(cuid())
+  image String @db.Text
+  tag   String
+  title String
+  sub   String @db.Text
+  order Int    @default(0)
+}
+
+// ─── SITE SETTINGS (singleton) ───────────────────────────────────
+
+model SiteSettings {
+  id                String   @id @default("singleton")
+  whatsappNumber    String
+  kakaoLink         String
+  email             String
+  googleReviewCount String
+  googleReviewScore String
+  tripAdvisorScore  String
+  sltdaLicence      String
+  statGuests        String
+  statExperiences   String
+  statDestinations  String
+  statYears         String
+  statSatisfaction  String
+  statGolfGuests    String
+  bookingPackages   Json     // String[]
+  primaryGoldColor  String
+  primaryNavyColor  String
+  seoTitle          String
+  seoDescription    String   @db.Text
+  seoKeywords       Json     // String[]
+  imgbbApiKey       String?
+  updatedAt         DateTime @updatedAt
+}

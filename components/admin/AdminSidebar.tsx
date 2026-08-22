@@ -39,10 +39,9 @@ export const AdminSidebar: React.FC = () => {
     { label: 'Translations', href: '/admin/translations', icon: Type },
   ];
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('llj_admin_authenticated');
-    router.push('/');
-    window.location.reload();
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    router.push('/admin/login');
   };
 
   return (

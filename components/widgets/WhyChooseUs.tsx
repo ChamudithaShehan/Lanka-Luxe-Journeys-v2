@@ -90,9 +90,8 @@ export function WhyChooseUs() {
             return (
               <div
                 key={idx}
-                className={`bg-[#122848] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl p-7 transition-all duration-300 shadow-xl space-y-4 flex flex-col justify-between group hover:-translate-y-1 ${
-                  isHiddenMobile ? 'hidden md:flex' : 'flex'
-                }`}
+                className={`bg-[#122848] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl p-7 transition-all duration-300 shadow-xl space-y-4 flex flex-col justify-between group hover:-translate-y-1 ${isHiddenMobile ? 'hidden md:flex' : 'flex'
+                  }`}
               >
                 <div className="space-y-4">
                   <div className="w-12 h-12 rounded-xl bg-[#0B1F3A] border border-[#C8A45D]/40 flex items-center justify-center text-[#C8A45D] group-hover:bg-[#C8A45D] group-hover:text-[#0B1F3A] transition-all">

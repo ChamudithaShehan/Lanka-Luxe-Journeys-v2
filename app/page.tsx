@@ -8,7 +8,6 @@ import {
   Compass,
   Trophy,
   ArrowRight,
-  ShieldCheck,
   Star,
   Sparkles,
   Car,
@@ -17,11 +16,7 @@ import {
   UserCheck,
   Plane,
   Camera,
-  PhoneCall,
-  MapPin,
-  Flame,
   Award,
-  ChevronDown,
   CheckCircle2
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
@@ -50,11 +45,6 @@ export default function HomePage() {
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedBookingPackage, setSelectedBookingPackage] = useState('');
-  const [showAllGolfMobile, setShowAllGolfMobile] = useState(false);
-  const [showAllToursMobile, setShowAllToursMobile] = useState(false);
-  const [showAllWhyUsMobile, setShowAllWhyUsMobile] = useState(false);
-  const [showAllWellnessMobile, setShowAllWellnessMobile] = useState(false);
-  const [showAllBlogMobile, setShowAllBlogMobile] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -247,24 +237,18 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
           {[
             { title: t.whyUs.chauffeur, desc: t.whyUs.chauffeurDesc, icon: Car },
             { title: t.whyUs.hotels, desc: t.whyUs.hotelsDesc, icon: Hotel },
             { title: t.whyUs.concierge, desc: t.whyUs.conciergeDesc, icon: Clock },
-            { title: t.whyUs.korean, desc: t.whyUs.koreanDesc, icon: UserCheck },
-            { title: t.whyUs.transport, desc: t.whyUs.transportDesc, icon: Plane },
-            { title: t.whyUs.tailorMade, desc: t.whyUs.tailorMadeDesc, icon: Sparkles },
           ].map((item, idx) => {
             const Icon = item.icon;
-            const isHiddenMobile = !showAllWhyUsMobile && idx >= 4;
             return (
               <motion.div
                 key={idx}
                 whileHover={{ y: -4 }}
-                className={`bg-[#122848] border border-[#C8A45D]/25 hover:border-[#C8A45D] rounded-xl sm:rounded-2xl p-4 sm:p-8 transition-all duration-300 shadow-xl group ${
-                  isHiddenMobile ? 'hidden md:block' : 'block'
-                }`}
+                className="bg-[#122848] border border-[#C8A45D]/25 hover:border-[#C8A45D] rounded-xl sm:rounded-2xl p-4 sm:p-8 transition-all duration-300 shadow-xl group"
               >
                 <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#0B1F3A] border border-[#C8A45D]/40 flex items-center justify-center text-[#C8A45D] mb-3 sm:mb-6 group-hover:scale-110 transition-transform">
                   <Icon className="w-4 h-4 sm:w-6 sm:h-6" />
@@ -272,7 +256,7 @@ export default function HomePage() {
                 <h3 className="text-sm sm:text-xl font-serif font-bold text-white mb-1 sm:mb-2 group-hover:text-[#C8A45D] transition-colors leading-snug">
                   {item.title}
                 </h3>
-                <p className="hidden sm:block text-sm text-gray-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mt-1">
                   {item.desc}
                 </p>
               </motion.div>
@@ -280,15 +264,14 @@ export default function HomePage() {
           })}
         </div>
 
-        {/* Mobile View More Button for Why Choose Us — shows after 4 cards */}
-        <div className="mt-4 text-center md:hidden">
-          <button
-            onClick={() => setShowAllWhyUsMobile(!showAllWhyUsMobile)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
+        <div className="mt-6 text-center">
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-xs font-bold uppercase tracking-wider shadow-lg transition-all"
           >
-            <span>{showAllWhyUsMobile ? (language === 'kr' ? '접기' : 'Show Less') : (language === 'kr' ? '더보기' : 'See All')}</span>
-            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showAllWhyUsMobile ? 'rotate-180' : ''}`} />
-          </button>
+            <span>{language === 'kr' ? '더 알아보기' : 'Learn More About Us'}</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
 
@@ -315,77 +298,70 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {TOUR_PACKAGES.map((pkg, idx) => {
-              const isHiddenMobile = !showAllToursMobile && idx >= 3;
-              return (
-                <div
-                  key={pkg.id}
-                  className={`bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-2xl group flex flex-col ${
-                    isHiddenMobile ? 'hidden md:flex' : 'flex'
-                  }`}
-                >
-                  <div className="relative h-64 overflow-hidden">
-                    <Image
-                      src={pkg.image}
-                      alt={pkg.titleEn}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-transparent to-transparent opacity-90" />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
-                        {pkg.category}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-gray-200">
-                      <span className="flex items-center gap-1 font-medium bg-[#0B1F3A]/80 px-2.5 py-1 rounded-full border border-white/10">
-                        <Clock className="w-3.5 h-3.5 text-[#C8A45D]" />
-                        {pkg.duration}
-                      </span>
-                      <span className="text-[#C8A45D] font-bold text-base">
-                        ${pkg.priceUSD.toLocaleString()} USD
-                      </span>
-                    </div>
+            {TOUR_PACKAGES.slice(0, 3).map((pkg) => (
+              <div
+                key={pkg.id}
+                className="bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-2xl group flex flex-col"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src={pkg.image}
+                    alt={pkg.titleEn}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-transparent to-transparent opacity-90" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                      {pkg.category}
+                    </span>
                   </div>
-
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                      <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors line-clamp-1">
-                        {language === 'kr' ? pkg.titleKr : pkg.titleEn}
-                      </h3>
-                      <p className="text-xs text-gray-300 mt-2 line-clamp-2 leading-relaxed">
-                        {language === 'kr' ? pkg.descriptionKr : pkg.descriptionEn}
-                      </p>
-                    </div>
-
-                    <div className="pt-2 border-t border-white/10 flex items-center justify-between">
-                      <button
-                        onClick={() => handleOpenBooking(pkg.titleEn)}
-                        className="w-full bg-[#122848] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-[#C8A45D] border border-[#C8A45D]/40 font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5"
-                      >
-                        <span>Read More & Reserve</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-gray-200">
+                    <span className="flex items-center gap-1 font-medium bg-[#0B1F3A]/80 px-2.5 py-1 rounded-full border border-white/10">
+                      <Clock className="w-3.5 h-3.5 text-[#C8A45D]" />
+                      {pkg.duration}
+                    </span>
+                    <span className="text-[#C8A45D] font-bold text-base">
+                      ${pkg.priceUSD.toLocaleString()} USD
+                    </span>
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors line-clamp-1">
+                      {language === 'kr' ? pkg.titleKr : pkg.titleEn}
+                    </h3>
+                    <p className="text-xs text-gray-300 mt-2 line-clamp-2 leading-relaxed">
+                      {language === 'kr' ? pkg.descriptionKr : pkg.descriptionEn}
+                    </p>
+                  </div>
+
+                  <div className="pt-2 border-t border-white/10">
+                    <button
+                      onClick={() => handleOpenBooking(pkg.titleEn)}
+                      className="w-full bg-[#122848] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-[#C8A45D] border border-[#C8A45D]/40 font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5"
+                    >
+                      <span>Read More & Reserve</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Mobile View All Tour Packages Link to Dedicated Page */}
-          <div className="mt-6 text-center md:hidden">
+          <div className="mt-8 text-center">
             <Link
               href="/tours"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-xs font-bold uppercase tracking-wider shadow-lg transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-xs font-bold uppercase tracking-wider shadow-lg transition-all"
             >
-              <Compass className="w-4 h-4 text-[#C8A45D]" />
+              <Compass className="w-4 h-4" />
               <span>{language === 'kr' ? '모든 투어 패키지 보기' : 'View All Tour Packages'}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-
 
         </div>
       </section>
@@ -407,89 +383,71 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {GOLF_COURSES.map((course, idx) => {
-              const isHiddenMobile = !showAllGolfMobile && idx >= 3;
-              return (
-                <div
-                  key={course.id}
-                  className={`bg-[#122848] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 group ${
-                    isHiddenMobile ? 'hidden md:block' : 'block'
-                  }`}
-                >
-                  <div className="relative h-56 overflow-hidden">
-                    <Image
-                      src={course.image}
-                      alt={course.nameEn}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4 bg-[#0B1F3A]/90 border border-[#C8A45D]/40 text-[#C8A45D] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                      {course.holes} Holes • Par {course.par}
-                    </div>
-                  </div>
-
-                  <div className="p-6 space-y-4">
-                    <div>
-                      <span className="text-[11px] text-[#C8A45D] font-semibold uppercase tracking-wider">
-                        {course.location}
-                      </span>
-                      <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors">
-                        {language === 'kr' ? course.nameKr : course.nameEn}
-                      </h3>
-                    </div>
-
-                    <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">
-                      {language === 'kr' ? course.overviewKr : course.overviewEn}
-                    </p>
-
-                    <div className="space-y-1.5 text-xs text-gray-300 border-t border-white/10 pt-3">
-                      <div className="flex items-center gap-2">
-                        <Hotel className="w-3.5 h-3.5 text-[#C8A45D]" />
-                        <span><strong>Hotel:</strong> {course.hotel}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Car className="w-3.5 h-3.5 text-[#C8A45D]" />
-                        <span><strong>Transfer:</strong> Mercedes V-Class / Helicopter</span>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => handleOpenBooking(course.nameEn)}
-                      className="w-full bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
-                    >
-                      <span>{t.golfSection.viewPackage}</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
+            {GOLF_COURSES.slice(0, 3).map((course) => (
+              <div
+                key={course.id}
+                className="bg-[#122848] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
+              >
+                <div className="relative h-56 overflow-hidden">
+                  <Image
+                    src={course.image}
+                    alt={course.nameEn}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4 bg-[#0B1F3A]/90 border border-[#C8A45D]/40 text-[#C8A45D] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    {course.holes} Holes • Par {course.par}
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="p-6 space-y-4">
+                  <div>
+                    <span className="text-[11px] text-[#C8A45D] font-semibold uppercase tracking-wider">
+                      {course.location}
+                    </span>
+                    <h3 className="text-xl font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors">
+                      {language === 'kr' ? course.nameKr : course.nameEn}
+                    </h3>
+                  </div>
+
+                  <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">
+                    {language === 'kr' ? course.overviewKr : course.overviewEn}
+                  </p>
+
+                  <div className="space-y-1.5 text-xs text-gray-300 border-t border-white/10 pt-3">
+                    <div className="flex items-center gap-2">
+                      <Hotel className="w-3.5 h-3.5 text-[#C8A45D]" />
+                      <span><strong>Hotel:</strong> {course.hotel}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Car className="w-3.5 h-3.5 text-[#C8A45D]" />
+                      <span><strong>Transfer:</strong> Mercedes V-Class / Helicopter</span>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => handleOpenBooking(course.nameEn)}
+                    className="w-full bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
+                  >
+                    <span>{t.golfSection.viewPackage}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Mobile View All Golf Courses Link to Dedicated Page */}
-          <div className="mt-6 text-center md:hidden">
+          <div className="mt-8 text-center">
             <Link
               href="/golf"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] text-xs font-bold uppercase tracking-wider shadow-lg transition-all"
-            >
-              <Trophy className="w-4 h-4 text-[#C8A45D]" />
-              <span>{language === 'kr' ? '모든 골프 코스 보기' : 'View All Golf Packages'}</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="mt-12 text-center flex flex-col items-center gap-6">
-            <Link
-              href="/golf"
-              className="hidden md:inline-flex items-center gap-2 bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] font-bold py-3.5 px-8 rounded-full text-xs uppercase tracking-wider transition-all shadow-lg"
+              className="inline-flex items-center gap-2 bg-[#122848] border border-[#C8A45D] text-[#C8A45D] hover:bg-[#C8A45D] hover:text-[#0B1F3A] font-bold py-3.5 px-8 rounded-full text-xs uppercase tracking-wider transition-all shadow-lg"
             >
               <Trophy className="w-4 h-4" />
-              <span>Explore All Golf Courses</span>
+              <span>{language === 'kr' ? '모든 골프 코스 보기' : 'Explore All Golf Courses'}</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
-
-
           </div>
         </div>
       </section>
@@ -620,102 +578,35 @@ export default function HomePage() {
                 descKr: "해안가 럭셔리 빌라에서 펼쳐지는 온열 치료 및 싱잉볼 사운드 힐링.",
                 image: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=600&q=80"
               }
-            ].map((item, idx) => {
-              const isHiddenMobile = !showAllWellnessMobile && idx >= 3;
-              return (
-                <div key={idx} className={`bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group ${isHiddenMobile ? 'hidden md:block' : 'block'}`}>
-                  <div className="relative h-48">
-                    <Image src={item.image} alt={item.titleEn} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
-                  </div>
-                  <div className="p-6 space-y-2">
-                    <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors">{language === 'kr' ? item.titleKr : item.titleEn}</h3>
-                    <p className="text-xs text-gray-300 leading-relaxed">{language === 'kr' ? item.descKr : item.descEn}</p>
-                  </div>
+            ].map((item, idx) => (
+              <div key={idx} className="bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group">
+                <div className="relative h-48">
+                  <Image src={item.image} alt={item.titleEn} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
                 </div>
-              );
-            })}
+                <div className="p-6 space-y-2">
+                  <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors">{language === 'kr' ? item.titleKr : item.titleEn}</h3>
+                  <p className="text-xs text-gray-300 leading-relaxed">{language === 'kr' ? item.descKr : item.descEn}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Mobile View More Button for Wellness Retreats */}
-          <div className="mt-6 text-center md:hidden">
-            <button
-              onClick={() => setShowAllWellnessMobile(!showAllWellnessMobile)}
+          <div className="mt-8 text-center">
+            <Link
+              href="/tours"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
             >
-              <span>{showAllWellnessMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (See More)' : 'See More Retreats')}</span>
-              <ChevronDown className={`w-4 h-4 transition-transform ${showAllWellnessMobile ? 'rotate-180' : ''}`} />
-            </button>
+              <Sparkles className="w-4 h-4" />
+              <span>{language === 'kr' ? '웰니스 패키지 보기' : 'View Wellness Packages'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
 
         </div>
       </section>
 
-      {/* HONEYMOON PACKAGES SECTION */}
-      <section className="py-24 bg-[#060F1D] border-t border-[#C8A45D]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider">
-              <Star className="w-3.5 h-3.5" />
-              {language === 'kr' ? "로맨틱 허니문 & 커플 투어" : "Romantic Honeymoon & Anniversary"}
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white">
-              {language === 'kr' ? "인도양 파라다이스 속 둘만의 로맨스" : "Paradise Crafted for Two"}
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-300">
-              {language === 'kr'
-                ? "해변 프라이빗 촛불 디너, 오션뷰 개인 풀빌라, 산악 낭만 열차 스냅 촬영 및 석양 요트 크루즈."
-                : "Private beachfront candlelight dinners, oceanfront plunge pool villas, and mountain train photography sessions."}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
-              <div className="bg-[#122848] border border-[#C8A45D]/30 rounded-2xl p-6 space-y-4">
-                <h3 className="text-xl font-serif font-bold text-white border-b border-white/10 pb-3">
-                  {language === 'kr' ? "허니문 시그니처 베네핏" : "Signature Honeymoon Inclusions"}
-                </h3>
-                <div className="space-y-3 text-xs text-gray-300">
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8A45D] shrink-0" />
-                    <span>{language === 'kr' ? "프라이빗 해변 촛불 멀티 코스 시푸드 디너" : "Private beachfront candlelight multi-course seafood dinner"}</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8A45D] shrink-0" />
-                    <span>{language === 'kr' ? "5성급 오션뷰 개인 풀빌라 / 허니문 스위트룸 투숙" : "5-Star oceanfront plunge pool villa / honeymoon suite stay"}</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8A45D] shrink-0" />
-                    <span>{language === 'kr' ? "전문 스냅 사진작가 허니문 포토 세션" : "Professional honeymoon photography session in Ella"}</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8A45D] shrink-0" />
-                    <span>{language === 'kr' ? "인도양 석양 카타마란 프라이빗 요트 크루즈" : "Private Indian Ocean sunset catamaran yacht cruise"}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative h-[360px] rounded-2xl overflow-hidden border border-[#C8A45D]/30 shadow-2xl group">
-              <Image
-                src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=1200&q=80"
-                alt="Honeymoon Paradise"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#060F1D] via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#122848]/90 border border-[#C8A45D]/40 backdrop-blur-md">
-                <span className="text-[#C8A45D] font-bold text-xs uppercase tracking-wider block">Exclusive Couple's Escape</span>
-                <h3 className="text-lg font-serif font-bold text-white mt-1">Romantic Honeymoon in Paradise</h3>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-      </section>
 
       {/* TESTIMONIALS SCROLLING COLUMNS */}
       <Testimonials />
@@ -744,51 +635,47 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {BLOG_ARTICLES.slice(0, 6).map((art, idx) => {
-              const isHiddenMobile = !showAllBlogMobile && idx >= 3;
-              return (
-                <div key={art.id} className={`bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group flex flex-col justify-between ${isHiddenMobile ? 'hidden md:flex' : 'flex'}`}>
-                  <div>
-                    <div className="relative h-48 overflow-hidden">
-                      <Image src={art.image} alt={art.titleEn} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
-                      <div className="absolute top-4 left-4 bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                        {art.category}
-                      </div>
-                    </div>
-                    <div className="p-6 space-y-3">
-                      <span className="text-[11px] text-gray-400 block">{art.date} • {art.readTime} read</span>
-                      <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors line-clamp-2">
-                        {language === 'kr' ? art.titleKr : art.titleEn}
-                      </h3>
-                      <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">
-                        {language === 'kr' ? art.excerptKr : art.excerptEn}
-                      </p>
+            {BLOG_ARTICLES.slice(0, 3).map((art) => (
+              <div key={art.id} className="bg-[#122848] border border-[#C8A45D]/30 rounded-2xl overflow-hidden shadow-xl hover:border-[#C8A45D] transition-all group flex flex-col justify-between">
+                <div>
+                  <div className="relative h-48 overflow-hidden">
+                    <Image src={art.image} alt={art.titleEn} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#122848] via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4 bg-[#C8A45D] text-[#0B1F3A] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                      {art.category}
                     </div>
                   </div>
-                  <div className="px-6 pb-6 pt-2">
-                    <Link
-                      href="/blog"
-                      className="inline-flex items-center gap-1.5 text-xs text-[#C8A45D] font-bold uppercase tracking-wider hover:underline"
-                    >
-                      <span>Read Guide</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
+                  <div className="p-6 space-y-3">
+                    <span className="text-[11px] text-gray-400 block">{art.date} • {art.readTime} read</span>
+                    <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#C8A45D] transition-colors line-clamp-2">
+                      {language === 'kr' ? art.titleKr : art.titleEn}
+                    </h3>
+                    <p className="text-xs text-gray-300 line-clamp-3 leading-relaxed">
+                      {language === 'kr' ? art.excerptKr : art.excerptEn}
+                    </p>
                   </div>
                 </div>
-              );
-            })}
+                <div className="px-6 pb-6 pt-2">
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center gap-1.5 text-xs text-[#C8A45D] font-bold uppercase tracking-wider hover:underline"
+                  >
+                    <span>Read Guide</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Mobile View More Button for Blog Articles */}
-          <div className="mt-6 text-center md:hidden">
-            <button
-              onClick={() => setShowAllBlogMobile(!showAllBlogMobile)}
+          <div className="mt-8 text-center">
+            <Link
+              href="/blog"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
             >
-              <span>{showAllBlogMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (See More)' : 'See More Articles')}</span>
-              <ChevronDown className={`w-4 h-4 transition-transform ${showAllBlogMobile ? 'rotate-180' : ''}`} />
-            </button>
+              <span>{language === 'kr' ? '모든 아티클 보기' : 'See All Articles'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
 

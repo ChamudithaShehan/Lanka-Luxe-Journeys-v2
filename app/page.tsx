@@ -70,7 +70,7 @@ export default function HomePage() {
   return (
     <div className="relative overflow-hidden bg-[#0B1F3A]">
       {/* SUN-DROPPED VIBRANT HERO SECTION */}
-      <section className="relative min-h-[75vh] sm:min-h-[92vh] flex flex-col justify-between overflow-hidden pt-24 sm:pt-28 pb-8 sm:pb-12 hero-section">
+      <section className="relative min-h-[100dvh] sm:min-h-[92vh] flex flex-col justify-between overflow-hidden pt-24 sm:pt-28 pb-8 sm:pb-12 hero-section">
         {/* Background Image Carousel - Sunlit & Crystal Clear */}
         <AnimatePresence mode="wait">
           <motion.div
@@ -190,29 +190,29 @@ export default function HomePage() {
       </section>
 
       {/* LUXURY STATS */}
-      <section className="relative z-20 -mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#122848]/95 border border-[#C8A45D]/30 rounded-2xl p-6 sm:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-          <div className="border-r border-white/10 last:border-r-0 pr-4">
-            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C8A45D]">5,000+</div>
-            <div className="text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
+      <section className="relative z-20 mt-4 sm:-mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#122848]/95 border border-[#C8A45D]/30 rounded-2xl p-4 sm:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center">
+          <div className="border-r border-white/10 last:border-r-0 pr-2 sm:pr-4">
+            <div className="text-2xl sm:text-5xl font-serif font-bold text-[#C8A45D]">5,000+</div>
+            <div className="text-[10px] sm:text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
               {t.stats.guests}
             </div>
           </div>
-          <div className="border-r border-white/10 last:border-r-0 pr-4">
-            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C8A45D]">1,200+</div>
-            <div className="text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
+          <div className="border-r border-white/10 last:border-r-0 pr-2 sm:pr-4">
+            <div className="text-2xl sm:text-5xl font-serif font-bold text-[#C8A45D]">1,200+</div>
+            <div className="text-[10px] sm:text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
               {t.stats.golfGuests}
             </div>
           </div>
-          <div className="border-r border-white/10 last:border-r-0 pr-4">
-            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C8A45D]">25+</div>
-            <div className="text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
+          <div className="border-r border-white/10 last:border-r-0 pr-2 sm:pr-4">
+            <div className="text-2xl sm:text-5xl font-serif font-bold text-[#C8A45D]">25+</div>
+            <div className="text-[10px] sm:text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
               {t.stats.experiences}
             </div>
           </div>
           <div>
-            <div className="text-3xl sm:text-5xl font-serif font-bold text-[#C8A45D]">98%</div>
-            <div className="text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
+            <div className="text-2xl sm:text-5xl font-serif font-bold text-[#C8A45D]">98%</div>
+            <div className="text-[10px] sm:text-xs uppercase tracking-wider text-gray-300 font-medium mt-1">
               {t.stats.satisfaction}
             </div>
           </div>

@@ -122,48 +122,7 @@ export function TrustDisplay({ onOpenBooking }: { onOpenBooking: (pkgName?: stri
           </div>
         )}
 
-        {/* BOTTOM CTA BAR — compact on mobile */}
-        <div className="bg-[#122848] border border-[#C8A45D]/40 rounded-2xl sm:rounded-3xl p-5 sm:p-10 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-8">
-          <div className="space-y-1 sm:space-y-2 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs font-semibold uppercase tracking-wider">
-              <PhoneCall className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-              {language === 'kr' ? "24시간 1:1 VIP 트래블 디자이너" : "24/7 VIP Travel Designer Care"}
-            </div>
-            <h3 className="text-xl sm:text-3xl font-serif font-bold text-white">
-              {language === 'kr' ? "스리랑카 나만의 럭셔리 여정을 시작하세요" : "Ready to Experience Bespoke Sri Lankan Luxury?"}
-            </h3>
-            <p className="hidden sm:block text-xs sm:text-sm text-gray-300 max-w-xl">
-              {language === 'kr'
-                ? "전담 콘시어지가 100% 맞춤 일정 및 프라이빗 견적을 2시간 내로 전달해 드립니다."
-                : "Speak with our executive travel designer to receive a tailored luxury proposal within 2 hours."}
-            </p>
-          </div>
 
-          {/* Mobile: 2 buttons; sm+: all 3 */}
-          <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto shrink-0">
-            <button
-              onClick={() => onOpenBooking("Plan My Journey")}
-              className="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-full bg-[#C8A45D] hover:bg-[#D4B87A] text-[#0B1F3A] font-bold text-xs uppercase tracking-wider transition-all shadow-lg text-center"
-            >
-              {language === 'kr' ? "여행 계획하기" : "Plan My Journey"}
-            </button>
-            <a
-              href="https://wa.me/94770008899"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2 shadow-lg"
-            >
-              <PhoneCall className="w-3.5 h-3.5" />
-              <span>{language === 'kr' ? "디자이너 직통 상담" : "Contact Designer"}</span>
-            </a>
-            <button
-              onClick={() => onOpenBooking("Request a Custom Itinerary")}
-              className="hidden sm:block w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#0B1F3A] hover:bg-white/10 text-white border border-[#C8A45D]/60 hover:border-[#C8A45D] font-bold text-xs uppercase tracking-wider transition-all text-center"
-            >
-              {language === 'kr' ? "맞춤 일정 요청" : "Request a Custom Itinerary"}
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   );

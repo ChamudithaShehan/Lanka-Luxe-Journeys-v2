@@ -180,9 +180,8 @@ export default function HomePage() {
             <button
               key={idx}
               onClick={() => setCurrentHeroIndex(idx)}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                idx === currentHeroIndex ? 'w-12 bg-[#C8A45D]' : 'w-3 bg-white/60 hover:bg-white/90'
-              }`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentHeroIndex ? 'w-12 bg-[#C8A45D]' : 'w-3 bg-white/60 hover:bg-white/90'
+                }`}
               aria-label={`Slide ${idx + 1}`}
             />
           ))}

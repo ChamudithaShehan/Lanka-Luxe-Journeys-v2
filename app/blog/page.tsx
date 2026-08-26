@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -12,7 +12,7 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedArticle, setSelectedArticle] = useState<BlogArticle | null>(null);
 
-  const categories = ['All', 'Golf', 'Luxury Travel', 'Korean Guide', 'Culture', 'Wildlife'];
+  const categories = ['All', 'Golf', 'Luxury Travel', 'Korean Guide', 'Culture', 'Wildlife', 'Travel Tips'];
 
   const filteredArticles = BLOG_ARTICLES.filter((art) => {
     const matchesCat = selectedCategory === 'All' || art.category === selectedCategory;

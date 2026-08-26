@@ -2,16 +2,15 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter, Noto_Serif_KR, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
-import { MobileBottomBar } from "@/components/ui/MobileBottomBar";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { AdminProvider } from "@/context/AdminContext";
 import { LayoutContent } from "@/components/layout/LayoutContent";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -115,17 +114,17 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col text-white selection:bg-[#C8A45D] selection:text-[#0B1F3A] pb-20 lg:pb-0" suppressHydrationWarning>
         <AdminProvider>
           <LanguageProvider>
-            <LayoutContent
-              loadingScreen={<LoadingScreen />}
-              scrollProgress={<ScrollProgress />}
-              customCursor={<CustomCursor />}
-              navbar={<Navbar />}
-              floatingWhatsApp={<FloatingWhatsApp />}
-              mobileBottomBar={<MobileBottomBar />}
-              footer={<Footer />}
-            >
-              {children}
-            </LayoutContent>
+            <CurrencyProvider>
+              <LayoutContent
+                loadingScreen={<LoadingScreen />}
+                scrollProgress={<ScrollProgress />}
+                navbar={<Navbar />}
+                floatingWhatsApp={<FloatingWhatsApp />}
+                footer={<Footer />}
+              >
+                {children}
+              </LayoutContent>
+            </CurrencyProvider>
           </LanguageProvider>
         </AdminProvider>
       </body>

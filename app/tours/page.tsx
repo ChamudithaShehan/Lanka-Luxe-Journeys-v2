@@ -5,11 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Compass, Clock, MapPin, Hotel, ArrowRight, Search, ShieldCheck, Sparkles, UserCheck } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { useCurrency } from '@/context/CurrencyContext';
 import { TOUR_PACKAGES } from '@/data/travelData';
 import { BookingModal } from '@/components/ui/BookingModal';
 
 export default function ToursPage() {
   const { language } = useLanguage();
+  const { formatPrice } = useCurrency();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -111,7 +113,7 @@ export default function ToursPage() {
                     {pkg.duration}
                   </span>
                   <span className="text-[#C8A45D] font-serif font-bold text-base sm:text-lg bg-[#0B1F3A]/90 px-3 py-1 rounded-full border border-[#C8A45D]/40">
-                    {pkg.priceUSD > 0 ? `$${pkg.priceUSD.toLocaleString()} USD` : (language === 'kr' ? '맞춤 문의' : 'Custom Quote')}
+                    {formatPrice(pkg.priceUSD)}
                   </span>
                 </div>
               </div>

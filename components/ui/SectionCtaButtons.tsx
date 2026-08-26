@@ -12,6 +12,10 @@ interface SectionCtaButtonsProps {
 export function SectionCtaButtons({ onOpenBooking, categoryName }: SectionCtaButtonsProps) {
   const { language } = useLanguage();
 
+  const whatsappMessage = language === 'kr'
+    ? `안녕하세요 Lanka Luxe Journeys, "${categoryName || '스리랑카 럭셔리 여행'}" 맞춤 견적 및 일정 상담 요청드립니다.`
+    : `Hello Lanka Luxe Journeys, I would like to consult on a custom itinerary for "${categoryName || 'Sri Lanka Luxury Travel'}".`;
+
   return (
     <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full">
       <button
@@ -29,7 +33,7 @@ export function SectionCtaButtons({ onOpenBooking, categoryName }: SectionCtaBut
       </button>
 
       <a
-        href="https://wa.me/94770008899"
+        href={`https://wa.me/94770008899?text=${encodeURIComponent(whatsappMessage)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#0B1F3A] hover:bg-white/10 text-emerald-400 border border-emerald-500/40 font-bold text-xs uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2"

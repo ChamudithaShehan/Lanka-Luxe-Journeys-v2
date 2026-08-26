@@ -7,10 +7,8 @@ interface LayoutContentProps {
   children: React.ReactNode;
   loadingScreen: React.ReactNode;
   scrollProgress: React.ReactNode;
-  customCursor: React.ReactNode;
   navbar: React.ReactNode;
   floatingWhatsApp: React.ReactNode;
-  mobileBottomBar: React.ReactNode;
   footer: React.ReactNode;
 }
 
@@ -18,10 +16,8 @@ export const LayoutContent: React.FC<LayoutContentProps> = ({
   children,
   loadingScreen,
   scrollProgress,
-  customCursor,
   navbar,
   floatingWhatsApp,
-  mobileBottomBar,
   footer,
 }) => {
   const pathname = usePathname();
@@ -35,11 +31,9 @@ export const LayoutContent: React.FC<LayoutContentProps> = ({
     <>
       {loadingScreen}
       {scrollProgress}
-      {customCursor}
       {navbar}
       <main className="flex-grow">{children}</main>
       {floatingWhatsApp}
-      {mobileBottomBar}
       {footer}
     </>
   );

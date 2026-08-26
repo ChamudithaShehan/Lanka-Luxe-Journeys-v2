@@ -11,9 +11,10 @@ import { useAdmin } from '@/context/AdminContext';
 interface BookingDrawerProps {
   isOpen: boolean;
   onClose: () => void;
+  preselectedPackage?: string;
 }
 
-export const BookingDrawer: React.FC<BookingDrawerProps> = ({ isOpen, onClose }) => {
+export const BookingDrawer: React.FC<BookingDrawerProps> = ({ isOpen, onClose, preselectedPackage }) => {
   const { t, language } = useLanguage();
   const { siteSettings } = useAdmin();
   const [submitted, setSubmitted] = useState(false);
@@ -24,10 +25,16 @@ export const BookingDrawer: React.FC<BookingDrawerProps> = ({ isOpen, onClose })
     phone: '',
     dates: '',
     guests: '2 Guests',
-    package: siteSettings.bookingPackages[0] || 'Grand Ceylon Royal Tour',
+    package: preselectedPackage || siteSettings.bookingPackages[0] || 'Grand Ceylon Royal Tour',
     language: language === 'kr' ? 'Korean' : 'English',
     notes: '',
   });
+
+  React.useEffect(() => {
+    if (preselectedPackage) {
+      setForm((prev) => ({ ...prev, package: preselectedPackage }));
+    }
+  }, [preselectedPackage]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -124,6 +131,9 @@ export const BookingDrawer: React.FC<BookingDrawerProps> = ({ isOpen, onClose })
                       onChange={(e) => setForm({ ...form, package: e.target.value })}
                       className="w-full bg-[#122848] border border-[#C8A45D]/30 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#C8A45D]"
                     >
+                      {!siteSettings.bookingPackages.includes(form.package) && (
+                        <option value={form.package}>{form.package}</option>
+                      )}
                       {siteSettings.bookingPackages.map((pkg) => (
                         <option key={pkg} value={pkg}>{pkg}</option>
                       ))}

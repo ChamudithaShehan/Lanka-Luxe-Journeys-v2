@@ -5,7 +5,7 @@
 
 🌐 **Live Website:** [https://lanka-luxe-journeys-v2.vercel.app/](https://lanka-luxe-journeys-v2.vercel.app/)
 
----
+---.
 
 ## 🎨 Brand Identity & Palette
 
@@ -88,9 +88,31 @@ A powerful, custom-built local Content Management System (CMS) allows for comple
 
 ## 💻 Getting Started
 
+### 1. Environment Setup
+
+Create a `.env` file in the root directory of your project. You can copy the variables below and update them with your own database credentials:
+
+```env
+# Database Credentials
+DB_USER="root"
+DB_PASSWORD="your_password_here"
+DB_HOST="localhost"
+DB_PORT="3306"
+DB_NAME="Lanka_luxe"
+
+# Prisma database connection string
+DATABASE_URL="mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
+
+# Session secret for authentication
+SESSION_SECRET="llj-fallback-secret-key-change-me"
+```
+
+### 2. Install Dependencies & Run
+
 Run the development server:
 
 ```bash
+npm install
 npm run dev
 ```
 
@@ -104,4 +126,4 @@ Start production server:
 
 ```bash
 npm run start
-```.
+```

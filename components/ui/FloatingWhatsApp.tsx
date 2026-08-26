@@ -20,7 +20,7 @@ export const FloatingWhatsApp: React.FC = () => {
   const kakaoUrl = siteSettings.kakaoLink;
 
   return (
-    <div className="hidden sm:flex fixed bottom-6 right-6 z-[90] flex-col items-end gap-3">
+    <div className="flex fixed bottom-5 sm:bottom-6 right-4 sm:right-6 z-[90] flex-col items-end gap-3">
       {/* Expanded Quick Contact Menu */}
       {isOpen && (
         <div className="flex flex-col gap-2.5 mb-1 animate-in fade-in slide-in-from-bottom-3 duration-200">

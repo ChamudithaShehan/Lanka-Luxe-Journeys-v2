@@ -12,7 +12,5 @@ process.env.DATABASE_URL = dbUrl;
 
 export default defineConfig({
   schema: 'prisma/schema.prisma',
-  datasource: {
-    url: dbUrl,
-  },
+  ...( { datasource: { url: dbUrl } } as any ),
 });

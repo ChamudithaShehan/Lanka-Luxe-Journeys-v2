@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
-import { ShieldCheck, HeartHandshake, Compass, Gem, UserCheck, Sparkles, Award, ArrowRight } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { ShieldCheck, HeartHandshake, Compass, Gem, UserCheck, Sparkles, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export function WhyChooseUs() {
   const { language } = useLanguage();
-  const [showAllPillarsMobile, setShowAllPillarsMobile] = React.useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const pillars = [
     {
@@ -60,38 +61,132 @@ export function WhyChooseUs() {
     }
   ];
 
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const scrollLeft = scrollContainerRef.current.scrollLeft;
+      const width = scrollContainerRef.current.offsetWidth;
+      const newIndex = Math.round(scrollLeft / (width * 0.82));
+      setActiveSlide(Math.min(newIndex, pillars.length - 1));
+    }
+  };
+
+  const scrollToSlide = (index: number) => {
+    if (scrollContainerRef.current) {
+      const cardWidth = scrollContainerRef.current.offsetWidth * 0.82;
+      scrollContainerRef.current.scrollTo({
+        left: index * cardWidth,
+        behavior: 'smooth'
+      });
+      setActiveSlide(index);
+    }
+  };
+
   return (
-    <section className="py-20 bg-[#0B1F3A] text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <section className="py-12 sm:py-20 bg-[#0B1F3A] text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-16">
         {/* Header Intro Banner */}
-        <div className="bg-[#122848] border border-[#C8A45D]/40 rounded-3xl p-8 sm:p-12 shadow-2xl space-y-6 text-center max-w-4xl mx-auto relative overflow-hidden">
+        <div className="bg-[#122848] border border-[#C8A45D]/40 rounded-2xl sm:rounded-3xl p-6 sm:p-12 shadow-2xl space-y-4 sm:space-y-6 text-center max-w-4xl mx-auto relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#C8A45D]/10 rounded-full blur-3xl" />
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-xs uppercase tracking-widest font-semibold">
-            <ShieldCheck className="w-4 h-4" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C8A45D]/10 border border-[#C8A45D]/30 text-[#C8A45D] text-[10px] sm:text-xs uppercase tracking-widest font-semibold">
+            <ShieldCheck className="w-3.5 h-3.5" />
             THE LANKA LUXE COMMITMENT
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-5xl font-serif font-bold text-white tracking-tight">
             {language === 'kr' ? "왜 Lanka Luxe Journeys인가?" : "Why Choose Lanka Luxe Journeys?"}
           </h2>
 
-          <p className="text-sm sm:text-base text-gray-200 leading-relaxed font-light">
+          <p className="text-xs sm:text-base text-gray-200 leading-relaxed font-light">
             {language === 'kr'
               ? "Lanka Luxe Journeys는 단순한 여행을 넘어 잊지 못할 추억을 선사하고, 진정한 문화를 발견하며, 스리랑카를 최고급 편안함과 스타일, 확신 속에서 경험하도록 돕습니다. 럭셔리 휴양, 로맨틱 허니문, 가족 어드벤처, PGA 골프 및 100% 맞춤 문화 여정까지 고객님의 기대에 맞춰 모든 세부사항을 전담 디자인합니다."
               : "At Lanka Luxe Journeys, we believe that travel is more than visiting places—it's about creating unforgettable memories, discovering authentic cultures, and experiencing Sri Lanka with comfort, style, and confidence. Whether you're seeking a luxurious holiday, a romantic honeymoon, a family adventure, a golf getaway, or a tailor-made cultural journey, our experienced team is dedicated to designing every detail to match your interests and expectations."}
           </p>
         </div>
 
-        {/* 7 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* MOBILE VIEW: Horizontal Swipeable Snap Carousel */}
+        <div className="md:hidden space-y-4">
+          <div className="flex items-center justify-between px-1 text-xs text-gray-400">
+            <span className="text-[11px] uppercase tracking-wider text-[#C8A45D] font-semibold flex items-center gap-1">
+              <span>Swipe to explore 7 pillars</span>
+              <span>➔</span>
+            </span>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => scrollToSlide(Math.max(0, activeSlide - 1))}
+                disabled={activeSlide === 0}
+                className="w-7 h-7 rounded-full bg-[#122848] border border-[#C8A45D]/30 flex items-center justify-center text-[#C8A45D] disabled:opacity-30"
+                aria-label="Previous Pillar"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollToSlide(Math.min(pillars.length - 1, activeSlide + 1))}
+                disabled={activeSlide === pillars.length - 1}
+                className="w-7 h-7 rounded-full bg-[#122848] border border-[#C8A45D]/30 flex items-center justify-center text-[#C8A45D] disabled:opacity-30"
+                aria-label="Next Pillar"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-3.5 pb-2 -mx-4 px-4"
+            style={{ scrollSnapType: 'x mandatory' }}
+          >
+            {pillars.map((pillar, idx) => {
+              const IconComponent = pillar.icon;
+              return (
+                <div
+                  key={idx}
+                  className="w-[82vw] max-w-[320px] shrink-0 snap-center bg-[#122848] border border-[#C8A45D]/35 rounded-2xl p-5 shadow-xl flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="w-10 h-10 rounded-xl bg-[#0B1F3A] border border-[#C8A45D]/40 flex items-center justify-center text-[#C8A45D]">
+                        <IconComponent className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] text-[#C8A45D] font-mono tracking-widest uppercase font-semibold">
+                        PILLAR {idx + 1} OF 7
+                      </span>
+                    </div>
+                    <h3 className="text-base font-serif font-bold text-white leading-snug">
+                      {language === 'kr' ? pillar.titleKr : pillar.titleEn}
+                    </h3>
+                    <p className="text-xs text-gray-300 leading-relaxed line-clamp-4">
+                      {language === 'kr' ? pillar.descKr : pillar.descEn}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex items-center justify-center gap-1.5 pt-2">
+            {pillars.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => scrollToSlide(idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  activeSlide === idx ? 'w-6 bg-[#C8A45D]' : 'w-1.5 bg-white/30'
+                }`}
+                aria-label={`Go to pillar ${idx + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* DESKTOP VIEW: Clean 3-Column Grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {pillars.map((pillar, idx) => {
             const IconComponent = pillar.icon;
-            const isHiddenMobile = !showAllPillarsMobile && idx >= 3;
             return (
               <div
                 key={idx}
-                className={`bg-[#122848] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl p-7 transition-all duration-300 shadow-xl space-y-4 flex flex-col justify-between group hover:-translate-y-1 ${isHiddenMobile ? 'hidden md:flex' : 'flex'
-                  }`}
+                className="bg-[#122848] border border-[#C8A45D]/30 hover:border-[#C8A45D] rounded-2xl p-7 transition-all duration-300 shadow-xl space-y-4 flex flex-col justify-between group hover:-translate-y-1"
               >
                 <div className="space-y-4">
                   <div className="w-12 h-12 rounded-xl bg-[#0B1F3A] border border-[#C8A45D]/40 flex items-center justify-center text-[#C8A45D] group-hover:bg-[#C8A45D] group-hover:text-[#0B1F3A] transition-all">
@@ -113,20 +208,9 @@ export function WhyChooseUs() {
           })}
         </div>
 
-        {/* Mobile View More Button for 7 Pillars */}
-        <div className="mt-6 text-center md:hidden">
-          <button
-            onClick={() => setShowAllPillarsMobile(!showAllPillarsMobile)}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#122848] border border-[#C8A45D] text-[#C8A45D] text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#C8A45D] hover:text-[#0B1F3A] transition-all"
-          >
-            <span>{showAllPillarsMobile ? (language === 'kr' ? '접기 (Show Less)' : 'Show Less') : (language === 'kr' ? '더보기 (See More)' : 'See More Pillars')}</span>
-            <ArrowRight className={`w-4 h-4 transition-transform ${showAllPillarsMobile ? '-rotate-90' : 'rotate-90'}`} />
-          </button>
-        </div>
-
         {/* Closing Luxury Tagline Banner */}
-        <div className="bg-gradient-to-r from-[#060F1D] via-[#122848] to-[#060F1D] border border-[#C8A45D]/50 rounded-2xl p-8 text-center space-y-4 shadow-2xl">
-          <p className="text-base sm:text-xl font-serif italic text-[#C8A45D] max-w-3xl mx-auto leading-relaxed">
+        <div className="bg-gradient-to-r from-[#060F1D] via-[#122848] to-[#060F1D] border border-[#C8A45D]/50 rounded-2xl p-6 sm:p-8 text-center space-y-3 sm:space-y-4 shadow-2xl">
+          <p className="text-sm sm:text-xl font-serif italic text-[#C8A45D] max-w-3xl mx-auto leading-relaxed">
             {language === 'kr'
               ? "“Lanka Luxe Journeys를 선택하세요—럭셔리가 정통 스리랑카 경험을 만나고, 모든 여정이 나누고 싶은 이야기가 됩니다.”"
               : "“Choose Lanka Luxe Journeys—where luxury meets authentic Sri Lankan experiences, and every journey becomes a story worth sharing.”"}

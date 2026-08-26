@@ -8,71 +8,77 @@ export function TrustDisplay({ onOpenBooking }: { onOpenBooking: (pkgName?: stri
   const { language } = useLanguage();
 
   return (
-    <section className="py-10 sm:py-16 bg-[#060F1D] border-t border-b border-[#C8A45D]/30 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
-        {/* TOP TRUST BADGES GRID — 2×2 on mobile, 4-col on desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+    <section className="py-4 sm:py-12 bg-[#060F1D] border-t border-b border-[#C8A45D]/20 text-white">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-10">
+        {/* TOP TRUST BADGES — Compact & Small on Mobile, Rich on Desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-5">
           {/* GOOGLE REVIEWS */}
-          <div className="bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 hover:border-[#C8A45D] transition-all">
-            <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
-              <span className="text-lg sm:text-2xl font-bold text-white">G</span>
+          <div className="bg-[#0B1F3A]/90 border border-[#C8A45D]/25 rounded-lg sm:rounded-2xl p-2 sm:p-5 shadow-md sm:shadow-xl flex items-center gap-2 sm:gap-4 hover:border-[#C8A45D] transition-all">
+            <div className="w-6 h-6 sm:w-11 sm:h-11 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+              <span className="text-xs sm:text-xl font-bold text-white">G</span>
             </div>
-            <div className="space-y-0.5 sm:space-y-1">
-              <div className="flex items-center gap-0.5 sm:gap-1 text-amber-400">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
-                ))}
-                <span className="text-[10px] sm:text-xs font-bold text-white ml-1">5.0</span>
+            <div className="min-w-0">
+              <div className="flex items-center gap-0.5 text-amber-400">
+                <Star className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 fill-amber-400 text-amber-400" />
+                <span className="text-[10px] sm:text-xs font-bold text-white">5.0</span>
+                <span className="hidden sm:inline-flex items-center gap-0.5">
+                  {[...Array(4)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  ))}
+                </span>
               </div>
-              <p className="text-[11px] sm:text-xs font-bold text-white">Google Reviews</p>
-              <p className="text-[10px] sm:text-[11px] text-gray-400 leading-tight">{language === 'kr' ? '240개+ 인증 5성급 후기' : '240+ Verified 5-Star'}</p>
+              <p className="text-[10px] sm:text-xs font-bold text-white truncate">Google Reviews</p>
+              <p className="text-[9px] sm:text-[11px] text-gray-400 truncate">{language === 'kr' ? '240개+ 인증 후기' : '240+ Verified'}</p>
             </div>
           </div>
 
           {/* TRIPADVISOR */}
-          <div className="bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 hover:border-[#C8A45D] transition-all">
-            <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#00AA6C]/20 flex items-center justify-center shrink-0 border border-[#00AA6C]/40">
-              <Award className="w-4 h-4 sm:w-6 sm:h-6 text-[#00AA6C]" />
+          <div className="bg-[#0B1F3A]/90 border border-[#C8A45D]/25 rounded-lg sm:rounded-2xl p-2 sm:p-5 shadow-md sm:shadow-xl flex items-center gap-2 sm:gap-4 hover:border-[#C8A45D] transition-all">
+            <div className="w-6 h-6 sm:w-11 sm:h-11 rounded-full bg-[#00AA6C]/20 flex items-center justify-center shrink-0 border border-[#00AA6C]/40">
+              <Award className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#00AA6C]" />
             </div>
-            <div className="space-y-0.5 sm:space-y-1">
-              <div className="flex items-center gap-0.5 sm:gap-1 text-amber-400">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
-                ))}
-                <span className="text-[10px] sm:text-xs font-bold text-white ml-1">5.0</span>
+            <div className="min-w-0">
+              <div className="flex items-center gap-0.5 text-amber-400">
+                <Star className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 fill-amber-400 text-amber-400" />
+                <span className="text-[10px] sm:text-xs font-bold text-white">5.0</span>
+                <span className="hidden sm:inline-flex items-center gap-0.5">
+                  {[...Array(4)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  ))}
+                </span>
               </div>
-              <p className="text-[11px] sm:text-xs font-bold text-white">TripAdvisor</p>
-              <p className="text-[10px] sm:text-[11px] text-gray-400 leading-tight">{language === 'kr' ? '트래블러스 초이스 2026' : "Choice Winner 2026"}</p>
+              <p className="text-[10px] sm:text-xs font-bold text-white truncate">TripAdvisor</p>
+              <p className="text-[9px] sm:text-[11px] text-gray-400 truncate">{language === 'kr' ? '초이스 2026' : "Winner 2026"}</p>
             </div>
           </div>
 
-          {/* NAVER BLOG — Korean-specific trust signal */}
-          <div className="bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 hover:border-[#C8A45D] transition-all">
-            <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#03C75A]/20 flex items-center justify-center shrink-0 border border-[#03C75A]/40">
-              <span className="text-base sm:text-lg font-black text-[#03C75A]">N</span>
+          {/* NAVER BLOG */}
+          <div className="bg-[#0B1F3A]/90 border border-[#C8A45D]/25 rounded-lg sm:rounded-2xl p-2 sm:p-5 shadow-md sm:shadow-xl flex items-center gap-2 sm:gap-4 hover:border-[#C8A45D] transition-all">
+            <div className="w-6 h-6 sm:w-11 sm:h-11 rounded-full bg-[#03C75A]/20 flex items-center justify-center shrink-0 border border-[#03C75A]/40">
+              <span className="text-[10px] sm:text-base font-black text-[#03C75A]">N</span>
             </div>
-            <div className="space-y-0.5 sm:space-y-1">
-              <div className="flex items-center gap-1 text-[#03C75A]">
-                <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span className="text-[10px] sm:text-xs font-bold text-[#03C75A]">{language === 'kr' ? '네이버 추천' : 'Naver'}</span>
+            <div className="min-w-0">
+              <div className="flex items-center gap-0.5 text-[#03C75A]">
+                <CheckCircle2 className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
+                <span className="text-[9px] sm:text-xs font-bold text-[#03C75A]">{language === 'kr' ? '네이버' : 'Naver'}</span>
               </div>
-              <p className="text-[11px] sm:text-xs font-bold text-white">{language === 'kr' ? '네이버 블로그 검증' : 'Naver Verified'}</p>
-              <p className="text-[10px] sm:text-[11px] text-gray-400 leading-tight">{language === 'kr' ? '스리랑카 1위 블로그' : '#1 Korea Travel Blog'}</p>
+              <p className="text-[10px] sm:text-xs font-bold text-white truncate">{language === 'kr' ? '네이버 검증' : 'Naver Verified'}</p>
+              <p className="text-[9px] sm:text-[11px] text-gray-400 truncate">{language === 'kr' ? '1위 블로그' : '#1 Korea Blog'}</p>
             </div>
           </div>
 
           {/* SLTDA GOVT LICENCE */}
-          <div className="bg-[#0B1F3A] border border-[#C8A45D]/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 hover:border-[#C8A45D] transition-all">
-            <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#C8A45D]/10 flex items-center justify-center shrink-0 border border-[#C8A45D]/40 text-[#C8A45D]">
-              <ShieldCheck className="w-4 h-4 sm:w-6 sm:h-6" />
+          <div className="bg-[#0B1F3A]/90 border border-[#C8A45D]/25 rounded-lg sm:rounded-2xl p-2 sm:p-5 shadow-md sm:shadow-xl flex items-center gap-2 sm:gap-4 hover:border-[#C8A45D] transition-all">
+            <div className="w-6 h-6 sm:w-11 sm:h-11 rounded-full bg-[#C8A45D]/10 flex items-center justify-center shrink-0 border border-[#C8A45D]/40 text-[#C8A45D]">
+              <ShieldCheck className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
             </div>
-            <div className="space-y-0.5 sm:space-y-1">
-              <div className="flex items-center gap-1 text-[#C8A45D]">
-                <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span className="text-[10px] sm:text-xs font-bold text-[#C8A45D]">{language === 'kr' ? '정부 인증' : 'Gov. Certified'}</span>
+            <div className="min-w-0">
+              <div className="flex items-center gap-0.5 text-[#C8A45D]">
+                <CheckCircle2 className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
+                <span className="text-[9px] sm:text-xs font-bold text-[#C8A45D]">{language === 'kr' ? '정부인증' : 'Certified'}</span>
               </div>
-              <p className="text-[11px] sm:text-xs font-bold text-white">SLTDA Licence</p>
-              <p className="text-[10px] text-gray-400 font-mono leading-tight">TA/2026/Luxe-084</p>
+              <p className="text-[10px] sm:text-xs font-bold text-white truncate">SLTDA Licence</p>
+              <p className="text-[9px] text-gray-400 font-mono truncate">Luxe-084</p>
             </div>
           </div>
         </div>

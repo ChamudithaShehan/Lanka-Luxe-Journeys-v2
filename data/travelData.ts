@@ -1268,14 +1268,70 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     titleEn: "The Ultimate Guide to Playing Golf in Sri Lanka: Colonial Heritage to Ocean Fairways",
     titleKr: "스리랑카 명문 골프 투어 완벽 가이드: 1800년대 영국 왕실 코스부터 인도양 오션뷰까지",
     category: "Golf",
-    date: "July 2026",
+    date: "August 2026",
     author: "James Sterling (PGA Specialist)",
     image: SRI_LANKA_IMAGES.victoriaGolf,
     readTime: "6 min read",
     excerptEn: "Discover why Sri Lanka is Asia's best kept luxury golf secret, combining cooler highland air with world-class course designs.",
     excerptKr: "서늘한 고원 지대부터 아름다운 해안선까지, 골프 마니아들을 위한 스리랑카 4대 명문 코스의 차별화된 매력을 파헤칩니다.",
-    contentEn: "Sri Lanka holds one of the richest golf legacies in Asia. Royal Colombo Golf Club received its Royal Charter in 1879...",
-    contentKr: "스리랑카는 아시아에서 가장 깊은 골프 역사를 간직한 나라 중 하나입니다. 1879년 조지 5세 국왕의 칭호를 받은 로열 콜롬보부터..."
+    contentEn: "Sri Lanka holds one of the richest golf legacies in Asia. Royal Colombo Golf Club received its Royal Charter in 1879, followed by the misty mountain fairways of Nuwara Eliya and the award-winning Donald Steel designed Victoria Golf & Country Resort in Kandy. Playing in Sri Lanka pairs pristine tee-times with private caddies, clubhouse dining, and helicopter direct transfers.",
+    contentKr: "스리랑카는 1879년 조지 5세 국왕의 영국 왕실 칭호를 받은 로열 콜롬보부터 해발 1,800m 누와라엘리야, 그리고 아시아 Top 10에 빛나는 캔디 빅토리아 골프 리조트까지 세계적인 코스를 보유하고 있습니다."
+  },
+  {
+    id: "luxury-aviation-tea-estates",
+    titleEn: "Private Aviation & High-Altitude Living: The Relais & Châteaux Tea Trail Experience",
+    titleKr: "프라이빗 헬기 직항과 고원 차밭 방갈로: 실론 티 트레일즈 완벽 가이드",
+    category: "Luxury Travel",
+    date: "August 2026",
+    author: "Alistair Ratnayake (CEO)",
+    image: SRI_LANKA_IMAGES.highlandTeaEstate,
+    readTime: "5 min read",
+    excerptEn: "How private helicopter charters transform travel between Colombo, misty tea planter bungalows, and private ocean villas.",
+    excerptKr: "콜롬보에서 해발 1,200m 차밭 방갈로까지 30분 만에 이동하는 프라이빗 헬기 직항 투어와 마스터 블렌더 티 클래스.",
+    contentEn: "Traversing Sri Lanka's emerald central highlands by road is scenic, but private helicopter aviation elevates the experience entirely. Landing directly on tea bungalow helipads grants instant access to 5-star Relais & Châteaux hospitality, private butler dinners, and infinity pool mountain views without hours of mountain winding roads.",
+    contentKr: "스리랑카 고원 지대를 가장 품격 있게 즐기는 방법은 전용 에어버스 헬리콥터 직항입니다. 리조트 전용 승강장에 착륙하여 1:1 전담 버틀러와 함께하는 프라이빗 하이티를 만끽하세요."
+  },
+  {
+    id: "sri-lankan-cultural-odyssey",
+    titleEn: "2,500 Years of Splendor: Exploring Sigiriya, Dambulla & Kandy in Ultimate Comfort",
+    titleKr: "2,500년의 찬란한 유산: 시기리야 사자 바위부터 캔디 불치사까지의 프라이빗 문화 탐방",
+    category: "Culture",
+    date: "July 2026",
+    author: "Dr. Chaminda Jayawardena",
+    image: SRI_LANKA_IMAGES.sigiriyaCitadel,
+    readTime: "7 min read",
+    excerptEn: "A docent-guided journey through UNESCO ancient rock citadels, sacred tooth relic shrines, and colonial Dutch forts.",
+    excerptKr: "유네스코 세계유산 시기리야 고대 요새와 캔디 불치사를 수석 역사학자 도슨트의 1:1 해설과 함께 VIP 전용으로 관람하세요.",
+    contentEn: "Sri Lanka's Cultural Triangle represents one of the ancient world's most astonishing architectural achievements. From the sky-high fortress of Sigiriya to the cave frescoes of Dambulla and the sacred Temple of the Tooth in Kandy, our guests enjoy early sunrise priority access avoiding all crowds.",
+    contentKr: "고대 왕국의 영광이 살아 숨 쉬는 시기리야 거암 요새와 캔디 불치사를 일반 관람객이 없는 이른 아침 프라이빗 시간대에 여유롭게 관람할 수 있는 팁을 소개합니다."
+  },
+  {
+    id: "wildlife-safari-leopard-yala",
+    titleEn: "Tracking Leopards and Blue Whales: Sri Lanka’s Wild Coast & Marine Sanctuaries",
+    titleKr: "세계 최고 밀도의 야생 표범과 대왕고래: 야라 사파리 & 인도양 요트 가이드",
+    category: "Wildlife",
+    date: "July 2026",
+    author: "Dr. Chaminda Jayawardena",
+    image: SRI_LANKA_IMAGES.yalaLeopard,
+    readTime: "6 min read",
+    excerptEn: "Encounter the apex predators of Yala National Park and sail private catamarans alongside oceanic blue whales.",
+    excerptKr: "야라 국립공원의 전용 4x4 지프 사파리와 인도양 전용 요트에서 만나는 지구상 최대 동물 대왕고래 탐사.",
+    contentEn: "Sri Lanka is one of the few places on Earth where you can observe wild leopards in dense coastal jungles in the morning and cruise with 100-foot Blue Whales on a private catamaran in the afternoon.",
+    contentKr: "아침에는 야라 정글에서 야생 표범과 아시아 코끼리를 마주하고, 오후에는 프라이빗 요트에서 대왕고래를 관찰하는 스리랑카만의 특별한 야생 경험을 안내합니다."
+  },
+  {
+    id: "luxury-travel-tips-sri-lanka",
+    titleEn: "Essential Travel Tips for Luxury Travelers: Monsoons, Dress Codes & VIP Logistics",
+    titleKr: "스리랑카 럭셔리 여행 필수 팁: 계절별 날씨, 드레스코드 & 의전 이동 노하우",
+    category: "Travel Tips",
+    date: "June 2026",
+    author: "Alistair Ratnayake",
+    image: SRI_LANKA_IMAGES.bentotaBeach,
+    readTime: "4 min read",
+    excerptEn: "Key advice on regional micro-climates, temple attire etiquette, fast-track visas, and helicopter routing.",
+    excerptKr: "동해안과 남해안의 이중 계절풍 기후 정보, 사원 방문 복장 예절, 그리고 골프백 수송과 패스트트랙 입국 팁.",
+    contentEn: "Because Sri Lanka experiences two localized monsoon cycles, pristine sunshine is always guaranteed on one side of the island. Our bespoke travel concierges map your itinerary precisely to ensure idyllic weather.",
+    contentKr: "스리랑카는 계절별로 쾌청한 지역이 달라집니다. 남서부 시즌(11월~4월)과 동북부 시즌(5월~10월)의 날씨 특성과 럭셔리 이동 노하우를 정리해 드립니다."
   },
   {
     id: "korean-traveler-concierge-tips",
@@ -1284,12 +1340,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Korean Guide",
     date: "June 2026",
     author: "Min-Jun Park (Director of Korean Concierge)",
-    image: SRI_LANKA_IMAGES.highlandTeaEstate,
+    image: SRI_LANKA_IMAGES.galleDutchFort,
     readTime: "5 min read",
     excerptEn: "How Lanka Luxe Journeys delivers dedicated fluent Korean coordinators, tailored culinary preferences, and seamless fast-track airport services.",
     excerptKr: "공항 패스트트랙 입국부터 전문 한국어 가이드, 엄선된 식사 맞춤 서비스까지 한국 고객만을 위한 차별화된 라운딩 & 휴양 케어.",
-    contentEn: "For Korean business leaders and golf travel groups, time and precision are paramount...",
-    contentKr: "한국의 VIP 고객분들께 시간과 정확성, 프라이버시는 무엇보다 중요합니다. Lanka Luxe Journeys는..."
+    contentEn: "For Korean business leaders and golf travel groups, time and precision are paramount. Lanka Luxe Journeys assigns dedicated Korean-speaking concierges, provides Korean cuisine dining options, and coordinates all golf logistics.",
+    contentKr: "한국의 VIP 고객분들께 시간과 정확성, 프라이버시는 무엇보다 중요합니다. Lanka Luxe Journeys는 전담 한국인 매니저와 카카오톡 24시간 실시간 지원을 제공합니다."
   }
 ];
 

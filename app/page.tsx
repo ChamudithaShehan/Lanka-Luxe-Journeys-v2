@@ -13,7 +13,6 @@ import { useLanguage } from '@/context/LanguageContext';
 import { BLOG_ARTICLES } from '@/data/travelData';
 
 import { SignatureCollections } from '@/components/widgets/SignatureCollections';
-import { BespokeJourneyPlanner } from '@/components/widgets/BespokeJourneyPlanner';
 import { LuxuryVideoStories } from '@/components/widgets/LuxuryVideoStories';
 import { TrustDisplay } from '@/components/widgets/TrustDisplay';
 import { WhyChooseUs } from '@/components/widgets/WhyChooseUs';
@@ -178,10 +177,7 @@ export default function HomePage() {
       {/* 5. SIGNATURE COLLECTIONS (Interactive 3-Tab Discovery) */}
       <SignatureCollections onOpenBooking={handleOpenBooking} />
 
-      {/* 6. BESPOKE JOURNEY PLANNER (30-Second Micro-Designer) */}
-      <BespokeJourneyPlanner onOpenBooking={handleOpenBooking} />
-
-      {/* 7. CINEMATIC VIDEO STORIES */}
+      {/* 6. CINEMATIC VIDEO STORIES */}
       <LuxuryVideoStories />
 
       {/* 7. VERIFIED GUEST REVIEWS */}
